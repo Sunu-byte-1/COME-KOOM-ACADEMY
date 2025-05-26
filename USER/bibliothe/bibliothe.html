@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<link rel="stylesheet" href="/USER/style/navhaut.css">
+	<link rel="stylesheet" href="/USER/favoris/fav.css">
+	<link rel="stylesheet" href="/USER/bibliothe/bibliotheque.css">
+</head>
+
+<body>
+
+
+	<main>
+		<section class="barre">
+			<div class="name">
+				<h3>Come'Koom Academy</h3>
+			</div>
+
+			<div class="enum">
+				<ul>
+					<li>
+						<a href="/USER/user.html">
+							<i class="fa-solid fa-school"></i>
+							<p>Tableau de bord</p>
+						</a>
+					</li>
+
+					<li>
+						<a href="/USER/taches/taches.html">
+							<i class="fa-solid fa-file"></i>
+							<p>Taches à terminer</p>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="/USER/favoris/fav.html">
+							<i class="fa-solid fa-bookmark"></i>
+							<p>Cours</p>
+						</a>
+					</li>
+
+
+
+
+
+					<li>
+						<a href="/USER/bibliothe/bibliothe.html" class="active">
+							<i class="fa-solid fa-book"></i>
+							<p>Bibliotheque</p>
+						</a>
+					</li>
+
+
+
+					<li>
+						<a href="/USER/menthors/menthor.html">
+							<i class="fa-solid fa-users"></i>
+							<p>Menthors</p>
+						</a>
+					</li>
+
+
+
+					<li>
+						<a href="/USER/abonnement/abonnement.html">
+							<i class="fa-solid fa-user-plus"></i>
+							<p>Abonnement</p>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="/USER/message/message.html">
+							<i class="fa-regular fa-comments"></i>
+							<p>Messages</p>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="/USER/parametres/parametre.html">
+							<i class="fa-solid fa-gear"></i>
+							<p>Parametres</p>
+						</a>
+					</li>
+
+
+				</ul>
+
+				<div class="trait"></div>
+
+				<div class="exit">
+					<a href="/LOGIN/connexion.html" class="logout">
+						<i class="fa-solid fa-right-from-bracket"></i>
+						<p>Deconnexion</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+
+
+
+		<section class="content">
+
+			<!--LA BARRE DE NAVIGATION-->
+			<div class="nav">
+				<div class="rech">
+					<input type="search" placeholder="Search">
+					<i class="fa-solid fa-magnifying-glass"></i>
+
+				</div>
+
+
+				<div class="id">
+					<i class="fa-regular fa-bell" id="bell-icon"></i>
+					<!-- Ajout d'un ID pour la cloche -->
+
+					<i class="fa-solid fa-globe" id="langue-icon"></i>
+					<div class="us"></div>
+				</div>
+			</div>
+
+			<!--FINNNN BARRE DE NAVIGATION-->
+
+
+			<div class="bibli-search">
+				<label for="catégorie-haut"></label>
+				<select id="catégorie-haut" class="select-edit">
+					<option value="" disabled selected>Categories</option>
+					<option value="">Developpement Web</option>
+					<option value="">UI / UX Design</option>
+					<option value="">Developpemetn WordPress</option>
+					<option value="">Web Designer</option>
+
+				</select>
+
+
+
+				<label for="niveau"></label>
+				<select id="niveau" class="select-edit">
+					<option value="" disabled selected>Niveau Design</option>
+					<option value="">Aythentification</option>
+					<option value="">Systeme</option>
+					<option value="">Meta</option>
+
+				</select>
+
+
+				<label for="duration"></label>
+				<select id="duration" class="select-edit">
+					<option value="" disabled selected>Duree</option>
+					<option value="">1 Heure</option>
+					<option value="">2 Heures</option>
+					<option value="">4 Heures</option>
+					<option value="">8 Heures</option>
+					<option value="">10 Heures</option>
+					<option value="">20 Heures</option>
+
+				</select>
+
+
+				<label for="type"></label>
+				<select id="type" class="select-edit">
+					<option value="" disabled selected>Types</option>
+					<option value="">Simples</option>
+					<option value="">Complesxes</option>
+
+				</select>
+
+
+				<div>
+					<input type="range" id="couts" min="0" max="100000" value="50000"><br>
+					<label for="couts" class="couts">0F - 100 000F</label>
+				</div>
+
+				<button>Rechercher</button>
+			</div>
+
+
+
+
+			<div class="cours1">
+				<div class="-title">
+					<div>
+						<h2>Les Plus consultés</h2>
+					</div>
+
+					<div>
+						<label for="catégorie"></label>
+						<select id="catégorie" class="custom-select">
+							<option value="" disabled selected>catégorie</option>
+
+							<optgroup label="Développement Web">
+								<option value="frontend">Front-End Developer
+								</option>
+								<option value="backend">Back-End Developer
+								</option>
+								<option value="fullstack">Full-Stack Developer
+								</option>
+							</optgroup>
+
+							<optgroup label="Data Analyst & Science">
+								<option value="data-analyst">Data Analyst
+								</option>
+								<option value="data-scientist">Data Scientist
+								</option>
+								<option value="machine-learning">Machine
+									Learning
+									Engineer</option>
+							</optgroup>
+
+							<optgroup label="UI/UX Design">
+								<option value="ui-designer">UI Designer</option>
+								<option value="ux-designer">UX Designer</option>
+								<option value="product-designer">Product
+									Designer
+								</option>
+							</optgroup>
+
+							<optgroup label="Cybersécurité">
+								<option value="security-analyst">Analyste en
+									Cybersécurité</option>
+								<option value="ethical-hacker">Hacker Éthique
+								</option>
+								<option value="soc-analyst">Analyste SOC
+								</option>
+							</optgroup>
+
+							<optgroup label="Autres">
+								<option value="devops">DevOps Engineer</option>
+								<option value="cloud">Cloud Architect</option>
+								<option value="blockchain">Blockchain Developer
+								</option>
+							</optgroup>
+						</select>
+
+
+
+						<label for="catégorie1"></label>
+						<select id="catégorie1" class="custom-select">
+							<option value="" disabled selected>Tirer par</option>
+							<option value="">Populariites</option>
+							<option value="">Les mieux notes</option>
+							<option value="">Ajout recent</option>
+							<option value="">Les plus vus</option>
+
+						</select>
+
+
+
+
+
+					</div>
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+				<div class="corps">
+
+
+					<div class="chapitre" id="cp1">
+						<img src="/images/Library/cybersec.jpg" alt="">
+
+
+						<div class="text">
+							<p>Securité</p>
+						</div>
+
+						<div class="domaine">
+							<h2>CyberSecurité</h2>
+						</div>
+
+						<div class="follows">
+							<div class="images">
+								<img src="/images/FOLLOWERS/1.jpg" alt="">
+								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
+									class="float">
+								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
+
+								<h5>8k+</h5>
+
+								<i class="fa-solid fa-heart"></i>
+
+							</div>
+						</div>
+
+						<div class="LINE">
+
+						</div>
+
+						<div class="duree">
+							<div class="lesson">
+								<i class="fa-solid fa-video"></i>
+								<p>24 Leçons</p>
+							</div>
+
+							<div class="lesson">
+								<i class="fa-regular fa-clock"></i>
+								<p>40 heures</p>
+							</div>
+						</div>
+
+						<div class="rate">
+							<div class="rate0">
+								<i class="fa-solid fa-star"></i>
+								<p><b>4.9 (12k)</b></p>
+							</div>
+
+							<div class="de" id="details">
+								<a href="">Voir Details</a>
+							</div>
+						</div>
+
+					</div>
+
+
+					<div class="chapitre" id="cp2">
+						<img src="/images/Library/metavers.jpg" alt="">
+
+
+						<div class="text" id="sec">
+							<p>Meta</p>
+						</div>
+
+						<div class="domaine">
+							<h2>MetaVerse Methode</h2>
+						</div>
+
+						<div class="follows">
+							<div class="images">
+								<img src="/images/FOLLOWERS/1.jpg" alt="">
+								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
+									class="float">
+								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
+
+								<h5>3.5k+</h5>
+
+								<i class="fa-solid fa-heart"></i>
+
+							</div>
+						</div>
+
+						<div class="LINE">
+
+						</div>
+
+						<div class="duree">
+							<div class="lesson">
+								<i class="fa-solid fa-video"></i>
+								<p>69 Leçons</p>
+							</div>
+
+							<div class="lesson">
+								<i class="fa-regular fa-clock"></i>
+								<p>110 heures</p>
+							</div>
+						</div>
+
+						<div class="rate">
+							<div class="rate0">
+								<i class="fa-solid fa-star"></i>
+								<p><b>3.4 </b></p>
+							</div>
+
+							<div class="de" id="details">
+								<a href="">Voir Details</a>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="chapitre" id="cp3">
+						<img src="/images/Library/vue js.avif" alt="">
+
+
+						<div class="text" id="prog">
+							<p>frontend</p>
+						</div>
+
+						<div class="domaine">
+							<h2>Vue JS</h2>
+						</div>
+
+						<div class="follows">
+							<div class="images">
+								<img src="/images/FOLLOWERS/1.jpg" alt="">
+								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
+									class="float">
+								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
+
+								<h5>17k+</h5>
+
+								<i class="fa-solid fa-heart"></i>
+
+							</div>
+						</div>
+
+						<div class="LINE">
+
+						</div>
+
+						<div class="duree">
+							<div class="lesson">
+								<i class="fa-solid fa-video"></i>
+								<p>36 Leçons</p>
+							</div>
+
+							<div class="lesson">
+								<i class="fa-regular fa-clock"></i>
+								<p>60 heures</p>
+							</div>
+						</div>
+
+						<div class="rate">
+							<div class="rate0">
+								<i class="fa-solid fa-star"></i>
+								<p><b>4.7 </b></p>
+							</div>
+
+							<div class="de" id="details">
+								<a href="">Voir Details</a>
+							</div>
+						</div>
+
+					</div>
+
+
+					<div class="chapitre" id="cp4">
+						<img src="/images/Library/MySQL.png" alt="">
+
+
+						<div class="text" id="prog01">
+							<p>Data Base</p>
+						</div>
+
+						<div class="domaine">
+							<h2>MySQL</h2>
+						</div>
+
+						<div class="follows">
+							<div class="images">
+								<img src="/images/FOLLOWERS/1.jpg" alt="">
+								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
+									class="float">
+								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
+
+								<h5>24k+</h5>
+
+								<i class="fa-solid fa-heart"></i>
+
+							</div>
+						</div>
+
+						<div class="LINE">
+
+						</div>
+
+						<div class="duree">
+							<div class="lesson">
+								<i class="fa-solid fa-video"></i>
+								<p>85 Leçons</p>
+							</div>
+
+							<div class="lesson">
+								<i class="fa-regular fa-clock"></i>
+								<p>215 heures</p>
+							</div>
+						</div>
+
+						<div class="rate">
+							<div class="rate0">
+								<i class="fa-solid fa-star"></i>
+								<p><b>3.9 </b></p>
+							</div>
+
+							<div class="de" id="details">
+								<a href="">Voir Details</a>
+							</div>
+						</div>
+
+					</div>
+
+
+					<div class="chapitre" id="cp5">
+						<img src="/images/COURS_complet/FLUTTER.webp" alt="">
+
+
+						<div class="text" id="flutter">
+							<p>Dev Mobile</p>
+						</div>
+
+						<div class="domaine">
+							<h2>Flutter (Dart)</h2>
+						</div>
+
+						<div class="follows">
+							<div class="images">
+								<img src="/images/FOLLOWERS/1.jpg" alt="">
+								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
+									class="float">
+								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
+
+								<h5>7k+</h5>
+
+								<i class="fa-solid fa-heart"></i>
+
+							</div>
+						</div>
+
+						<div class="LINE">
+
+						</div>
+
+						<div class="duree">
+							<div class="lesson">
+								<i class="fa-solid fa-video"></i>
+								<p>20 Leçons</p>
+							</div>
+
+							<div class="lesson">
+								<i class="fa-regular fa-clock"></i>
+								<p>55 heures</p>
+							</div>
+						</div>
+
+						<div class="rate">
+							<div class="rate0">
+								<i class="fa-solid fa-star"></i>
+								<p><b>4.2 </b></p>
+							</div>
+
+							<div class="de" id="details">
+								<a href="">Voir Details</a>
+							</div>
+						</div>
+
+					</div>
+
+
+					<div class="chapitre" id="cp6">
+						<img src="/images/Library/angular.png" alt="">
+
+
+						<div class="text" id="swift">
+							<p>Front vers Java</p>
+						</div>
+
+						<div class="domaine">
+							<h2>Angular JS</h2>
+						</div>
+
+						<div class="follows">
+							<div class="images">
+								<img src="/images/FOLLOWERS/1.jpg" alt="">
+								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
+									class="float">
+								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
+
+								<h5>11k+</h5>
+
+								<i class="fa-solid fa-heart"></i>
+
+							</div>
+						</div>
+
+						<div class="LINE">
+
+						</div>
+
+						<div class="duree">
+							<div class="lesson">
+								<i class="fa-solid fa-video"></i>
+								<p>56 Leçons</p>
+							</div>
+
+							<div class="lesson">
+								<i class="fa-regular fa-clock"></i>
+								<p>98 heures</p>
+							</div>
+						</div>
+
+						<div class="rate">
+							<div class="rate0">
+								<i class="fa-solid fa-star"></i>
+								<p><b>4.2 </b></p>
+							</div>
+
+							<div class="de" id="details">
+								<a href="">Voir Details</a>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="chapitre" id="cp7">
+						<img src="/images/Library/django.webp" alt="">
+
+
+						<div class="text" id="exp">
+							<p>Framework Py</p>
+						</div>
+
+						<div class="domaine">
+							<h2>Django Python</h2>
+						</div>
+
+						<div class="follows">
+							<div class="images">
+								<img src="/images/FOLLOWERS/1.jpg" alt="">
+								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
+									class="float">
+								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
+
+								<h5>7k+</h5>
+
+								<i class="fa-solid fa-heart"></i>
+
+							</div>
+						</div>
+
+						<div class="LINE">
+
+						</div>
+
+						<div class="duree">
+							<div class="lesson">
+								<i class="fa-solid fa-video"></i>
+								<p>26 Leçons</p>
+							</div>
+
+							<div class="lesson">
+								<i class="fa-regular fa-clock"></i>
+								<p>45 heures</p>
+							</div>
+						</div>
+
+						<div class="rate">
+							<div class="rate0">
+								<i class="fa-solid fa-star"></i>
+								<p><b>3.6 </b></p>
+							</div>
+
+							<div class="de" id="details">
+								<a href="">Voir Details</a>
+							</div>
+						</div>
+
+					</div>
+
+
+					<div class="chapitre" id="cp8">
+						<img src="/images/COURS_complet/SQL.jpg" alt="">
+
+
+						<div class="text" id="sql">
+							<p>base de donnees</p>
+						</div>
+
+						<div class="domaine">
+							<h2>SQL</h2>
+						</div>
+
+						<div class="follows">
+							<div class="images">
+								<img src="/images/FOLLOWERS/1.jpg" alt="">
+								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
+									class="float">
+								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
+									alt="" class="float">
+								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
+
+								<h5>18k+</h5>
+
+								<i class="fa-solid fa-heart"></i>
+
+							</div>
+						</div>
+
+						<div class="LINE">
+
+						</div>
+
+						<div class="duree">
+							<div class="lesson">
+								<i class="fa-solid fa-video"></i>
+								<p>15 Leçons</p>
+							</div>
+
+							<div class="lesson">
+								<i class="fa-regular fa-clock"></i>
+								<p>36 heures</p>
+							</div>
+						</div>
+
+						<div class="rate">
+							<div class="rate0">
+								<i class="fa-solid fa-star"></i>
+								<p><b>4.4 </b></p>
+							</div>
+
+							<div class="de" id="details">
+								<a href="">Voir Details</a>
+							</div>
+						</div>
+
+					</div>
+
+
+
+
+				</div>
+
+
+
+
+
+
+
+
+				<div class="foot" id="#foot1">
+
+
+					<div class="left">
+						<p>
+							<< Precedent</p>
+					</div>
+
+					<div class="mid">
+						<p>1</p>
+						<p>2</p>
+						<p>3</p>
+						<p>....</p>
+						<p>36</p>
+					</div>
+
+					<div class="right">
+						<p>Suivant >> </p>
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+
+		</section>
+	</main>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--Partie pour la Notification cahée-->
+
+	<div class="notification" id="notification-box">
+		<div class="top">
+			<h2>Notifications</h2>
+			<div class="new">Nouveau</div>
+			<div class="plus">+</div>
+		</div>
+		<div class="mid">
+			<div class="friend">
+				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
+				<h3>Suzane ANTONIO</h3>
+			</div>
+			<div class="friend1">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
+					ducimus?
+				</p>
+			</div>
+			<button class="bt">Accepter</button>
+			<div class="traits"></div>
+
+
+			<div class="friend">
+				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
+				<h3>Moussa SENE</h3>
+			</div>
+			<div class="friend1">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
+					ducimus?
+				</p>
+			</div>
+			<button class="bt">Accepter</button>
+		</div>
+		<div class="bottom">
+			<h3>Voir Tous</h3>
+		</div>
+	</div>
+
+
+
+
+	<!-- Div de sélection de langue (initialement cachée) -->
+	<div class="langue" id="langue-menu">
+		<p>Choisissez votre langue :</p>
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
+				width=70" height="40"> Français
+		</label><br />
+
+
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
+				width=70" height="40"> Français
+		</label><br />
+
+
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
+				width=70" height="40"> Français
+		</label><br />
+
+
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
+				width=70" height="40"> Français
+		</label><br />
+	</div>
+
+
+
+
+
+
+
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Pour la gestion des notifications
+			const bellIcon = document.getElementById("bell-icon");
+			const notificationBox = document.getElementById("notification-box");
+
+			bellIcon.addEventListener("click", () => {
+				notificationBox.classList.toggle("show");
+			});
+
+			// Pour la gestion de l'icône de langue
+			const langueIcon = document.getElementById("langue-icon");
+			const langueMenu = document.getElementById("langue-menu");
+
+			langueIcon.addEventListener("click", () => {
+				// Alterne l'affichage du menu des langues
+				langueMenu.classList.toggle("show-langue");
+			});
+		});
+	</script>
+
+
+</body>
+
+</html>

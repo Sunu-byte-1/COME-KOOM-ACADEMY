@@ -1,0 +1,294 @@
+/*
+/* Partie image avec du texte */
+.accueil {
+	background-image: url(/images/PERSONNES/jeune\ americain.jpg);
+	height: 100vh;
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.gauche {
+	background-color: rgb(76, 157, 238);
+	opacity: 60%;
+	width: 40%;
+	height: 500px;
+	transform: rotate(45deg);
+	padding: 50px 1200px 400px 30px;
+	margin-left: -450px;
+	margin-top: 300px;
+}
+
+.text {
+	width: 580px;
+	height: 300px;
+	transform: rotate(-45deg);
+	margin-left: 180px;
+	margin-top: 100px;
+	text-align: center;
+}
+
+.text h1 {
+	font-size: 5.5rem;
+}
+
+.text h2 {
+	font-size: 3.8rem;
+	margin-left: 320px;
+	margin-top: -100px;
+}
+
+.text p {
+	font-family: 'Sacramento';
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-top: -60px;
+}
+
+/* FINNN partie image avec du texte */
+
+/* Partie Intro et pkw creation */
+.haut {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	position: relative;
+	overflow: hidden;
+}
+
+.part11 {
+	display: flex;
+	gap: 10px;
+}
+
+.part22 {
+	margin-top: -50px;
+	display: flex;
+	justify-content: center;
+}
+
+.part22 h1 {
+	font-family: 'Sacramento';
+	font-size: 3.5rem;
+}
+
+.haut::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: url(/images/PERSONNES/concentré.jpg);
+	filter: blur(5px);
+	background-position: center;
+	background-size: cover;
+	opacity: 30%;
+	z-index: -1;
+}
+
+.intro {
+	width: 70%;
+	height: auto;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.welcome,
+.valeurs,
+.aside1 {
+	border-radius: 20px;
+	box-shadow: 0 0 5px white;
+	padding: 20px;
+}
+
+.aside1 {
+	width: 30%;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+/* Fin structure des divs */
+
+.haut .intro h1,
+.haut .intro p,
+.haut .aside1 h1,
+.haut .aside1 p {
+	margin: 5px 8px;
+}
+
+.intro p span {
+	font-weight: bold;
+	color: rgb(76, 157, 238);
+}
+
+.intro h1,
+.aside1 h1 {
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+	.gauche {
+		width: 50%;
+		margin-left: -300px;
+		margin-top: 200px;
+	}
+
+	.text {
+		width: 450px;
+		margin-left: 120px;
+	}
+
+	.text h1 {
+		font-size: 4.5rem;
+	}
+
+	.text h2 {
+		font-size: 3rem;
+		margin-left: 250px;
+	}
+
+	.text p {
+		font-size: 2rem;
+	}
+
+	.part11 {
+		flex-direction: column;
+	}
+
+	.intro,
+	.aside1 {
+		width: 100%;
+		margin: 10px 0;
+	}
+}
+
+@media (max-width: 992px) {
+	.gauche {
+		width: 60%;
+		margin-left: -250px;
+		margin-top: 150px;
+	}
+
+	.text {
+		width: 350px;
+		margin-left: 80px;
+	}
+
+	.text h1 {
+		font-size: 3.5rem;
+	}
+
+	.text h2 {
+		font-size: 2.5rem;
+		margin-left: 200px;
+	}
+
+	.text p {
+		font-size: 1.8rem;
+	}
+
+	.part22 h1 {
+		font-size: 3rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.gauche {
+		width: 70%;
+		margin-left: -200px;
+		margin-top: 100px;
+	}
+
+	.text {
+		width: 300px;
+		margin-left: 50px;
+	}
+
+	.text h1 {
+		font-size: 3rem;
+	}
+
+	.text h2 {
+		font-size: 2rem;
+		margin-left: 150px;
+	}
+
+	.text p {
+		font-size: 1.5rem;
+	}
+
+	.part22 h1 {
+		font-size: 2.5rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.gauche {
+		width: 80%;
+		margin-left: -150px;
+		margin-top: 80px;
+	}
+
+	.text {
+		width: 250px;
+		margin-left: 30px;
+	}
+
+	.text h1 {
+		font-size: 2.5rem;
+	}
+
+	.text h2 {
+		font-size: 1.8rem;
+		margin-left: 120px;
+	}
+
+	.text p {
+		font-size: 1.2rem;
+	}
+
+	.part22 h1 {
+		font-size: 2rem;
+	}
+
+	.intro h1,
+	.aside1 h1 {
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.gauche {
+		width: 90%;
+		margin-left: -100px;
+		margin-top: 60px;
+	}
+
+	.text {
+		width: 200px;
+		margin-left: 20px;
+	}
+
+	.text h1 {
+		font-size: 2rem;
+	}
+
+	.text h2 {
+		font-size: 1.5rem;
+		margin-left: 100px;
+	}
+
+	.text p {
+		font-size: 1rem;
+	}
+
+	.part22 h1 {
+		font-size: 1.8rem;
+	}
+}

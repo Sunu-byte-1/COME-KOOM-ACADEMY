@@ -1,0 +1,308 @@
+.main {
+	width: 98%;
+	margin: 20px 1% 10px 1%;
+	border-radius: 20px;
+	background-color: white;
+}
+
+
+.container {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-gap: 30px;
+}
+
+
+.taches h1 {
+	font-size: 36px;
+	margin-bottom: 30px;
+	color: #0277bd;
+	text-align: center;
+}
+
+.task-list {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.task-card {
+	background-color: #fff;
+	padding: 25px;
+	border-radius: 15px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease-in-out;
+	opacity: 0;
+	animation: fadeInUp 1s forwards;
+}
+
+.task-card h2 {
+	font-size: 24px;
+	color: #0277bd;
+	margin-bottom: 15px;
+}
+
+.task-card p {
+	font-size: 16px;
+}
+
+.task-details {
+	font-size: 16px;
+}
+
+.task-progress {
+	margin-bottom: 20px;
+}
+
+.progress-bar {
+	height: 10px;
+	background-color: #ddd;
+	border-radius: 5px;
+	transition: width 0.5s ease;
+}
+
+.task-progress span {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+
+.sidebar {
+	background-color: #fff;
+	padding: 30px;
+	border-radius: 15px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	opacity: 0;
+	animation: fadeInUp 1s forwards;
+}
+
+.sidebar h2 {
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: #0277bd;
+	text-align: center;
+}
+
+.graphs {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	justify-content: center;
+	align-items: center;
+}
+
+.graph-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.graph-container h3 {
+	font-size: 20px;
+	color: #0277bd;
+	margin-bottom: 10px;
+}
+
+.graph {
+	position: relative;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	background: conic-gradient(#0277bd 0% 60%, #ddd 60% 100%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: rotateDonut 2s linear infinite;
+}
+
+.graph .circle {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background: conic-gradient(#0277bd 0% 0%, transparent 0% 100%);
+	position: absolute;
+}
+
+.percentage {
+	position: absolute;
+	font-size: 24px;
+	font-weight: bold;
+	color: #0277bd;
+	z-index: 1;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+
+
+.progress-60 .circle {
+	background: conic-gradient(#0277bd 0% 60%, #ddd 60% 100%);
+}
+
+.progress-30 .circle {
+	background: conic-gradient(#0277bd 0% 30%, #ddd 30% 100%);
+}
+
+.progress-80 .circle {
+	background: conic-gradient(#0277bd 0% 80%, #ddd 80% 100%);
+}
+
+
+
+.progression {
+	background-color: #ffffff;
+	padding: 30px;
+	border-radius: 15px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	animation: fadeInUp 1.5s forwards;
+}
+
+.progression h2 {
+	text-align: center;
+	font-size: 24px;
+	color: #0277bd;
+}
+
+.progression-container {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.progression-container h3 {
+	font-size: 20px;
+	color: #0277bd;
+	text-align: center;
+}
+
+.progress-bar-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.progress-bar {
+	width: 100%;
+	height: 15px;
+	border-radius: 10px;
+	background-color: #ddd;
+	position: relative;
+	animation: fillProgress 2s ease-out forwards;
+}
+
+.progress-bar.task-80 {
+	background-color: #0277bd;
+	width: 80%;
+}
+
+.progress-bar.course-60 {
+	background-color: #4caf50;
+	width: 60%;
+}
+
+.progress-bar.cert-50 {
+	background-color: #fbc02d;
+	width: 50%;
+}
+
+.progress-text {
+	font-size: 16px;
+	color: #0277bd;
+}
+
+.graph-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.graph {
+	position: relative;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background: conic-gradient(#0277bd 0% 75%, #ddd 75% 100%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: rotateDonut 2s ease-in-out infinite;
+}
+
+.graph .circle {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background: conic-gradient(#0277bd 0% 75%, transparent 75% 100%);
+	position: absolute;
+}
+
+.percentage {
+	position: absolute;
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+	z-index: 1;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+
+@keyframes fillProgress {
+	0% {
+		width: 0;
+	}
+
+	100% {
+		width: 100%;
+	}
+}
+
+
+@media (max-width: 768px) {
+	.container {
+		grid-template-columns: 1fr;
+	}
+
+	.graph-container,
+	.task-list {
+		width: 100%;
+	}
+
+	.progress-bar {
+		width: 90%;
+	}
+}

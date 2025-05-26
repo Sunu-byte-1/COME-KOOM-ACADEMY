@@ -1,0 +1,351 @@
+h1 {
+	text-align: center;
+	font-size: 2.3rem;
+	font-weight: bold;
+}
+
+.container {
+	display: flex;
+	gap: 10px;
+}
+
+.partie1,
+.partie2 {
+	margin-top: 15px;
+	width: 50%;
+	box-shadow: inset 0 0 20px rgb(111, 110, 109);
+	border-radius: 15px;
+	animation-duration: 5s;
+}
+
+.partie1 {
+	margin-left: 15px;
+	animation-name: debut1;
+}
+
+.partie2 {
+	margin-right: 15px;
+	animation-name: debut2;
+}
+
+.partie1:hover,
+.partie2:hover {
+	box-shadow: 0 0 20px rgb(111, 110, 109);
+	transition: box-shadow 1.2s;
+}
+
+@keyframes debut1 {
+	0% {
+		transform: translateX(-1000px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+
+	95% {
+		transform: scale(0.7);
+	}
+}
+
+@keyframes debut2 {
+	0% {
+		transform: translateX(1000px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+
+	95% {
+		transform: scale(0.7);
+	}
+}
+
+/* PARTIE 1 - Contacts */
+.nouscontacter {
+	margin-top: -40px;
+	color: white;
+}
+
+.tel {
+	margin-top: -30px;
+}
+
+.mail,
+.mobile,
+.fixe {
+	display: flex;
+	gap: 7px;
+	font-size: 1.5rem;
+}
+
+.mail {
+	margin-left: 90px;
+}
+
+.mobile {
+	margin-left: 90px;
+}
+
+.fixe {
+	margin-top: -30px;
+	margin-left: 90px;
+}
+
+.nouscontacter p {
+	font-size: 2rem;
+	color: white;
+}
+
+.nouscontacter img {
+	margin-top: 18px;
+	filter: invert(100%) brightness(100%) grayscale(100%);
+}
+
+/* PARTIE 2 - Réseaux sociaux */
+.reseaux {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.reseaux img {
+	width: 100px;
+	height: auto;
+}
+
+/* Formulaire */
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 50px 20% 0 20%;
+	padding-bottom: 60px;
+	border-radius: 30px;
+	box-shadow: inset 0px 0px 35px rgb(111, 110, 109);
+	gap: 20px;
+	animation: debut3 6.5s;
+}
+
+@keyframes debut3 {
+	0% {
+		transform: translateY(1000px);
+	}
+
+	72% {
+		opacity: 0;
+	}
+
+	90% {
+		opacity: 0;
+	}
+
+	95% {
+		opacity: 100;
+	}
+
+	97% {
+		opacity: 0;
+	}
+
+	98% {
+		opacity: 100;
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+input {
+	background: none;
+	border: 1px solid rgb(111, 110, 109);
+	border-radius: 15px;
+	height: 40px;
+	font-size: 1.2rem;
+}
+
+input::placeholder {
+	color: rgb(133, 131, 130);
+	font-size: 1.3rem;
+}
+
+.nom {
+	width: 250px;
+}
+
+.email {
+	width: 400px;
+}
+
+.sujet- {
+	width: 600px;
+}
+
+.message- {
+	width: 750px;
+	height: 200px;
+}
+
+button {
+	height: 40px;
+	width: 200px;
+	font-size: 1.5rem;
+	border-radius: 10px;
+	color: white;
+	background: none;
+	border: 1px solid white;
+}
+
+button:hover {
+	color: black;
+	background-color: white;
+	transition: 1.3s;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+	.container {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.partie1,
+	.partie2 {
+		width: 80%;
+		margin: 15px 0;
+	}
+
+	.mail,
+	.mobile,
+	.fixe {
+		margin-left: 50px;
+	}
+
+	.form {
+		margin: 50px 10% 0 10%;
+	}
+
+	.nom {
+		width: 200px;
+	}
+
+	.email {
+		width: 350px;
+	}
+
+	.sujet- {
+		width: 500px;
+	}
+
+	.message- {
+		width: 600px;
+	}
+}
+
+@media (max-width: 768px) {
+	h1 {
+		font-size: 2rem;
+	}
+
+	.partie1,
+	.partie2 {
+		width: 90%;
+	}
+
+	.mail,
+	.mobile,
+	.fixe {
+		margin-left: 20px;
+		font-size: 1.2rem;
+	}
+
+	.nouscontacter p {
+		font-size: 1.5rem;
+	}
+
+	.reseaux img {
+		width: 80px;
+	}
+
+	.form {
+		margin: 50px 5% 0 5%;
+	}
+
+	.nom {
+		width: 150px;
+	}
+
+	.email {
+		width: 300px;
+	}
+
+	.sujet- {
+		width: 400px;
+	}
+
+	.message- {
+		width: 500px;
+		height: 150px;
+	}
+
+	button {
+		width: 150px;
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 480px) {
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	.partie1,
+	.partie2 {
+		width: 100%;
+		margin: 10px 0;
+	}
+
+	.mail,
+	.mobile,
+	.fixe {
+		margin-left: 10px;
+		font-size: 1rem;
+	}
+
+	.nouscontacter p {
+		font-size: 1.2rem;
+	}
+
+	.reseaux img {
+		width: 60px;
+	}
+
+	.form {
+		margin: 50px 2% 0 2%;
+	}
+
+	.nom {
+		width: 120px;
+	}
+
+	.email {
+		width: 250px;
+	}
+
+	.sujet- {
+		width: 300px;
+	}
+
+	.message- {
+		width: 350px;
+		height: 120px;
+	}
+
+	button {
+		width: 120px;
+		font-size: 1rem;
+	}
+}

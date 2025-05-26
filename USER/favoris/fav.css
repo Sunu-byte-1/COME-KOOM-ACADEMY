@@ -1,0 +1,731 @@
+.cours {
+	border-radius: 20px;
+	width: 98%;
+	margin: 15px 1% 5px 1%;
+	background-color: white;
+	padding-bottom: 30px;
+
+
+}
+
+.recents {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-top: 10px;
+}
+
+.chapitre {
+	width: 290px;
+
+	padding-bottom: 10px;
+	height: auto;
+	border: 1px solid rgb(184, 181, 181);
+	border-radius: 20px;
+}
+
+.chapitre:hover {
+	box-shadow: 0 0 8px gray;
+	transition: 0.5s;
+}
+
+
+.chapitre img {
+	width: 96%;
+	margin: 10px 2% 0px 2%;
+	height: 180px;
+	border-radius: 20px;
+}
+
+.chapitre .text {
+	background-color: rgb(74, 173, 90);
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	border-radius: 20px;
+	color: rgb(147, 255, 165);
+	margin: 10px 0px 0px 15px;
+}
+
+.chapitre .domaine {
+	margin: 10px 20px;
+}
+
+
+.chapitre .prof {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	margin: 0 5px;
+}
+
+
+.chapitre .prof img {
+	width: 40px;
+	height: 40px;
+	border-radius: 360px;
+}
+
+
+
+.rate {
+	display: flex;
+	justify-content: space-between;
+	margin: 15px 10px 0px 10px;
+}
+
+.rate0 {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+}
+
+.rate0 i {
+	color: orange;
+}
+
+.details {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.de {
+	border: 1px solid rgb(127, 127, 237);
+	background-color: rgb(127, 127, 237);
+	border-radius: 30px;
+	width: 220px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.de a {
+	text-decoration: none;
+	color: white;
+}
+
+.de:hover {
+	background: none;
+	border: 1px solid rgb(127, 127, 237);
+	transition: 1s;
+}
+
+.de a:hover {
+	color: rgb(127, 127, 237);
+	text-decoration: underline;
+	font-size: 18px;
+	transition: 1s;
+
+}
+
+.--p {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+.first {
+	width: 200px;
+	height: 10px;
+	background-color: rgb(185, 185, 213);
+	border-radius: 20px;
+}
+
+.first .prog {
+	width: 78%;
+	height: 10px;
+	background-color: rgb(127, 127, 237);
+	border-radius: 20px;
+}
+
+
+
+
+/*EDITS PARTS*/
+.cours .titre11 {
+	text-align: center;
+	font-size: 2.5rem;
+}
+
+/*id colors parts */
+
+#text1 {
+	background-color: #4f6;
+	color: black;
+}
+
+#prog1 {
+	width: 57%;
+}
+
+/*----------------------------*/
+
+#text2 {
+	background-color: #a5d8;
+	color: wheat;
+}
+
+#prog2 {
+	width: 94%;
+}
+
+/*-------------------------------*/
+
+#text3 {
+	background-color: yellow;
+	color: red;
+}
+
+#prog3 {
+	width: 12%;
+}
+
+/*PROGRESSION BARRE HAUT*/
+
+.--avancement {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 20px 15px 35px 15px;
+
+}
+
+.gauche {
+	display: flex;
+	gap: 10px;
+}
+
+.gauche p:hover {
+	background-color: black;
+	color: white;
+	transition: 0.9s;
+}
+
+.gauche p {
+	border: 1px solid black;
+	border-radius: 30px;
+	text-align: center;
+	align-content: center;
+	height: 30px;
+	cursor: pointer;
+}
+
+.gauche .accent {
+	background-color: rgb(211, 211, 240);
+	color: rgb(127, 127, 237);
+	border: none;
+	width: 100px;
+}
+
+.gauche .compl {
+	width: 150px;
+}
+
+.gauche .save {
+	width: 160px;
+}
+
+.gauche .fav {
+	width: 120px;
+}
+
+.droite p {
+	background-color: rgb(127, 127, 237);
+	width: 250px;
+	border-radius: 30px;
+	text-align: center;
+	align-content: center;
+	height: 40px;
+	color: white;
+	font-size: 1.3rem;
+}
+
+
+
+/*cours 1 ....recommandes*/
+
+.cours1 {
+	border-radius: 20px;
+	width: 98%;
+	margin: 15px 1% 5px 1%;
+	background-color: white;
+	height: auto;
+
+}
+
+.-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10px 15px 15px 15px;
+}
+
+.-title div h2 {
+	font-size: 2rem;
+}
+
+.-title div,
+.-title div {
+	margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+/*Select*/
+
+/* Effet au survol */
+
+
+.custom-select {
+	width: 150px;
+	/* Réduction de la largeur */
+	height: 30px;
+	/* Hauteur plus petite */
+	font-size: 13px;
+	/* Texte plus compact */
+	padding: 2px 5px;
+	/* Moins d'espace interne */
+	border-radius: 5px;
+	/* Coins légèrement arrondis */
+	border: 1px solid #4A90E2;
+	/* Bordure bleu */
+	background-color: #1C1C1C;
+	/* Fond sombre */
+	color: #E0E0E0;
+	/* Texte gris clair */
+	outline: none;
+	cursor: pointer;
+	transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-select::-webkit-scrollbar {
+	background: none;
+}
+
+.custom-select:hover {
+	border-color: #5DA9F6;
+
+}
+
+/* Effet au focus */
+.custom-select:focus {
+	border-color: #3B78C2;
+	/* Bleu plus profond */
+	box-shadow: 0 0 6px rgba(74, 144, 226, 0.5);
+	/* Lueur subtile */
+}
+
+/* Style des options */
+.custom-select option {
+	background-color: #1C1C1C;
+	/* Fond des options */
+	color: #E0E0E0;
+	/* Texte en gris clair */
+}
+
+
+.custom-select optgroup {
+	font-weight: bold;
+	color: #4A90E2;
+}
+
+
+/*CHAPITRES RECOMMANDES PR VOUS*/
+
+
+.corps {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: center;
+}
+
+.duree {
+	display: flex;
+	justify-content: space-between;
+	margin: 20px 20px 10px 20px;
+	padding-top: 10px;
+	border-top: 1px solid gray;
+}
+
+.lesson {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+}
+
+.lesson i {
+	color: rgb(127, 127, 237);
+}
+
+
+.rate {
+	display: flex;
+	align-items: center;
+}
+
+#details {
+	border: 1px solid rgb(127, 127, 237);
+	border-radius: 30px;
+	width: 120px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+}
+
+#details:hover {
+	background-color: rgb(127, 127, 237);
+}
+
+#details a {
+	color: rgb(127, 127, 237);
+}
+
+#details a:hover {
+	color: white;
+}
+
+.images {
+	display: flex;
+	align-items: center;
+}
+
+.follows .images .float {
+	margin-left: -25px;
+}
+
+.follows .images img {
+	width: 30px;
+	height: 30px;
+	border-radius: 360px;
+	border: 3px solid white;
+}
+
+.follows .images h5 {
+	margin-top: 15px;
+	margin-left: 0px;
+	font-size: 1.2rem;
+}
+
+.follows .images i {
+	font-size: 1.2rem;
+	color: red;
+	background-color: rgb(198, 198, 232);
+	width: 30px;
+	height: 30px;
+	border-radius: 360px;
+	text-align: center;
+	align-content: center;
+	margin-left: 100px;
+	margin-top: 5px;
+}
+
+
+#sec {
+	background-color: red;
+	color: wheat;
+}
+
+#prog {
+	background-color: darkmagenta;
+	color: yellowgreen;
+}
+
+#prog01 {
+	width: 200px;
+}
+
+#flutter {
+	background-color: darkolivegreen;
+	color: rgb(127, 127, 237);
+}
+
+#swift {
+	background-color: darkseagreen;
+	color: white;
+}
+
+#exp {
+	color: darkmagenta;
+	background-color: yellow;
+}
+
+#sql {
+	background-color: olive;
+	color: #5DA9F6;
+}
+
+
+/*BASSSSS*/
+#foot1 {
+	margin: 30px 60px 60px 60px;
+	display: flex;
+	justify-content: space-between;
+	color: black;
+	font-size: 1.6rem;
+}
+
+.foot {
+	margin: 30px 60px 60px 60px;
+	display: flex;
+	justify-content: space-between;
+	color: black;
+	font-size: 1.6rem;
+	padding-bottom: 20px;
+}
+
+.foot .mid {
+	display: flex;
+	gap: 35px;
+}
+
+.foot .mid p {
+	color: black;
+	cursor: pointer;
+}
+
+.foot .left p {
+	border: 1px solid gray;
+	border-radius: 30px;
+	align-content: center;
+	text-align: center;
+	width: 200px;
+	height: 40px;
+	color: gray;
+	cursor: pointer;
+
+}
+
+.foot .left p:hover {
+	background-color: gray;
+	color: white;
+	transition: 1s;
+}
+
+.foot .right p {
+	border: 1px solid rgb(127, 127, 237);
+	border-radius: 30px;
+	align-content: center;
+	text-align: center;
+	width: 200px;
+	height: 40px;
+	color: rgb(127, 127, 237);
+	cursor: pointer;
+
+}
+
+.foot .right p:hover {
+	background-color: rgb(127, 127, 237);
+	color: white;
+	transition: 1s;
+}
+
+
+/*COURS 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*COURS ET RECENT RESPONS*/
+@media (max-width: 1200px) {
+	.recents {
+		flex-wrap: wrap;
+		gap: 15px;
+	}
+
+	.chapitre {
+		width: calc(50% - 20px);
+		/* Deux cartes par ligne */
+	}
+}
+
+@media (max-width: 768px) {
+	.recents {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.chapitre {
+		width: 90%;
+		/* Une carte par ligne */
+	}
+
+	.--avancement {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.gauche {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.droite p {
+		width: 100%;
+		font-size: 1rem;
+	}
+}
+
+
+
+/*pOUR COURS 1 ET CORPS*/
+
+@media (max-width: 1200px) {
+	.corps {
+		gap: 10px;
+	}
+
+	.chapitre {
+		width: calc(50% - 20px);
+		/* Deux cartes par ligne */
+	}
+}
+
+@media (max-width: 768px) {
+	.corps {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.chapitre {
+		width: 90%;
+		/* Une carte par ligne */
+	}
+
+	.-title {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+
+	.-title div h2 {
+		font-size: 1.5rem;
+	}
+
+	.custom-select {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+}
+
+
+
+
+
+/*BAS*/
+@media (max-width: 768px) {
+	.foot {
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.foot .mid {
+		gap: 15px;
+	}
+
+	.foot .left p,
+	.foot .right p {
+		width: 150px;
+		font-size: 1.2rem;
+	}
+}
+
+
+
+/*images et textesssssssss*/
+
+@media (max-width: 768px) {
+	.chapitre img {
+		height: 120px;
+		/* Réduire la hauteur des images */
+	}
+
+	.chapitre .text {
+		width: 120px;
+		font-size: 0.9rem;
+	}
+
+	.chapitre .domaine h2 {
+		font-size: 1.2rem;
+	}
+
+	.chapitre .prof img {
+		width: 30px;
+		height: 30px;
+	}
+
+	.rate0 p {
+		font-size: 0.9rem;
+	}
+
+	.de a {
+		font-size: 0.9rem;
+	}
+}
+
+
+
+
+
+/*progresssionnn barrre*/
+
+@media (max-width: 768px) {
+	.first {
+		width: 150px;
+	}
+
+	.prog {
+		width: 100%;
+		/* Ajuster la largeur de la barre de progression */
+	}
+}
+
+/*--------------------------------------------**/
+
+@media (max-width: 768px) {
+	.custom-select {
+		width: 100%;
+		font-size: 0.9rem;
+	}
+}
+
+
+@media (max-width: 768px) {
+	.follows .images i {
+		margin-left: 50px;
+		/* Ajuster la marge des icônes */
+	}
+
+	.follows .images h5 {
+		font-size: 1rem;
+	}
+
+	.lesson p {
+		font-size: 0.9rem;
+	}
+}

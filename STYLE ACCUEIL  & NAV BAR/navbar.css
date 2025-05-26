@@ -1,0 +1,258 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: rgb(16, 16, 15);
+	color: white;
+	font-family: 'Poppins';
+}
+
+.header- {
+	position: relative;
+	width: 100%;
+	height: 25vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #1a1a1a;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+	animation: headerSlide 2s ease-in-out;
+}
+
+.titre {
+	font-size: 3rem;
+	font-weight: 600;
+	color: #ffffff;
+	overflow: hidden;
+	white-space: nowrap;
+	border-right: 2px solid #00ffcc;
+	animation: typing 4s steps(30, end), blink 0.5s step-end infinite alternate;
+	text-align: center;
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+@keyframes headerSlide {
+	from {
+		transform: translateY(-100%);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+.navbar {
+	margin-top: 0;
+	display: flex;
+	gap: 2rem;
+	background-color: #222;
+	padding: 0.5rem 1rem;
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.liens {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.liens li {
+	list-style: none;
+}
+
+.liens a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 1.2rem;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	transition: all 0.3s ease-in-out;
+	display: block;
+	position: relative;
+}
+
+.login {
+	margin-left: 70px;
+}
+
+.liens a:hover {
+	color: #00ffcc;
+	background: #007bff;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+	transform: translateY(-3px);
+	animation: hoverBounce 0.3s ease-in-out;
+}
+
+
+
+@keyframes hoverBounce {
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-5px);
+	}
+}
+
+
+/*FOOTER*/
+
+
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 1200px) {
+
+	/* Réduire les marges et le padding */
+	body {
+		overflow-x: hidden;
+	}
+
+	/* Ajustement de la section titre */
+	.header- {
+		height: auto;
+		padding: 2rem 0;
+	}
+
+	.titre {
+		font-size: 2.5rem;
+		white-space: normal;
+		padding: 0 10px;
+	}
+
+	/* Navbar responsive */
+	.navbar {
+		width: 90%;
+	}
+
+	.liens {
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.login {
+		margin-left: 20px;
+	}
+
+	/* Section première */
+	.texte1 h1 {
+		font-size: 2.8rem;
+		padding: 0 15px;
+	}
+
+	.texte1 h1 span {
+		font-size: 2.7rem;
+	}
+
+	.texte2 {
+		width: 90%;
+		margin-top: 0;
+	}
+
+	/* Ajustement des boutons */
+	.btn {
+		gap: 20px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	/* Grille des modèles de cours */
+	.modeles {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 40px;
+	}
+
+	/* Titre des sections */
+	.title h1 {
+		font-size: 2.5rem;
+	}
+
+	.title h2 {
+		font-size: 4rem;
+		margin-left: 50px;
+	}
+
+	/* Section inscription */
+	.bleu {
+		grid-template-columns: 1fr;
+	}
+
+	#gauche,
+	#droite {
+		margin: 0 auto;
+	}
+
+	.register {
+		margin-left: 0;
+		margin-bottom: 30px;
+	}
+
+	.promo p {
+		margin-top: 50px;
+	}
+
+	/* Section experts */
+	.experts {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.prof {
+		margin: 15px;
+	}
+
+	/* Section témoignages */
+	.septieme1 {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	/* Footer */
+	.section1 {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 30px;
+		padding: 20px;
+	}
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+
+	/* Titre principal */
+	.titre {
+		font-size: 2rem;
+	}
+
+	/* Navbar pour mobile */
+	.navbar {
+		width: 95%;
+	}
+
+	.liens {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.liens li {
+		margin: 5px 0;
+	}
+
+	.login {
+		margin-left: 0;
+	}
+
+
+
+
+}

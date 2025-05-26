@@ -1,0 +1,236 @@
+.partie0 {
+	display: flex;
+	gap: 20px;
+	margin: 20px 15px 20px 15px;
+}
+
+.centre {
+	width: 70%;
+	background-color: white;
+	border-radius: 15px;
+	overflow: hidden;
+
+
+}
+
+
+.aside {
+	width: 30%;
+	border-radius: 15px;
+}
+
+
+
+
+/*-----------------------*/
+.centre video {
+	width: 94%;
+	margin: 20px 3% 20px 3%;
+	height: auto;
+	border-radius: 30px;
+	margin-left: 20px;
+
+}
+
+.centre .about h2,
+.centre .about p {
+	margin-left: 10px;
+	width: 50%;
+}
+
+.line {
+	width: 80%;
+	margin: 20px 10% 0px 10%;
+	height: 2px;
+	background-color: gray;
+}
+
+
+
+.haut {
+	background-color: white;
+	border-radius: 20px;
+	padding-bottom: 20px;
+}
+
+.bas {
+	background-color: white;
+	margin-top: 15px;
+	border-radius: 20px;
+	padding-bottom: 30px;
+}
+
+.bas2 {
+	background-color: white;
+	border-radius: 20px;
+}
+
+.bas h2 {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.haut h2 {
+	text-align: center;
+	margin-top: 20px;
+
+}
+
+.bas video {
+	width: 90%;
+	height: auto;
+	margin: 20px 5% 20px 5%;
+	border-radius: 20px;
+}
+
+.bas .dev {
+	margin-left: 20px;
+}
+
+.bas .p {
+	margin-left: 30px;
+}
+
+
+.bas button {
+	width: 80%;
+	margin: 10px 10% 10px 10%;
+	height: 45px;
+	font-size: 1.8rem;
+	border-radius: 30px;
+	border: none;
+	color: white;
+	background-color: rgb(119, 119, 212);
+}
+
+.haut .haut1 {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.haut1 .titre {
+	font-weight: 700;
+}
+
+.haut1 i {
+	font-size: 2.5rem;
+}
+
+.min {
+	color: gray;
+}
+
+.haut1 {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.descr {
+	padding-top: 30px;
+	width: 100%;
+	margin-left: 15px;
+}
+
+.inc {
+	margin-top: 40px;
+}
+
+.inc h2 {
+	margin-left: 20px;
+}
+
+.parts {
+	display: flex;
+	gap: 10px;
+	margin-left: 40px;
+	margin-bottom: 20px;
+}
+
+
+.ins {
+	margin: 40px 0px 40px 50px;
+	display: flex;
+	gap: 20px;
+}
+
+.ins img {
+	border-radius: 360px;
+	height: 80px;
+	width: 80px;
+}
+
+
+
+
+
+
+i {
+	color: rgb(127, 127, 237);
+}
+
+
+.rate0 {
+	display: flex;
+	align-items: center;
+}
+
+.fa-solid fa-check-double {
+	color: blue;
+}
+
+
+
+
+
+.comp {
+	width: 30%;
+	height: 7px;
+	border-radius: 30px;
+	background-color: rgb(114, 108, 108);
+}
+
+.comp .pct {
+	height: 7px;
+	width: 90%;
+	background-color: rgb(136, 136, 225);
+	border-radius: 30px;
+	text-align: center;
+	align-content: center;
+}
+
+#p1 {
+	width: 80%;
+}
+
+#p2 {
+	width: 50%;
+}
+
+#p3 {
+	width: 26%;
+}
+
+#p4 {
+	width: 7%;
+}
+
+#p5 {
+	width: 2%;
+}
+
+#p6 {
+	width: 89%;
+}
+
+
+
+
+
+
+.aside {}
+
+.aside .chap {
+	margin-left: 20px;
+	margin-top: 20px;
+}

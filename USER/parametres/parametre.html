@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<link rel="stylesheet" href="/USER/style/navhaut.css">
+	<link rel="stylesheet" href="/USER/parametres/parametre.css">
+</head>
+
+<body>
+
+
+	<main>
+		<section class="barre">
+			<div class="name">
+				<h3>Come'Koom Academy</h3>
+			</div>
+
+			<div class="enum">
+				<ul>
+					<li>
+						<a href="/USER/user.html">
+							<i class="fa-solid fa-school"></i>
+							<p>Tableau de bord</p>
+						</a>
+					</li>
+
+					<li>
+						<a href="/USER/taches/taches.html">
+							<i class="fa-solid fa-file"></i>
+							<p>Taches à terminer</p>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="/USER/favoris/fav.html">
+							<i class="fa-solid fa-bookmark"></i>
+							<p>Cours</p>
+						</a>
+					</li>
+
+
+
+
+
+					<li>
+						<a href="/USER/bibliothe/bibliothe.html">
+							<i class="fa-solid fa-book"></i>
+							<p>Bibliotheque</p>
+						</a>
+					</li>
+
+
+
+					<li>
+						<a href="/USER/menthors/menthor.html">
+							<i class="fa-solid fa-users"></i>
+							<p>Menthors</p>
+						</a>
+					</li>
+
+
+
+					<li>
+						<a href="/USER/abonnement/abonnement.html">
+							<i class="fa-solid fa-user-plus"></i>
+							<p>Abonnement</p>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="/USER/message/message.html">
+							<i class="fa-regular fa-comments"></i>
+							<p>Messages</p>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="/USER/parametres/parametre.html" class="active">
+							<i class="fa-solid fa-gear"></i>
+							<p>Parametres</p>
+						</a>
+					</li>
+
+
+				</ul>
+
+				<div class="trait"></div>
+
+				<div class="exit">
+					<a href="/LOGIN/connexion.html" class="logout">
+						<i class="fa-solid fa-right-from-bracket"></i>
+						<p>Deconnexion</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+
+
+
+		<section class="content">
+
+			<!--LA BARRE DE NAVIGATION-->
+			<div class="nav">
+				<div class="rech">
+					<input type="search" placeholder="Search">
+					<i class="fa-solid fa-magnifying-glass"></i>
+
+				</div>
+
+
+				<div class="id">
+					<i class="fa-regular fa-bell" id="bell-icon"></i>
+					<!-- Ajout d'un ID pour la cloche -->
+
+					<i class="fa-solid fa-globe" id="langue-icon"></i>
+					<div class="us"></div>
+				</div>
+			</div>
+
+			<!--FINNNN BARRE DE NAVIGATION-->
+
+
+			<div class="part1">
+				<div class="user">
+
+				</div>
+
+
+				<div class="id">
+					<img src="/images/PERSONNES/concentré.jpg" alt="">
+					<div class="prenom">
+						<h2>Abdallah DIOUF</h2>
+						<p>Developpeur Frontend - technicien Sys Embarqués</p>
+					</div>
+					<div class="adresse">
+						<p><i class="fa-solid fa-location-dot"></i> Dakar / Senegal</p>
+						<p><i class="fa-solid fa-calendar-days"></i> Depuis Decembre 2023</p>
+					</div>
+				</div>
+
+				<div class="navbarre">
+					<a href="parametre.html" class="active">Details</a>
+					<a href="profil.html">Profile</a>
+					<a href="password.html">Mot de passe</a>
+				</div>
+			</div>
+
+			<div class="part2">
+				<div class="title">
+					<h1>Mes details</h1>
+					<p>Mettez tous details a propos de vous svp !!</p>
+				</div>
+
+				<div class="form">
+					<div class="f1">
+
+						<div class="prenom">
+							<label for="prenom">Prenom</label>
+							<input type="text" placeholder="Entrez votre Prénom">
+						</div>
+
+
+						<div class="nom">
+							<label for="nom">Nom de famille</label>
+							<input type="text" placeholder="Entrez votre Nom ">
+						</div>
+					</div>
+
+					<div class="f2">
+						<div class="email">
+							<label for="email">Adresse mail</label>
+							<input type="email" placeholder="Entrez votre E mail ">
+						</div>
+
+						<div class="telephone">
+							<label for="telephone">Numero de telephone</label>
+							<input type="tel" placeholder="Entrez votre Telephone ">
+						</div>
+					</div>
+
+
+					<div class="f3">
+						<div class="image">
+							<h3>Ta photo</h3>
+							<img src="/images/PERSONNES/close-up-woman-repairing-computer-chips.jpg"
+								alt="">
+						</div>
+						<div class="ficher">
+
+							<label class="charger">
+								<input type="file"
+									accept=".svg, .png, .jpeg, .jpg, .gif">
+								<div>
+									<i class="fa-solid fa-upload"></i>
+									<p>Cliquez ici pour charger une image</p>
+									<p><a href="#">SVG, PNG, JPEG OR GIF (max 1080px
+											× 1200px)</a></p>
+								</div>
+							</label>
+
+
+
+						</div>
+					</div>
+
+					<div class="f4">
+
+						<h2>Bio</h2>
+
+						<div class="toolbar">
+							<button><b>B</b></button>
+							<button><i>I</i></button>
+							<button><u>U</u></button>
+							<select>
+								<option>Arial</option>
+								<option>Times New Roman</option>
+								<option>Verdana</option>
+								<option>Poppins</option>
+								<option>Cursive</option>
+							</select>
+							<input type="number" min="8" max="72" value="12">
+							<input type="color">
+						</div>
+
+						<div>
+							<textarea id="bio" name="biographie" rows="5" cols="150"
+								placeholder="Écrivez votre biographie ici..."></textarea>
+						</div>
+					</div>
+
+
+					<div class="f5">
+						<button id="annuler">Annuler</button>
+						<button id="save">Sauver changements</button>
+					</div>
+
+
+				</div>
+			</div>
+
+
+
+
+		</section>
+	</main>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--Partie pour la Notification cahée-->
+
+	<div class="notification" id="notification-box">
+		<div class="top">
+			<h2>Notifications</h2>
+			<div class="new">Nouveau</div>
+			<div class="plus">+</div>
+		</div>
+		<div class="mid">
+			<div class="friend">
+				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
+				<h3>Suzane ANTONIO</h3>
+			</div>
+			<div class="friend1">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
+					ducimus?
+				</p>
+			</div>
+			<button class="bt">Accepter</button>
+			<div class="traits"></div>
+
+
+			<div class="friend">
+				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
+				<h3>Moussa SENE</h3>
+			</div>
+			<div class="friend1">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
+					ducimus?
+				</p>
+			</div>
+			<button class="bt">Accepter</button>
+		</div>
+		<div class="bottom">
+			<h3>Voir Tous</h3>
+		</div>
+	</div>
+
+
+
+
+	<!-- Div de sélection de langue (initialement cachée) -->
+	<div class="langue" id="langue-menu">
+		<p>Choisissez votre langue :</p>
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
+				width=70" height="40"> Français
+		</label><br />
+
+
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
+				width=70" height="40"> Français
+		</label><br />
+
+
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
+				width=70" height="40"> Français
+		</label><br />
+
+
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
+				width=70" height="40"> Français
+		</label><br />
+	</div>
+
+
+
+
+
+
+
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Pour la gestion des notifications
+			const bellIcon = document.getElementById("bell-icon");
+			const notificationBox = document.getElementById("notification-box");
+
+			bellIcon.addEventListener("click", () => {
+				notificationBox.classList.toggle("show");
+			});
+
+			// Pour la gestion de l'icône de langue
+			const langueIcon = document.getElementById("langue-icon");
+			const langueMenu = document.getElementById("langue-menu");
+
+			langueIcon.addEventListener("click", () => {
+				// Alterne l'affichage du menu des langues
+				langueMenu.classList.toggle("show-langue");
+			});
+		});
+	</script>
+
+
+</body>
+
+</html>

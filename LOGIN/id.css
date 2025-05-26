@@ -1,0 +1,51 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Poppins';
+	background-color: black;
+	color: white;
+}
+
+body {
+	display: flex;
+	max-height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+
+.reussi {
+	font-size: 4rem;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+.start {
+	margin-top: 400px;
+	text-align: center;
+
+}
+
+
+a {
+	background-color: yellow;
+	font-size: 4rem;
+	text-decoration: none;
+	border-radius: 50px;
+	font-weight: bold;
+	color: black;
+
+
+}
+
+a:hover {
+	transition: 1.3s;
+	background: none;
+	border: 3px solid yellow;
+	color: white;
+}

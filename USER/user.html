@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+	<link rel="stylesheet" href="/USER/style/navhaut.css">
+	<link rel="stylesheet" href="style/user.css">
+</head>
+
+<body>
+
+
+	<main>
+		<section class="barre">
+			<div class="name">
+				<h3>Come'Koom Academy</h3>
+			</div>
+
+			<div class="enum">
+				<ul>
+					<li>
+						<a href="user.html" class="active">
+							<i class="fa-solid fa-school"></i>
+							<p>Tableau de bord</p>
+						</a>
+					</li>
+
+					<li>
+						<a href="/USER/taches/taches.html">
+							<i class="fa-solid fa-file"></i>
+							<p>Taches à terminer</p>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="/USER/favoris/fav.html">
+							<i class="fa-solid fa-bookmark"></i>
+							<p>Cours</p>
+						</a>
+					</li>
+
+
+
+					<li>
+						<a href="/USER/bibliothe/bibliothe.html">
+							<i class="fa-solid fa-book"></i>
+							<p>Bibliotheque</p>
+						</a>
+					</li>
+
+
+
+					<li>
+						<a href="/USER/menthors/menthor.html">
+							<i class="fa-solid fa-users"></i>
+							<p>Menthors</p>
+						</a>
+					</li>
+
+
+
+					<li>
+						<a href="/USER/abonnement/abonnement.html">
+							<i class="fa-solid fa-user-plus"></i>
+							<p>Abonnement</p>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="/USER/message/message.html">
+							<i class="fa-regular fa-comments"></i>
+							<p>Messages</p>
+						</a>
+					</li>
+
+
+					<li>
+						<a href="/USER/parametres/parametre.html">
+							<i class="fa-solid fa-gear"></i>
+							<p>Parametres</p>
+						</a>
+					</li>
+
+
+				</ul>
+
+				<div class="trait"></div>
+
+				<div class="exit">
+					<a href="/LOGIN/connexion.html" class="logout">
+						<i class="fa-solid fa-right-from-bracket"></i>
+						<p>Deconnexion</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+
+
+
+		<section class="content">
+
+			<!--LA BARRE DE NAVIGATION-->
+			<div class="nav">
+				<div class="rech">
+					<input type="search" placeholder="Search">
+					<i class="fa-solid fa-magnifying-glass"></i>
+
+				</div>
+
+
+				<div class="id">
+					<i class="fa-regular fa-bell" id="bell-icon"></i>
+					<!-- Ajout d'un ID pour la cloche -->
+
+					<i class="fa-solid fa-globe" id="langue-icon"></i>
+					<div class="us"></div>
+				</div>
+			</div>
+
+			<!--FINNNN BARRE DE NAVIGATION-->
+
+
+
+			<div class="progression">
+				<div class="milieu">
+					<div class="partie1">
+						<div class="progress">
+							<h2>155+</h2>
+							<p>Cours completés</p>
+							<i class="fa-solid fa-book-open"></i>
+						</div>
+
+						<div class="progress">
+							<h2>15+</h2>
+							<p>Certificats obtenus</p>
+							<i class="fa-solid fa-graduation-cap" id="cert"></i>
+						</div>
+
+						<div class="progress">
+							<h2>13+</h2>
+							<p>Cours en cours</p>
+							<i class="fa-solid fa-chalkboard" id="yellow"></i>
+						</div>
+
+						<div class="progress">
+							<h2>1045+</h2>
+							<p>Support Communauté
+							</p>
+							<i class="fa-solid fa-users-line" id="vert"></i>
+						</div>
+
+					</div>
+
+
+
+					<div class="partie2">
+						<div class="chart-container">
+							<div class="chart-title">Hour Spent</div>
+							<div class="chart-labels">
+								<span class="etex">
+									<span>Study <div class="cpt"></div></span>
+									<span>Exam <div class="cpt1"></div></span>
+								</span>
+								<span id="choix">
+									<select name="" id="">
+										<option value="annees">Année</option>
+										<option value="">Mois</option>
+										<option value="">Jour</option>
+									</select>
+								</span>
+							</div>
+							<div class="chart-bars">
+								<div class="chart-axis-y">
+									<span>1000000F/Hr</span>
+									<span>$80000F/Hr</span>
+									<span>50000F/Hr</span>
+									<span>10000F/Hr</span>
+									<span>5000F/Hr</span>
+									<span>0F/Hr</span>
+								</div>
+								<div class="chart-bar study" style="height: 60%;">
+									<div class="bar-label">Jan</div>
+								</div>
+								<div class="chart-bar exam" style="height: 40%;">
+									<div class="bar-label">Feb</div>
+								</div>
+								<div class="chart-bar yearly" style="height: 80%;">
+									<div class="bar-label">Mar</div>
+								</div>
+								<div class="chart-bar study" style="height: 50%;">
+									<div class="bar-label">Apr</div>
+								</div>
+								<div class="chart-bar exam" style="height: 70%;">
+									<div class="bar-label">May</div>
+								</div>
+								<div class="chart-bar yearly" style="height: 30%;">
+									<div class="bar-label">Jun</div>
+								</div>
+								<div class="chart-bar study" style="height: 90%;">
+									<div class="bar-label">Jul</div>
+								</div>
+								<div class="chart-bar exam" style="height: 20%;">
+									<div class="bar-label">Aug</div>
+								</div>
+								<div class="chart-bar yearly" style="height: 60%;">
+									<div class="bar-label">Sep</div>
+								</div>
+								<div class="chart-bar study" style="height: 40%;">
+									<div class="bar-label">Oct</div>
+								</div>
+								<div class="chart-bar exam" style="height: 80%;">
+									<div class="bar-label">Nov</div>
+								</div>
+								<div class="chart-bar yearly" style="height: 50%;">
+									<div class="bar-label">Dec</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+					<div class="partie3">
+						<div class="title">
+							<h2>Top cours suivis</h2>
+							<a href="">Voir tous</a>
+						</div>
+
+
+						<div class="cours">
+							<div class="chapitre">
+								<img src="/images/ICONE COURS USER/fullstack.png"
+									alt="">
+
+
+								<div class="text">
+									<p>developpement</p>
+								</div>
+
+								<div class="domaine">
+									<h2>Fullstack dev Web</h2>
+								</div>
+
+								<div class="prof">
+									<img src="/images/ICONE COURS USER/fullstack.png"
+										alt="">
+									<p>Crée par <b>Pierre GIRAUD</b></p>
+								</div>
+
+								<div class="LINE">
+
+								</div>
+
+								<div class="duree">
+									<div class="lesson">
+										<i class="fa-solid fa-video"></i>
+										<p>24 Leçons</p>
+									</div>
+
+									<div class="lesson">
+										<i class="fa-regular fa-clock"></i>
+										<p>40 heures</p>
+									</div>
+								</div>
+
+								<div class="rate">
+									<div class="rate0">
+										<i class="fa-solid fa-star"></i>
+										<p><b>4.9 (12k)</b></p>
+									</div>
+
+									<div class="de">
+										<a href="">Voir Details</a>
+									</div>
+								</div>
+
+							</div>
+
+
+
+
+							<div class="chapitre">
+								<img src="/images/ICONE COURS USER/design.png" alt="">
+
+
+								<div class="text">
+									<p>Design</p>
+								</div>
+
+								<div class="domaine">
+									<h2>UI UX Design </h2>
+								</div>
+
+								<div class="prof">
+									<img src="/images/PERSONNES/concentré.jpg"
+										alt="">
+									<p>Crée par <b>Ndiaga FALL</b></p>
+								</div>
+
+								<div class="LINE">
+
+								</div>
+
+								<div class="duree">
+									<div class="lesson">
+										<i class="fa-solid fa-video"></i>
+										<p>24 Leçons</p>
+									</div>
+
+									<div class="lesson">
+										<i class="fa-regular fa-clock"></i>
+										<p>40 heures</p>
+									</div>
+								</div>
+
+								<div class="rate">
+									<div class="rate0">
+										<i class="fa-solid fa-star"></i>
+										<p><b>4.9 (12k)</b></p>
+									</div>
+
+									<div class="de">
+										<a href="">Voir Details</a>
+									</div>
+								</div>
+
+							</div>
+
+
+
+
+
+
+							<div class="chapitre">
+								<img src="/images/ICONE COURS USER/react nativve.jpg"
+									alt="">
+
+
+								<div class="text">
+									<p>Frontend</p>
+								</div>
+
+								<div class="domaine">
+									<h2>React Native</h2>
+								</div>
+
+								<div class="prof">
+									<img src="/images/ICONE COURS USER/fullstack.png"
+										alt="">
+									<p>Crée par <b>Lamine NDIAYE</b></p>
+								</div>
+
+								<div class="LINE">
+
+								</div>
+
+								<div class="duree">
+									<div class="lesson">
+										<i class="fa-solid fa-video"></i>
+										<p>24 Leçons</p>
+									</div>
+
+									<div class="lesson">
+										<i class="fa-regular fa-clock"></i>
+										<p>40 heures</p>
+									</div>
+								</div>
+
+								<div class="rate">
+									<div class="rate0">
+										<i class="fa-solid fa-star"></i>
+										<p><b>4.9 (12k)</b></p>
+									</div>
+
+									<div class="de">
+										<a href="">Voir Details</a>
+									</div>
+								</div>
+
+							</div>
+
+
+
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="aside">
+					<div class="calendar">
+						<div class="YM">
+							<p class="alt">&lt</p>
+							<p>Mars 2025</p>
+							<p class="alt">&gt</p>
+						</div>
+
+						<div class="date">
+							<table>
+								<thead>
+									<th>Lun</th>
+									<th>Mar</th>
+									<th>Mer</th>
+									<th>Jeu</th>
+									<th>Ven</th>
+									<th>Sam</th>
+									<th>Dim</th>
+								</thead>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>1</td>
+									<td>2</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+									<td>8</td>
+									<td>9</td>
+								</tr>
+								<tr>
+									<td>10</td>
+									<td style="border: 4px solid gray;">11</td>
+									<td>12</td>
+									<td>13</td>
+									<td>14</td>
+									<td>15</td>
+									<td>16</td>
+								</tr>
+								<tr>
+									<td>17</td>
+									<td>18</td>
+									<td>19</td>
+									<td>20</td>
+									<td>21</td>
+									<td>22</td>
+									<td>23</td>
+								</tr>
+								<tr>
+									<td>24</td>
+									<td>25</td>
+									<td>26</td>
+									<td>27</td>
+									<td>28</td>
+									<td>29</td>
+									<td>30</td>
+								</tr>
+								<tr>
+									<td>31</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+
+
+							</table>
+						</div>
+					</div>
+
+
+					<div class="assignment">
+						<div class="taches-titre">
+							<h2>Taches</h2>
+							<a href="/USER/taches/taches.html">Voir Tous</a>
+						</div>
+
+
+						<!--TACHE 1-->
+						<div class="list-tache">
+							<div class="--icone">
+								<i class="fa-solid fa-graduation-cap"></i>
+							</div>
+
+							<div class="--text">
+								<h3>langage PHP </h3>
+								<p>A rendre dans 21Jours</p>
+							</div>
+
+							<div class="--fleche">
+								<a href="">&gt</a>
+							</div>
+						</div>
+
+
+						<!--TACHE2 -->
+						<div class="list-tache">
+							<div class="--icone">
+								<i class="fa-solid fa-code"></i>
+							</div>
+
+							<div class="--text">
+								<h3>React Native</h3>
+								<p>A rendre dans 7Jours</p>
+							</div>
+
+							<div class="--fleche">
+								<a href="">&gt</a>
+							</div>
+						</div>
+
+						<!--TACHE 3-->
+						<div class="list-tache">
+							<div class="--icone">
+								<i class="fa-solid fa-mobile-screen-button"></i>
+							</div>
+
+							<div class="--text">
+								<h3>Flutter</h3>
+								<p>A rendre dans 1mois</p>
+							</div>
+
+							<div class="--fleche">
+								<a href="">&gt</a>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+					<div class="mini-progress">
+						<div class="progress-circle"></div>
+						<div class="info">
+							<div class="heure">Heure Totale: 6h 32 min</div>
+							<div class="niv">
+								<div class="--prog">
+									<p>60/60</p>
+									<p>____</p>
+									<p>Completé</p>
+								</div>
+
+								<div class="--prog">
+									<p>60/60</p>
+									<p>____</p>
+									<p>Completé</p>
+								</div>
+
+								<div class="--prog">
+									<p>60/60</p>
+									<p>____</p>
+									<p>Completé</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+			<div class="exos">
+
+			</div>
+
+
+		</section>
+	</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--Partie pour la Notification cahée-->
+
+	<div class="notification" id="notification-box">
+		<div class="top">
+			<h2>Notifications</h2>
+			<div class="new">Nouveau</div>
+			<div class="plus">+</div>
+		</div>
+		<div class="mid">
+			<div class="friend">
+				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
+				<h3>Suzane ANTONIO</h3>
+			</div>
+			<div class="friend1">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
+					ducimus?
+				</p>
+			</div>
+			<button class="bt">Accepter</button>
+			<div class="traits"></div>
+
+
+			<div class="friend">
+				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
+				<h3>Moussa SENE</h3>
+			</div>
+			<div class="friend1">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
+					ducimus?
+				</p>
+			</div>
+			<button class="bt">Accepter</button>
+		</div>
+		<div class="bottom">
+			<h3>Voir Tous</h3>
+		</div>
+	</div>
+
+
+
+
+	<!-- Div de sélection de langue (initialement cachée) -->
+	<div class="langue" id="langue-menu">
+		<p>Choisissez votre langue :</p>
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
+				width=70" height="40">
+			Français
+		</label><br />
+
+
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
+				width=70" height="40">
+			Français
+		</label><br />
+
+
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
+				width=70" height="40">
+			Français
+		</label><br />
+
+
+		<label>
+			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
+				width=70" height="40"> Français
+		</label><br />
+	</div>
+
+
+
+	<script src="script.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Pour la gestion des notifications
+			const bellIcon = document.getElementById("bell-icon");
+			const notificationBox = document.getElementById("notification-box");
+
+			bellIcon.addEventListener("click", () => {
+				notificationBox.classList.toggle("show");
+			});
+
+			// Pour la gestion de l'icône de langue
+			const langueIcon = document.getElementById("langue-icon");
+			const langueMenu = document.getElementById("langue-menu");
+
+			langueIcon.addEventListener("click", () => {
+				// Alterne l'affichage du menu des langues
+				langueMenu.classList.toggle("show-langue");
+			});
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+.recents {
+	border-radius: 20px;
+	width: 98%;
+	margin: 15px 1% 5px 1%;
+	background-color: white;
+	padding-bottom: 30px;
+}
+
+@media screen and (max-width:740px) {
+	.recents-content {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.recents-content .prof {
+		width: 100%;
+	}
+}
+
+.recents-content {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 10px;
+}
+
+.recents-content .prof {
+	width: 24%;
+	overflow: hidden;
+	border-radius: 20px;
+	border: 0.5px solid gray;
+}
+
+.prof {}
+
+.back {
+	width: 100%;
+	height: 150px;
+	background-image: url(/images/PROFS/fond1.jpg);
+	background-position: top;
+}
+
+.prof .image {
+	width: 90px;
+	height: 90px;
+	border-radius: 360px;
+	border: 2px solid white;
+	margin: -45px 40% 10px 35%;
+}
+
+.suivre {
+	border: 2px solid rgb(255, 255, 255);
+	border-radius: 30px;
+	width: 100px;
+	text-align: center;
+	margin-left: 180px;
+	margin-top: -200px;
+	z-index: 1000;
+	cursor: pointer;
+}
+
+
+
+.suivre p {
+	color: rgb(255, 255, 255);
+
+	font-size: 1.2rem;
+}
+
+.prof h2 {
+	margin-top: 200px;
+	text-align: center;
+}
+
+.prof #p {
+	margin-top: -10px;
+	text-align: center;
+	color: black;
+}
+
+.text {
+	text-align: center;
+	margin-top: -15px;
+}
+
+.taches {
+	width: 92%;
+	margin: 10px 4% 10px 4%;
+	border: 1px solid gray;
+	border-radius: 10px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+
+}
+
+.taches div {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 13px;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+#etoile {
+	color: orange;
+}
+
+#task {
+	color: rgb(124, 124, 240);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.foot {
+	margin: 60px 60px 60px 60px;
+	display: flex;
+	justify-content: center;
+	color: black;
+	font-size: 1.6rem;
+	padding-bottom: 20px;
+}
+
+.foot .mid {
+	display: flex;
+	gap: 35px;
+}
+
+.foot .mid p {
+	color: black;
+	cursor: pointer;
+}
+
+.foot .left p {
+	border: 1px solid gray;
+	border-radius: 30px;
+	align-content: center;
+	text-align: center;
+	width: 200px;
+	height: 40px;
+	color: gray;
+	cursor: pointer;
+
+}
+
+.foot .left p:hover {
+	background-color: gray;
+	color: white;
+	transition: 1s;
+}
+
+.foot .right p {
+	border: 1px solid rgb(127, 127, 237);
+	border-radius: 30px;
+	align-content: center;
+	text-align: center;
+	width: 200px;
+	height: 40px;
+	color: rgb(127, 127, 237);
+	cursor: pointer;
+
+}
+
+.foot .right p:hover {
+	background-color: rgb(127, 127, 237);
+	color: white;
+	transition: 1s;
+}
+
+.foot .left {
+	position: absolute;
+	left: 280px;
+}
+
+.foot .mid {
+	position: absolute;
+	left: 700px;
+}
+
+.foot .right {
+	position: absolute;
+	left: 1260px;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+
+	.recents-content {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		overflow: hidden;
+
+
+	}
+
+	.recents-content .prof {
+		width: 80%;
+	}
+
+
+	.foot {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		overflow: hidden;
+	}
+
+
+
+}

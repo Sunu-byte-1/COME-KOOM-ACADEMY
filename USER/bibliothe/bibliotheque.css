@@ -1,0 +1,88 @@
+.bibli-search {
+	border-radius: 20px;
+	width: 98%;
+	height: 40px;
+	margin: 15px 1% 5px 1%;
+	background-color: white;
+	padding-bottom: 30px;
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	align-content: center;
+	overflow: hidden;
+}
+
+
+
+.bibli-search select {
+	margin-top: 30px;
+	width: 170px;
+	height: 30px;
+	border-radius: 10px;
+	border: 1px solid rgb(175, 169, 169);
+}
+
+.bibli-search input {
+	margin-top: 40px;
+	background-color: blue;
+}
+
+.bibli-search .couts {
+	margin-top: -25px;
+}
+
+.bibli-search button {
+	margin-top: 30px;
+	height: 40px;
+	width: 200px;
+	border-radius: 30px;
+	background-color: rgb(114, 114, 226);
+	border: none;
+	font-size: 1.4rem;
+	font-weight: 400;
+	color: white;
+}
+
+#cp1 {
+	background-color: beige;
+}
+
+#cp2 {
+	background-color: burlywood;
+}
+
+#cp3 {
+	background-color: rgb(196, 188, 188);
+}
+
+#cp4 {
+	background-color: rgb(169, 137, 233);
+}
+
+#cp5 {
+	background-color: rgb(245, 155, 212);
+}
+
+#cp6 {
+	background-color: rgb(243, 217, 217);
+}
+
+#cp7 {
+	background-color: rgb(206, 255,
+			158);
+}
+
+#cp8 {
+	background-color: rgb(238, 152, 152);
+}
+
+
+
+@media (max-width: 768px) {
+	.bibli-search {
+		display: flex;
+		flex-wrap: wrap;
+		overflow: hidden;
+
+	}
+}

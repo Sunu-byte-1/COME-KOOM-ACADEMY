@@ -1,0 +1,266 @@
+.chat {
+	display: flex;
+	width: 96%;
+	margin: 10px 2% 0px 2%;
+	justify-content: center;
+	gap: 20px;
+}
+
+
+.chat .list {
+	width: 25%;
+	height: 100vh;
+	background-color: rgb(255, 255, 255);
+	border-radius: 10px;
+	overflow: scroll;
+}
+
+.mess {
+	width: 75%;
+	background-color: white;
+	border-radius: 10px;
+}
+
+/*Partie gauche*/
+
+.titre {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 1px solid gray;
+	padding-bottom: 20px;
+}
+
+
+.titre input {
+	width: 86%;
+	height: 45px;
+	border-radius: 30px;
+}
+
+.personne {
+	display: flex;
+	gap: 10px;
+	margin: 20px 5px;
+}
+
+
+.personne .image img {
+	width: 50px;
+	height: 50px;
+	border-radius: 360px;
+}
+
+.personne .circle {
+	background-color: orange;
+	width: 10px;
+	height: 10px;
+	border-radius: 360px;
+	border: 3px solid white;
+	margin-top: -19px;
+	margin-left: 37px;
+	position: relative;
+	z-index: 1000;
+}
+
+.name-mess {
+	margin-top: -5px;
+}
+
+.name-mess .name {
+	font-weight: 700;
+}
+
+.name-mess .message {
+	margin-top: -3px;
+	font-size: 13px;
+	font-weight: 400;
+
+}
+
+#moi {
+	font-weight: 200;
+}
+
+
+.personne div h1 {
+	font-size: 2rem;
+	margin-right: 5px;
+	position: relative;
+	right: 0;
+}
+
+
+
+
+
+/*Partie droite*/
+
+.entete {
+	display: flex;
+	justify-content: space-between;
+	margin: 0px 5px 0px 10px;
+	align-items: center;
+	padding-bottom: -5px;
+	border-bottom: 1px solid gray;
+}
+
+.icones {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+
+}
+
+.icones i {
+	font-size: 1.5rem;
+	color: rgb(118, 118, 238);
+}
+
+#i {
+	color: black;
+}
+
+.mess1 .p1 {
+	background-color: rgb(212, 205, 205);
+	border-radius: 20px;
+	width: 140px;
+	height: 60px;
+	align-content: center;
+	margin-top: 10px;
+	margin-left: 70px;
+}
+
+
+
+.mess1 .p2 {
+	background-color: rgb(212, 205, 205);
+	border-radius: 20px;
+	width: 500px;
+	height: 120px;
+	align-content: center;
+	margin-top: 10px;
+	margin-left: 70px;
+
+}
+
+.image-text img {
+
+	width: 50px;
+	height: 50px;
+	border-radius: 360px;
+}
+
+.image-text div {
+	background-color: orange;
+	width: 10px;
+	height: 10px;
+	border-radius: 360px;
+	border: 3px solid white;
+	margin-top: -19px;
+	margin-left: 37px;
+	position: relative;
+	z-index: 1000;
+}
+
+.image-text {
+	margin-top: -35px;
+	margin-left: 14px;
+}
+
+.mess2 {}
+
+.mess2 .p1 {
+	background-color: rgb(245, 237, 237);
+	border-radius: 20px;
+	width: 200px;
+	height: 60px;
+	align-content: center;
+	margin-top: 10px;
+	margin-left: 640px;
+
+}
+
+.mess2 .p2 {
+
+	background-color: rgb(245, 237, 237);
+	border-radius: 20px;
+	width: 500px;
+	height: 75px;
+	align-content: center;
+	margin-top: 10px;
+	margin-left: 340px;
+
+}
+
+.mess2 .image-text {
+	margin-left: 850px;
+}
+
+#mess3 {
+	height: 80px;
+}
+
+
+/*send*/
+
+.send {
+	margin-top: 5px;
+	width: 100%;
+	height: 100px;
+	margin-left: 15px;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+
+}
+
+#add {
+	background-color: rgb(211, 222, 251);
+	font-size: 1.7rem;
+	width: 50px;
+	height: 50px;
+	border-radius: 360px;
+	text-align: center;
+	align-content: center;
+	color: rgb(104, 104, 241);
+}
+
+.send input {
+	width: 600px;
+	height: 40px;
+	border-radius: 360px;
+	background-color: rgb(211, 222, 251);
+	border: none;
+}
+
+.send input::placeholder {
+	font-size: 15px;
+	margin-left: 20px;
+}
+
+
+#voice {
+	background-color: rgb(211, 222, 251);
+	font-size: 1.7rem;
+	width: 50px;
+	height: 50px;
+	border-radius: 360px;
+	text-align: center;
+	align-content: center;
+	color: rgb(104, 104, 241);
+}
+
+
+button {
+	background-color: rgb(104, 104, 241);
+	color: white;
+	border: none;
+	border-radius: 30px;
+	height: 50px;
+	width: 120px;
+	font-size: 20px;
+	cursor: pointer;
+
+}

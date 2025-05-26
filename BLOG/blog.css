@@ -1,0 +1,149 @@
+/* Définir une palette de couleurs sombre */
+:root {
+	--bg-color: #2e2e2e;
+	--text-color: #f4f4f4;
+	--primary-color: #1f8e6d;
+	--secondary-color: #7c4d3c;
+	--highlight-color: #ffcc00;
+	--link-hover-color: #66c2b3;
+}
+
+/* Appliquer un fond sombre général */
+body {
+	font-family: 'Arial', sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: var(--primary-color);
+	padding: 20px;
+	text-align: center;
+	color: var(--text-color);
+}
+
+header h1 {
+	margin: 0;
+	font-size: 2.5rem;
+}
+
+header p {
+	font-size: 1.2rem;
+}
+
+nav {
+	background-color: #333;
+	padding: 10px;
+}
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+nav ul li {
+	display: inline-block;
+	margin: 0 15px;
+}
+
+nav ul li a {
+	color: var(--text-color);
+	text-decoration: none;
+	font-size: 1.1rem;
+	transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+	color: var(--link-hover-color);
+}
+
+main {
+	padding: 30px;
+}
+
+section {
+	margin-bottom: 40px;
+}
+
+section h2 {
+	font-size: 2rem;
+	color: var(--primary-color);
+	border-bottom: 2px solid var(--primary-color);
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+article {
+	background-color: #444;
+	padding: 20px;
+	margin-bottom: 20px;
+	border-radius: 8px;
+}
+
+article h3 {
+	font-size: 1.5rem;
+	color: var(--highlight-color);
+}
+
+article p {
+	font-size: 1.1rem;
+	line-height: 1.6;
+}
+
+a.btn {
+	display: inline-block;
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	padding: 10px 20px;
+	text-decoration: none;
+	border-radius: 5px;
+	margin-top: 10px;
+	transition: background-color 0.3s ease;
+}
+
+a.btn:hover {
+	background-color: var(--secondary-color);
+}
+
+.temoignage {
+	background-color: #444;
+	padding: 15px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+}
+
+.temoignage p {
+	font-size: 1.1rem;
+	font-style: italic;
+}
+
+.temoignage span {
+	display: block;
+	text-align: right;
+	font-size: 1rem;
+	color: #bbb;
+}
+
+.interview iframe {
+	width: 100%;
+	height: 315px;
+	border: none;
+	border-radius: 8px;
+	margin-top: 15px;
+}
+
+footer {
+	background-color: #333;
+	color: #bbb;
+	padding: 10px;
+	text-align: center;
+	margin-top: 40px;
+}
+
+footer p {
+	font-size: 1rem;
+}
