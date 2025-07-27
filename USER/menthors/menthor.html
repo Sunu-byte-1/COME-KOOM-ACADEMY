@@ -1,664 +1,806 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Mentors - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	<link
+		href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 		rel="stylesheet">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<style>
+		/* Mobile-first responsive design */
+		body {
+			font-family: 'Poppins', sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
 
-	<link rel="stylesheet" href="/USER/style/navhaut.css">
-	<link rel="stylesheet" href="/USER/menthors/menthor.css">
+		.sidebar {
+			background: rgba(255, 255, 255, 0.95);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			min-height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 280px;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.sidebar-brand {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			font-family: 'Artifika', serif;
+			font-size: 1.5rem;
+			font-weight: bold;
+			padding: 1.5rem;
+			text-align: center;
+		}
+
+		.sidebar-nav {
+			padding: 1rem 0;
+		}
+
+		.sidebar-nav .nav-link {
+			color: #333;
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+			transition: all 0.3s ease;
+			border-radius: 0;
+			margin: 0.25rem 1rem;
+			border-radius: 10px;
+		}
+
+		.sidebar-nav .nav-link:hover,
+		.sidebar-nav .nav-link.active {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			transform: translateX(5px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.sidebar-nav .nav-link i {
+			width: 20px;
+			margin-right: 10px;
+			font-size: 1.1rem;
+		}
+
+		.main-content {
+			margin-left: 280px;
+			padding: 2rem;
+			background: #f8f9fa;
+			min-height: 100vh;
+		}
+
+		.mentor-card {
+			background: white;
+			border-radius: 15px;
+			padding: 2rem;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+			margin-bottom: 2rem;
+			height: 100%;
+		}
+
+		.mentor-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.mentor-avatar {
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			object-fit: cover;
+			margin-bottom: 1rem;
+		}
+
+		.mentor-specialties {
+			margin: 1rem 0;
+		}
+
+		.specialty-tag {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 0.25rem 0.75rem;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			margin: 0.25rem;
+			display: inline-block;
+		}
+
+		.mentor-stats {
+			display: flex;
+			justify-content: space-between;
+			margin: 1rem 0;
+			padding: 1rem 0;
+			border-top: 1px solid #e9ecef;
+			border-bottom: 1px solid #e9ecef;
+		}
+
+		.stat-item {
+			text-align: center;
+		}
+
+		.stat-number {
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: #667eea;
+		}
+
+		.stat-label {
+			font-size: 0.8rem;
+			color: #6c757d;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.btn-outline-primary {
+			border-color: #667eea;
+			color: #667eea;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn-outline-primary:hover {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-color: #667eea;
+			transform: translateY(-2px);
+		}
+
+		.sidebar-toggle {
+			display: none;
+			position: fixed;
+			top: 1rem;
+			left: 1rem;
+			z-index: 1001;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			color: white;
+			padding: 0.75rem;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.rating {
+			color: #ffc107;
+			margin-bottom: 0.5rem;
+		}
+
+		/* Mobile responsive */
+		@media (max-width: 768px) {
+			.sidebar {
+				transform: translateX(-100%);
+				width: 100%;
+			}
+
+			.sidebar.show {
+				transform: translateX(0);
+			}
+
+			.main-content {
+				margin-left: 0;
+				padding: 1rem;
+			}
+
+			.sidebar-toggle {
+				display: block !important;
+			}
+
+			.mentor-card {
+				padding: 1.5rem;
+				margin-bottom: 1rem;
+			}
+
+			.mentor-stats {
+				flex-direction: column;
+				gap: 1rem;
+			}
+		}
+
+		/* Animation effects */
+		.fade-in {
+			animation: fadeIn 0.5s ease-in;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.slide-in {
+			animation: slideIn 0.3s ease-out;
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: translateX(-100%);
+			}
+
+			to {
+				transform: translateX(0);
+			}
+		}
+
+		.pulse {
+			animation: pulse 2s infinite;
+		}
+
+		@keyframes pulse {
+			0% {
+				transform: scale(1);
+			}
+
+			50% {
+				transform: scale(1.05);
+			}
+
+			100% {
+				transform: scale(1);
+			}
+		}
+	</style>
 </head>
 
 <body>
+	<!-- Mobile Sidebar Toggle -->
+	<button class="btn sidebar-toggle d-md-none" id="sidebarToggle">
+		<i class="fas fa-bars"></i>
+	</button>
 
+	<!-- Sidebar -->
+	<nav class="sidebar" id="sidebar">
+		<div class="sidebar-brand">
+			<i class="fas fa-graduation-cap me-2"></i>
+			Come'Koom Academy
+		</div>
 
-	<main>
-		<section class="barre">
-			<div class="name">
-				<h3>Come'Koom Academy</h3>
-			</div>
+		<ul class="nav flex-column sidebar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/user.html">
+					<i class="fas fa-tachometer-alt"></i>
+					<span>Tableau de bord</span>
+				</a>
+			</li>
 
-			<div class="enum">
-				<ul>
-					<li>
-						<a href="/USER/user.html">
-							<i class="fa-solid fa-school"></i>
-							<p>Tableau de bord</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/taches/taches.html">
+					<i class="fas fa-tasks"></i>
+					<span>Tâches à terminer</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/taches/taches.html">
-							<i class="fa-solid fa-file"></i>
-							<p>Taches à terminer</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/favoris/fav.html">
+					<i class="fas fa-bookmark"></i>
+					<span>Mes cours</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/bibliothe/bibliothe.html">
+					<i class="fas fa-book"></i>
+					<span>Bibliothèque</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/favoris/fav.html">
-							<i class="fa-solid fa-bookmark"></i>
-							<p>Cours</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link active" href="/USER/menthors/menthor.html">
+					<i class="fas fa-users"></i>
+					<span>Mentors</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/abonnement/abonnement.html">
+					<i class="fas fa-crown"></i>
+					<span>Abonnement</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/bibliothe/bibliothe.html">
-							<i class="fa-solid fa-book"></i>
-							<p>Bibliotheque</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/message/message.html">
+					<i class="fas fa-comments"></i>
+					<span>Messages</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/parametres/parametre.html">
+					<i class="fas fa-cog"></i>
+					<span>Paramètres</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
 
-
-					<li>
-						<a href="/USER/menthors/menthor.html" class="active">
-							<i class="fa-solid fa-users"></i>
-							<p>Menthors</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/abonnement/abonnement.html">
-							<i class="fa-solid fa-user-plus"></i>
-							<p>Abonnement</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/message/message.html">
-							<i class="fa-regular fa-comments"></i>
-							<p>Messages</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/parametres/parametre.html">
-							<i class="fa-solid fa-gear"></i>
-							<p>Parametres</p>
-						</a>
-					</li>
-
-
-				</ul>
-
-				<div class="trait"></div>
-
-				<div class="exit">
-					<a href="/LOGIN/connexion.html" class="logout">
-						<i class="fa-solid fa-right-from-bracket"></i>
-						<p>Deconnexion</p>
-					</a>
+	<!-- Main Content -->
+	<main class="main-content">
+		<div class="container-fluid">
+			<!-- Header -->
+			<div class="row mb-4">
+				<div class="col-12">
+					<div class="d-flex justify-content-between align-items-center">
+						<h1 class="h3 mb-0">Mentors</h1>
+						<div class="d-flex align-items-center">
+							<div class="dropdown me-3">
+								<button class="btn btn-outline-primary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-bell"></i>
+									<span class="badge bg-danger ms-1">3</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">Nouveau cours disponible</a></li>
+									<li><a class="dropdown-item" href="#">Message de votre mentor</a></li>
+									<li><a class="dropdown-item" href="#">Tâche à compléter</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<img src="/images/PROFILS/profil1.jpg" alt="Profile" class="rounded-circle"
+										width="32" height="32">
+									<span class="ms-2">Abdallah Diouf</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="/USER/parametres/profil.html">Mon profil</a></li>
+									<li><a class="dropdown-item" href="/USER/parametres/parametre.html">Paramètres</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item" href="/index.html">Déconnexion</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</section>
 
-
-
-
-		<section class="content">
-
-			<!--LA BARRE DE NAVIGATION-->
-			<div class="nav">
-				<div class="rech">
-					<input type="search" placeholder="Search">
-					<i class="fa-solid fa-magnifying-glass"></i>
-
-				</div>
-
-
-				<div class="id">
-					<i class="fa-regular fa-bell" id="bell-icon"></i>
-					<!-- Ajout d'un ID pour la cloche -->
-
-					<i class="fa-solid fa-globe" id="langue-icon"></i>
-					<div class="us"></div>
-				</div>
-			</div>
-
-			<!--FINNNN BARRE DE NAVIGATION-->
-
-			<div class="recents">
-				<h2>Les plus celebres</h2>
-
-
-				<div class="recents-content">
-					<div class="prof">
-						<div class="back">
-
-						</div>
-						<img src="/images/PROFS/prof00.webp" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Stephanos LONGATE</h2>
-						<p id="p">Full-Stack Dev</p>
-						<br>
-						<p class="text">Salut je suis Longate developpeur fullstack ici à ISI
-							campus Keur
-							Massar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>154 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>4.7 (1247 revus)</p>
+			<!-- Mentors Content -->
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="mentor-card fade-in">
+						<div class="text-center">
+							<img src="/images/PROFS/prof1.jpg" alt="Sarah Johnson" class="mentor-avatar">
+							<h5>Sarah Johnson</h5>
+							<p class="text-muted">Senior Frontend Developer</p>
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<span class="ms-2">4.9</span>
 							</div>
 						</div>
 
-					</div>
-
-
-
-					<div class="prof">
-						<div class="back">
-
+						<div class="mentor-specialties">
+							<span class="specialty-tag">React</span>
+							<span class="specialty-tag">Vue.js</span>
+							<span class="specialty-tag">JavaScript</span>
+							<span class="specialty-tag">TypeScript</span>
 						</div>
-						<img src="/images/PROFS/prof01.jpg" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Lamine NDIAYE</h2>
-						<p id="p">Ingenieur Logiciel</p>
-						<br>
-						<p class="text">Hello c'est Lamine NDIAYE ingenieur Logiciels ici à ISI
-							campus Keur
-							Massar</p>
 
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>44 Taches</p>
+						<div class="mentor-stats">
+							<div class="stat-item">
+								<div class="stat-number">150+</div>
+								<div class="stat-label">Étudiants</div>
 							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>3.7 (247 revus)</p>
+							<div class="stat-item">
+								<div class="stat-number">5</div>
+								<div class="stat-label">Années exp.</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">98%</div>
+								<div class="stat-label">Satisfaction</div>
 							</div>
 						</div>
 
-					</div>
-
-
-					<div class="prof">
-						<div class="back">
-
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary" onclick="contactMentor('Sarah Johnson')">
+								<i class="fas fa-comments me-2"></i>Contacter
+							</button>
+							<button class="btn btn-outline-primary" onclick="viewProfile('Sarah Johnson')">
+								<i class="fas fa-user me-2"></i>Voir profil
+							</button>
 						</div>
-						<img src="/images/PROFS/prof02.jpg" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Moustapha DIALLO</h2>
-						<p id="p">Exepert intelligence artificielle</p>
-						<br>
-						<p class="text">Salut je suis Moustapha DIALLO expert en intelligence
-							artificielle, ISI Dakar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>234 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>4.9 (87 revus)</p>
-							</div>
-						</div>
-
-					</div>
-
-
-
-
-					<div class="prof">
-						<div class="back">
-
-						</div>
-						<img src="/images/PROFS/prof00.webp" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Mouhamadane LO</h2>
-						<p id="p">Ingenieur informatique</p>
-						<br>
-						<p class="text">Salut je suis Mouhamadane LO ingenieur informatique ISI
-							Keur Massar et Dakar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>984 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>5.0(1247 revus)</p>
-							</div>
-						</div>
-
 					</div>
 				</div>
 
-			</div>
-
-
-
-			<div class="recents">
-				<h2>Les plus celebres</h2>
-
-
-				<div class="recents-content">
-					<div class="prof">
-						<div class="back">
-
-						</div>
-						<img src="/images/PROFS/prof02.jpg" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Moustapha DIALLO</h2>
-						<p id="p">Exepert intelligence artificielle</p>
-						<br>
-						<p class="text">Salut je suis Moustapha DIALLO expert en intelligence
-							artificielle, ISI Dakar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>234 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>4.9 (87 revus)</p>
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="mentor-card fade-in">
+						<div class="text-center">
+							<img src="/images/PROFS/prof2.jpg" alt="Mike Chen" class="mentor-avatar">
+							<h5>Mike Chen</h5>
+							<p class="text-muted">Full Stack Developer</p>
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<span class="ms-2">4.7</span>
 							</div>
 						</div>
 
-					</div>
-
-
-
-					<div class="prof">
-						<div class="back">
-
+						<div class="mentor-specialties">
+							<span class="specialty-tag">Node.js</span>
+							<span class="specialty-tag">Python</span>
+							<span class="specialty-tag">MongoDB</span>
+							<span class="specialty-tag">Docker</span>
 						</div>
-						<img src="/images/PROFS/prof00.webp" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Mouhamadane LO</h2>
-						<p id="p">Ingenieur informatique</p>
-						<br>
-						<p class="text">Salut je suis Mouhamadane LO ingenieur informatique ISI
-							Keur Massar et Dakar</p>
 
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>984 Taches</p>
+						<div class="mentor-stats">
+							<div class="stat-item">
+								<div class="stat-number">200+</div>
+								<div class="stat-label">Étudiants</div>
 							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>5.0(1247 revus)</p>
+							<div class="stat-item">
+								<div class="stat-number">7</div>
+								<div class="stat-label">Années exp.</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">96%</div>
+								<div class="stat-label">Satisfaction</div>
 							</div>
 						</div>
 
-					</div>
-
-
-					<div class="prof">
-						<div class="back">
-
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary" onclick="contactMentor('Mike Chen')">
+								<i class="fas fa-comments me-2"></i>Contacter
+							</button>
+							<button class="btn btn-outline-primary" onclick="viewProfile('Mike Chen')">
+								<i class="fas fa-user me-2"></i>Voir profil
+							</button>
 						</div>
-						<img src="/images/PROFS/prof00.webp" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Stephanos LONGATE</h2>
-						<p id="p">Full-Stack Dev</p>
-						<br>
-						<p class="text">Salut je suis Longate developpeur fullstack ici à ISI
-							campus Keur
-							Massar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>154 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>4.7 (1247 revus)</p>
-							</div>
-						</div>
-
-					</div>
-
-
-
-
-					<div class="prof">
-						<div class="back">
-
-						</div>
-						<img src="/images/PROFS/prof01.jpg" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Lamine NDIAYE</h2>
-						<p id="p">Ingenieur Logiciel</p>
-						<br>
-						<p class="text">Hello c'est Lamine NDIAYE ingenieur Logiciels ici à ISI
-							campus Keur
-							Massar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>44 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>3.7 (247 revus)</p>
-							</div>
-						</div>
-
-					</div>
-
-
-
-					<div class="prof">
-						<div class="back">
-
-						</div>
-						<img src="/images/PROFS/prof00.webp" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Stephanos LONGATE</h2>
-						<p id="p">Full-Stack Dev</p>
-						<br>
-						<p class="text">Salut je suis Longate developpeur fullstack ici à ISI
-							campus Keur
-							Massar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>154 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>4.7 (1247 revus)</p>
-							</div>
-						</div>
-
-					</div>
-
-
-
-
-
-					<div class="prof">
-						<div class="back">
-
-						</div>
-						<img src="/images/PROFS/prof02.jpg" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Moustapha DIALLO</h2>
-						<p id="p">Exepert intelligence artificielle</p>
-						<br>
-						<p class="text">Salut je suis Moustapha DIALLO expert en intelligence
-							artificielle, ISI Dakar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>234 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>4.9 (87 revus)</p>
-							</div>
-						</div>
-
-					</div>
-
-
-
-
-
-					<div class="prof">
-						<div class="back">
-
-						</div>
-						<img src="/images/PROFS/prof01.jpg" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Lamine NDIAYE</h2>
-						<p id="p">Ingenieur Logiciel</p>
-						<br>
-						<p class="text">Hello c'est Lamine NDIAYE ingenieur Logiciels ici à ISI
-							campus Keur
-							Massar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>44 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>3.7 (247 revus)</p>
-							</div>
-						</div>
-
-					</div>
-
-
-
-
-
-
-					<div class="prof">
-						<div class="back">
-
-						</div>
-						<img src="/images/PROFS/prof00.webp" alt="" class="image">
-						<div class="suivre">
-							<p>Suivre +</p>
-						</div>
-						<h2>Stephanos LONGATE</h2>
-						<p id="p">Full-Stack Dev</p>
-						<br>
-						<p class="text">Salut je suis Longate developpeur fullstack ici à ISI
-							campus Keur
-							Massar</p>
-
-						<div class="taches">
-							<div>
-								<i class="fa-solid fa-book-open" id="task"></i>
-								<p>154 Taches</p>
-							</div>
-
-							<div>
-								<i class="fa-solid fa-star" id="etoile"></i>
-								<p>4.7 (1247 revus)</p>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="foot" id="#foot1">
-
-
-						<div class="left">
-							<p>
-								<< Precedent</p>
-						</div>
-
-						<div class="mid">
-							<p>1</p>
-							<p>2</p>
-							<p>3</p>
-							<p>....</p>
-							<p>36</p>
-						</div>
-
-						<div class="right">
-							<p>Suivant >> </p>
-						</div>
-
 					</div>
 				</div>
 
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="mentor-card fade-in">
+						<div class="text-center">
+							<img src="/images/PROFS/prof3.jpg" alt="Emma Wilson" class="mentor-avatar">
+							<h5>Emma Wilson</h5>
+							<p class="text-muted">UI/UX Designer</p>
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<span class="ms-2">5.0</span>
+							</div>
+						</div>
+
+						<div class="mentor-specialties">
+							<span class="specialty-tag">Figma</span>
+							<span class="specialty-tag">Adobe XD</span>
+							<span class="specialty-tag">Sketch</span>
+							<span class="specialty-tag">Prototyping</span>
+						</div>
+
+						<div class="mentor-stats">
+							<div class="stat-item">
+								<div class="stat-number">120+</div>
+								<div class="stat-label">Étudiants</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">4</div>
+								<div class="stat-label">Années exp.</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">99%</div>
+								<div class="stat-label">Satisfaction</div>
+							</div>
+						</div>
+
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary" onclick="contactMentor('Emma Wilson')">
+								<i class="fas fa-comments me-2"></i>Contacter
+							</button>
+							<button class="btn btn-outline-primary" onclick="viewProfile('Emma Wilson')">
+								<i class="fas fa-user me-2"></i>Voir profil
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="mentor-card fade-in">
+						<div class="text-center">
+							<img src="/images/PROFS/prof4.jpg" alt="David Brown" class="mentor-avatar">
+							<h5>David Brown</h5>
+							<p class="text-muted">Data Scientist</p>
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<span class="ms-2">4.8</span>
+							</div>
+						</div>
+
+						<div class="mentor-specialties">
+							<span class="specialty-tag">Python</span>
+							<span class="specialty-tag">Machine Learning</span>
+							<span class="specialty-tag">TensorFlow</span>
+							<span class="specialty-tag">SQL</span>
+						</div>
+
+						<div class="mentor-stats">
+							<div class="stat-item">
+								<div class="stat-number">180+</div>
+								<div class="stat-label">Étudiants</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">6</div>
+								<div class="stat-label">Années exp.</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">97%</div>
+								<div class="stat-label">Satisfaction</div>
+							</div>
+						</div>
+
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary" onclick="contactMentor('David Brown')">
+								<i class="fas fa-comments me-2"></i>Contacter
+							</button>
+							<button class="btn btn-outline-primary" onclick="viewProfile('David Brown')">
+								<i class="fas fa-user me-2"></i>Voir profil
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="mentor-card fade-in">
+						<div class="text-center">
+							<img src="/images/PROFS/prof5.jpg" alt="Lisa Garcia" class="mentor-avatar">
+							<h5>Lisa Garcia</h5>
+							<p class="text-muted">Mobile Developer</p>
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<span class="ms-2">4.9</span>
+							</div>
+						</div>
+
+						<div class="mentor-specialties">
+							<span class="specialty-tag">React Native</span>
+							<span class="specialty-tag">Flutter</span>
+							<span class="specialty-tag">iOS</span>
+							<span class="specialty-tag">Android</span>
+						</div>
+
+						<div class="mentor-stats">
+							<div class="stat-item">
+								<div class="stat-number">160+</div>
+								<div class="stat-label">Étudiants</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">5</div>
+								<div class="stat-label">Années exp.</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">98%</div>
+								<div class="stat-label">Satisfaction</div>
+							</div>
+						</div>
+
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary" onclick="contactMentor('Lisa Garcia')">
+								<i class="fas fa-comments me-2"></i>Contacter
+							</button>
+							<button class="btn btn-outline-primary" onclick="viewProfile('Lisa Garcia')">
+								<i class="fas fa-user me-2"></i>Voir profil
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="mentor-card fade-in">
+						<div class="text-center">
+							<img src="/images/PROFS/prof00.webp" alt="Alex Thompson" class="mentor-avatar">
+							<h5>Alex Thompson</h5>
+							<p class="text-muted">DevOps Engineer</p>
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<span class="ms-2">4.6</span>
+							</div>
+						</div>
+
+						<div class="mentor-specialties">
+							<span class="specialty-tag">AWS</span>
+							<span class="specialty-tag">Kubernetes</span>
+							<span class="specialty-tag">Jenkins</span>
+							<span class="specialty-tag">Terraform</span>
+						</div>
+
+						<div class="mentor-stats">
+							<div class="stat-item">
+								<div class="stat-number">140+</div>
+								<div class="stat-label">Étudiants</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">8</div>
+								<div class="stat-label">Années exp.</div>
+							</div>
+							<div class="stat-item">
+								<div class="stat-number">95%</div>
+								<div class="stat-label">Satisfaction</div>
+							</div>
+						</div>
+
+						<div class="d-grid gap-2">
+							<button class="btn btn-primary" onclick="contactMentor('Alex Thompson')">
+								<i class="fas fa-comments me-2"></i>Contacter
+							</button>
+							<button class="btn btn-outline-primary" onclick="viewProfile('Alex Thompson')">
+								<i class="fas fa-user me-2"></i>Voir profil
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
-
-
-
-
-
-
-
-		</section>
+		</div>
 	</main>
 
-
-
-
-
-
-
-
-
-
-
-
-	<!--Partie pour la Notification cahée-->
-
-	<div class="notification" id="notification-box">
-		<div class="top">
-			<h2>Notifications</h2>
-			<div class="new">Nouveau</div>
-			<div class="plus">+</div>
-		</div>
-		<div class="mid">
-			<div class="friend">
-				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
-				<h3>Suzane ANTONIO</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-			<div class="traits"></div>
-
-
-			<div class="friend">
-				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
-				<h3>Moussa SENE</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-		</div>
-		<div class="bottom">
-			<h3>Voir Tous</h3>
-		</div>
-	</div>
-
-
-
-
-	<!-- Div de sélection de langue (initialement cachée) -->
-	<div class="langue" id="langue-menu">
-		<p>Choisissez votre langue :</p>
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-	</div>
-
-
-
-
-
-
-
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Pour la gestion des notifications
-			const bellIcon = document.getElementById("bell-icon");
-			const notificationBox = document.getElementById("notification-box");
+		// Mobile sidebar toggle
+		document.getElementById('sidebarToggle').addEventListener('click', function () {
+			document.getElementById('sidebar').classList.toggle('show');
+		});
 
-			bellIcon.addEventListener("click", () => {
-				notificationBox.classList.toggle("show");
+		// Close sidebar when clicking outside on mobile
+		document.addEventListener('click', function (event) {
+			const sidebar = document.getElementById('sidebar');
+			const sidebarToggle = document.getElementById('sidebarToggle');
+
+			if (window.innerWidth <= 768) {
+				if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+					sidebar.classList.remove('show');
+				}
+			}
+		});
+
+		// Contact mentor functionality
+		function contactMentor(mentorName) {
+			// Add pulse animation to button
+			const button = event.target;
+			button.classList.add('pulse');
+
+			setTimeout(() => {
+				button.classList.remove('pulse');
+			}, 2000);
+
+			// Show success message
+			const toast = document.createElement('div');
+			toast.className = 'alert alert-success position-fixed';
+			toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999;';
+			toast.innerHTML = `
+				<i class="fas fa-check-circle me-2"></i>
+				Message envoyé à ${mentorName} !
+			`;
+			document.body.appendChild(toast);
+
+			setTimeout(() => {
+				toast.remove();
+			}, 3000);
+		}
+
+		// View profile functionality
+		function viewProfile(mentorName) {
+			// Simulate profile view
+			const modal = document.createElement('div');
+			modal.className = 'modal fade';
+			modal.innerHTML = `
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Profil de ${mentorName}</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+						<div class="modal-body">
+							<div class="text-center mb-4">
+								<img src="/images/PROFS/prof1.jpg" alt="${mentorName}" class="rounded-circle" width="120" height="120">
+								<h4 class="mt-3">${mentorName}</h4>
+								<p class="text-muted">Développeur expérimenté avec plus de 5 ans d'expérience</p>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<h6>Compétences</h6>
+									<ul class="list-unstyled">
+										<li><i class="fas fa-check text-success me-2"></i>JavaScript/TypeScript</li>
+										<li><i class="fas fa-check text-success me-2"></i>React/Vue.js</li>
+										<li><i class="fas fa-check text-success me-2"></i>Node.js</li>
+										<li><i class="fas fa-check text-success me-2"></i>Python</li>
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<h6>Expérience</h6>
+									<ul class="list-unstyled">
+										<li><i class="fas fa-briefcase text-primary me-2"></i>Google (3 ans)</li>
+										<li><i class="fas fa-briefcase text-primary me-2"></i>Microsoft (2 ans)</li>
+										<li><i class="fas fa-graduation-cap text-info me-2"></i>Stanford University</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+							<button type="button" class="btn btn-primary" onclick="contactMentor('${mentorName}')">
+								<i class="fas fa-comments me-2"></i>Contacter
+							</button>
+						</div>
+					</div>
+				</div>
+			`;
+			document.body.appendChild(modal);
+
+			const modalInstance = new bootstrap.Modal(modal);
+			modalInstance.show();
+
+			modal.addEventListener('hidden.bs.modal', function () {
+				modal.remove();
 			});
+		}
 
-			// Pour la gestion de l'icône de langue
-			const langueIcon = document.getElementById("langue-icon");
-			const langueMenu = document.getElementById("langue-menu");
-
-			langueIcon.addEventListener("click", () => {
-				// Alterne l'affichage du menu des langues
-				langueMenu.classList.toggle("show-langue");
+		// Add animation classes on page load
+		document.addEventListener('DOMContentLoaded', function () {
+			const cards = document.querySelectorAll('.mentor-card');
+			cards.forEach((card, index) => {
+				setTimeout(() => {
+					card.classList.add('fade-in');
+				}, index * 100);
 			});
 		});
 	</script>
-
-
 </body>
 
 </html>

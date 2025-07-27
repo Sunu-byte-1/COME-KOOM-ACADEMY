@@ -1,194 +1,388 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Contact - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
 		href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 		rel="stylesheet">
-	<link rel="stylesheet" href="/STYLE ACCUEIL  & NAV BAR/navbar.css">
-	<link rel="stylesheet" href="contact.css">
-	<link rel="stylesheet" href="/STYLE ACCUEIL  & NAV BAR/footer.css">
+
+	<!-- Global CSS -->
+	<link rel="stylesheet" href="/styles.css">
+
+	<style>
+		/* Mobile-first custom styles */
+		.navbar-brand {
+			font-family: 'Artifika', serif;
+			font-weight: bold;
+			font-size: 1.5rem;
+		}
+
+		.hero-section {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 6rem 0 4rem 0;
+			min-height: 40vh;
+			display: flex;
+			align-items: center;
+		}
+
+		.hero-title {
+			font-size: 3rem;
+			font-weight: bold;
+			margin-bottom: 1rem;
+		}
+
+		.hero-subtitle {
+			font-size: 1.2rem;
+			margin-bottom: 2rem;
+			opacity: 0.9;
+		}
+
+		.contact-card {
+			background: white;
+			border-radius: 15px;
+			padding: 2rem;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+			height: 100%;
+		}
+
+		.contact-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.contact-icon {
+			font-size: 2.5rem;
+			color: #667eea;
+			margin-bottom: 1rem;
+		}
+
+		.form-control {
+			border-radius: 10px;
+			border: 2px solid #e9ecef;
+			padding: 0.75rem 1rem;
+			transition: border-color 0.3s ease;
+		}
+
+		.form-control:focus {
+			border-color: #667eea;
+			box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+		}
+
+		.btn-custom {
+			background: linear-gradient(45deg, #667eea, #764ba2);
+			border: none;
+			color: white;
+			border-radius: 25px;
+			padding: 0.75rem 2rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			transition: transform 0.3s ease;
+		}
+
+		.btn-custom:hover {
+			transform: translateY(-2px);
+			color: white;
+		}
+
+		.social-links a {
+			color: #667eea;
+			margin: 0 0.5rem;
+			font-size: 1.5rem;
+			transition: color 0.3s ease;
+		}
+
+		.social-links a:hover {
+			color: #764ba2;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.hero-title {
+				font-size: 2.5rem;
+			}
+
+			.hero-subtitle {
+				font-size: 1rem;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.hero-title {
+				font-size: 2rem;
+			}
+		}
+	</style>
 </head>
 
 <body>
-	<div class="header-">
-		<div class="titre">
-			Bienvenue sur Come'Koom Academy
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/index.html">
+				<i class="fas fa-graduation-cap me-2"></i>
+				Come'Koom Academy
+			</a>
+
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/index.html">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/ABOUT/about.html">À propos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="/CONTACT/contacts.html">Contact</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/LOGIN/connexion.html" title="Connexion">
+							<i class="fas fa-user"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
+	</nav>
 
-		<nav class="navbar">
-			<ul class="liens">
-				<li><a href="/index.html">accueil</a></li>
-				<li><a href="/ABOUT/about.html">A propos</a></li>
-				<li><a href="/CONTACT/contacts.html">Contacts</a></li>
-				<li class="login"><a href="/LOGIN/connexion.html"><img src="/images/user.png" alt="" width="35"></a>
-				</li>
-			</ul>
-		</nav>
-	</div>
-
-	<!--Contacts normals-->
-
-	<div class="container">
-		<div class="partie1">
-			<h1>Nous contacter </h1>
-
-			<div class="nouscontacter">
-				<div class="mail">
-					<img src="/images/email.png" alt="" width="70" height="70">
-					<p>Contact@comekoom.Sn</p>
+	<!-- Hero Section -->
+	<section class="hero-section">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-md-8 mx-auto text-center">
+					<h1 class="hero-title">Contactez-nous</h1>
+					<p class="hero-subtitle">
+						Nous sommes là pour vous aider. N'hésitez pas à nous contacter pour toute question.
+					</p>
 				</div>
+			</div>
+		</div>
+	</section>
 
-				<div class="tel">
-					<div class="mobile">
-						<img src="/images/tel.png" alt="" width="70" height="70">
-						<p>77 777 71 66</p>
+	<!-- Contact Information -->
+	<section class="py-5">
+		<div class="container">
+			<div class="row g-4">
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="contact-card text-center">
+						<div class="contact-icon">
+							<i class="fas fa-envelope"></i>
+						</div>
+						<h4>Email</h4>
+						<p>contact@comekoom-academy.com</p>
+						<p class="text-muted">Réponse sous 24h</p>
 					</div>
-
-					<div class="fixe">
-						<img src="/images/tel.png" alt="" width="70" height="70">
-						<p>33 955 13 39</p>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="contact-card text-center">
+						<div class="contact-icon">
+							<i class="fas fa-phone"></i>
+						</div>
+						<h4>Téléphone</h4>
+						<p>+33 1 23 45 67 89</p>
+						<p class="text-muted">Lun-Ven 9h-18h</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="contact-card text-center">
+						<div class="contact-icon">
+							<i class="fas fa-map-marker-alt"></i>
+						</div>
+						<h4>Adresse</h4>
+						<p>123 Rue de l'Innovation<br>75001 Paris, France</p>
+						<p class="text-muted">Siège social</p>
 					</div>
 				</div>
 			</div>
 		</div>
+	</section>
 
-
-		<!--Contacts reseaux sociaux-->
-
-		<div class="partie2">
-			<h1>Suivez nous sur les reseaux sociaux</h1>
-			<div class="reseaux">
-
-				<a href=""><img src="/images/facebook-logo-1-2.png" alt="" width="100">
-				</a>
-
-				<a href="">
-					<img src="/images/GitHub-logo.png" alt="" width="200">
-				</a>
-
-				<a href="">
-					<img src="/images/Instagram.png" alt="" width="100">
-				</a>
-				<a href="">
-					<img src="/images/snap.png" alt="" width="200">
-				</a>
+	<!-- Contact Form -->
+	<section class="py-5 bg-light">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="card border-0 shadow-lg">
+						<div class="card-body p-5">
+							<h2 class="text-center mb-4">Envoyez-nous un message</h2>
+							<form>
+								<div class="row g-3">
+									<div class="col-md-6">
+										<label for="firstName" class="form-label">Prénom</label>
+										<input type="text" class="form-control" id="firstName" required>
+									</div>
+									<div class="col-md-6">
+										<label for="lastName" class="form-label">Nom</label>
+										<input type="text" class="form-control" id="lastName" required>
+									</div>
+									<div class="col-12">
+										<label for="email" class="form-label">Email</label>
+										<input type="email" class="form-control" id="email" required>
+									</div>
+									<div class="col-12">
+										<label for="subject" class="form-label">Sujet</label>
+										<select class="form-select" id="subject" required>
+											<option value="">Choisissez un sujet</option>
+											<option value="general">Question générale</option>
+											<option value="technical">Support technique</option>
+											<option value="billing">Facturation</option>
+											<option value="partnership">Partenariat</option>
+											<option value="other">Autre</option>
+										</select>
+									</div>
+									<div class="col-12">
+										<label for="message" class="form-label">Message</label>
+										<textarea class="form-control" id="message" rows="5"
+											placeholder="Décrivez votre demande..." required></textarea>
+									</div>
+									<div class="col-12 text-center">
+										<button type="submit" class="btn btn-custom">Envoyer le message</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+	</section>
 
-	</div>
-
-	<!--Formulaie-->
-	<div class="form">
-		<h1>Laissez-nous un mot</h1>
-
-		<div class="id">
-			<input type="text" name="" id="" placeholder="Nom" class="nom">
-			<input type="email" placeholder="e-mail" class="email">
+	<!-- FAQ Section -->
+	<section class="py-5">
+		<div class="container">
+			<h2 class="text-center mb-5">Questions Fréquentes</h2>
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="accordion" id="faqAccordion">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapseOne">
+									Comment s'inscrire à un cours ?
+								</button>
+							</h2>
+							<div id="collapseOne" class="accordion-collapse collapse show"
+								data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									Pour vous inscrire à un cours, créez d'abord un compte sur notre plateforme, puis
+									parcourez notre catalogue de cours et cliquez sur "S'inscrire" pour le cours de
+									votre choix.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingTwo">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapseTwo">
+									Les cours sont-ils gratuits ?
+								</button>
+							</h2>
+							<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									Nous proposons à la fois des cours gratuits et des cours premium. Les cours gratuits
+									vous donnent accès aux bases, tandis que les cours premium offrent un contenu plus
+									approfondi et un support personnalisé.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingThree">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapseThree">
+									Comment obtenir un certificat ?
+								</button>
+							</h2>
+							<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+								<div class="accordion-body">
+									Pour obtenir un certificat, vous devez compléter tous les modules du cours et
+									réussir l'évaluation finale avec un score minimum de 70%.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+	</section>
 
-		<div class="sujet">
-			<input type="text" name="" id="" placeholder="Sujet" class="sujet-">
+	<!-- Social Media Section -->
+	<section class="py-5 bg-light">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<h3 class="mb-4">Suivez-nous sur les réseaux sociaux</h3>
+					<div class="social-links">
+						<a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+						<a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+						<a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+						<a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+						<a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+						<a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+					</div>
+				</div>
+			</div>
 		</div>
+	</section>
 
-		<div class="message">
-			<input type="text" placeholder="message" class="message-">
+	<!-- Footer -->
+	<footer class="bg-dark text-white py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+					<h5>Come'Koom Academy</h5>
+					<p>Votre plateforme d'apprentissage en ligne pour maîtriser les technologies du futur.</p>
+					<div class="d-flex gap-3">
+						<a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+						<a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+						<a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+						<a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+					<h5>Liens Utiles</h5>
+					<ul class="list-unstyled">
+						<li><a href="/index.html" class="text-white-50 text-decoration-none">Accueil</a></li>
+						<li><a href="/ABOUT/about.html" class="text-white-50 text-decoration-none">À Propos</a></li>
+						<li><a href="/CONTACT/contacts.html" class="text-white-50 text-decoration-none">Contact</a></li>
+						<li><a href="/BLOG/blog.html" class="text-white-50 text-decoration-none">Blog</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+					<h5>Contact</h5>
+					<p><i class="fas fa-envelope me-2"></i> contact@comekoom-academy.com</p>
+					<p><i class="fas fa-phone me-2"></i> +33 1 23 45 67 89</p>
+					<p><i class="fas fa-map-marker-alt me-2"></i> Paris, France</p>
+				</div>
+			</div>
+			<hr class="my-4">
+			<div class="text-center">
+				<p>&copy; 2024 Come'Koom Academy. Tous droits réservés.</p>
+			</div>
 		</div>
-
-		<button>Soumettre</button>
-	</div><br>
-
-
-
-
-
-
-
-
-	<footer>
-		<section class="section1">
-			<div class="part1">
-				<h2>🏫 A propos</h2>
-				<p>Qui sommes nous ?</p>
-				<p>Notre Mission</p>
-				<p>Blog</p>
-			</div>
-
-
-			<div class="part2">
-				<h2>📚 Liens Utiles</h2>
-				<a href="/index.html">Accueil</a>
-				<a href="/COURS/cours.html">Cours</a>
-				<a href="/ABOUT/about.html">A Propos</a>
-				<a href="/CONTACT/contacts.html">Contacts</a>
-			</div>
-
-
-			<div class="part3">
-				<h2>📞 Contacts</h2>
-
-				<p>✉️ contact@come-koom.com</p>
-
-				<p>📞 33 955 13 39<br>
-					<span class="span">77 777 71 66</span> <br>
-					<span class="span">76 322 66 22</span>
-				</p>
-
-				<p>📍 Adresse : Dakar, Sénégal</p>
-
-				<p>🌍 Langue : [ Français | English ]
-				</p>
-			</div>
-
-
-			<div class="part4">
-				<h2>🔗 Suivez-nous</h2>
-
-				<div class="rs">
-					<a href=""><img src="/images/ICONES FOOTER/facebook.png" alt="" width="70">
-						<p>Facebook</p>
-					</a>
-				</div>
-
-
-
-				<div class="rs">
-					<a href="">
-						<img src="/images/ICONES FOOTER/git.png" alt="" width="70" class="i">
-						<p>GitHub</p>
-					</a>
-				</div>
-
-
-
-				<div class="rs">
-					<a href="">
-						<img src="/images/ICONES FOOTER/snap.png" alt="" width="70">
-						<p>SnapChat</p>
-					</a>
-				</div>
-
-
-
-				<div class="rs">
-					<a href="">
-						<img src="/images/ICONES FOOTER/insta.png" alt="" width="70">
-						<p>Instagram</p>
-					</a>
-				</div>
-
-			</div>
-		</section>
-
 	</footer>
 
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
+	<!-- Custom JS -->
+	<script src="/script.js"></script>
 </body>
 
 </html>

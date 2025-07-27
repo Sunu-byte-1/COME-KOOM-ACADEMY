@@ -1,264 +1,784 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Analyse - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	<link
+		href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 		rel="stylesheet">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<style>
+		/* Mobile-first responsive design */
+		body {
+			font-family: 'Poppins', sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
 
-	<link rel="stylesheet" href="/USER/style/navhaut.css">
+		.sidebar {
+			background: rgba(255, 255, 255, 0.95);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			min-height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 280px;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.sidebar-brand {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			font-family: 'Artifika', serif;
+			font-size: 1.5rem;
+			font-weight: bold;
+			padding: 1.5rem;
+			text-align: center;
+		}
+
+		.sidebar-nav {
+			padding: 1rem 0;
+		}
+
+		.sidebar-nav .nav-link {
+			color: #333;
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+			transition: all 0.3s ease;
+			border-radius: 0;
+			margin: 0.25rem 1rem;
+			border-radius: 10px;
+		}
+
+		.sidebar-nav .nav-link:hover,
+		.sidebar-nav .nav-link.active {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			transform: translateX(5px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.sidebar-nav .nav-link i {
+			width: 20px;
+			margin-right: 10px;
+			font-size: 1.1rem;
+		}
+
+		.main-content {
+			margin-left: 280px;
+			padding: 2rem;
+			background: #f8f9fa;
+			min-height: 100vh;
+		}
+
+		.analytics-card {
+			background: white;
+			border-radius: 15px;
+			padding: 2rem;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+			height: 100%;
+		}
+
+		.analytics-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.stat-card {
+			background: linear-gradient(45deg, #667eea, #764ba2);
+			color: white;
+			border-radius: 15px;
+			padding: 1.5rem;
+			text-align: center;
+			height: 100%;
+		}
+
+		.stat-number {
+			font-size: 2.5rem;
+			font-weight: bold;
+			margin-bottom: 0.5rem;
+		}
+
+		.progress-custom {
+			height: 10px;
+			border-radius: 5px;
+			background: rgba(255, 255, 255, 0.2);
+		}
+
+		.progress-custom .progress-bar {
+			background: linear-gradient(45deg, #667eea, #764ba2);
+		}
+
+		.chart-container {
+			position: relative;
+			height: 300px;
+			margin: 1rem 0;
+		}
+
+		.skill-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem;
+			border-bottom: 1px solid #e9ecef;
+			transition: background-color 0.3s ease;
+		}
+
+		.skill-item:hover {
+			background-color: #f8f9fa;
+		}
+
+		.skill-item:last-child {
+			border-bottom: none;
+		}
+
+		.skill-name {
+			font-weight: 500;
+		}
+
+		.skill-level {
+			display: flex;
+			align-items: center;
+		}
+
+		.skill-bars {
+			width: 100px;
+			height: 8px;
+			background: #e9ecef;
+			border-radius: 4px;
+			margin-left: 1rem;
+			overflow: hidden;
+		}
+
+		.skill-bar {
+			height: 100%;
+			background: linear-gradient(45deg, #667eea, #764ba2);
+			border-radius: 4px;
+			transition: width 0.3s ease;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.sidebar-toggle {
+			display: none;
+			position: fixed;
+			top: 1rem;
+			left: 1rem;
+			z-index: 1001;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			color: white;
+			padding: 0.75rem;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.timeline {
+			position: relative;
+			padding-left: 2rem;
+		}
+
+		.timeline::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 2px;
+			background: linear-gradient(45deg, #667eea, #764ba2);
+		}
+
+		.timeline-item {
+			position: relative;
+			margin-bottom: 2rem;
+			padding-left: 2rem;
+		}
+
+		.timeline-item::before {
+			content: '';
+			position: absolute;
+			left: -0.5rem;
+			top: 0.5rem;
+			width: 1rem;
+			height: 1rem;
+			background: #667eea;
+			border-radius: 50%;
+			border: 3px solid white;
+			box-shadow: 0 0 0 2px #667eea;
+		}
+
+		.timeline-date {
+			font-size: 0.9rem;
+			color: #6c757d;
+			margin-bottom: 0.5rem;
+		}
+
+		.timeline-title {
+			font-weight: 600;
+			margin-bottom: 0.25rem;
+		}
+
+		.timeline-description {
+			color: #6c757d;
+			font-size: 0.9rem;
+		}
+
+		/* Mobile responsive */
+		@media (max-width: 768px) {
+			.sidebar {
+				transform: translateX(-100%);
+				width: 100%;
+			}
+
+			.sidebar.show {
+				transform: translateX(0);
+			}
+
+			.main-content {
+				margin-left: 0;
+				padding: 1rem;
+			}
+
+			.sidebar-toggle {
+				display: block !important;
+			}
+
+			.analytics-card {
+				padding: 1.5rem;
+				margin-bottom: 1rem;
+			}
+
+			.chart-container {
+				height: 250px;
+			}
+		}
+
+		/* Animation effects */
+		.fade-in {
+			animation: fadeIn 0.5s ease-in;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.slide-in {
+			animation: slideIn 0.3s ease-out;
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: translateX(-100%);
+			}
+
+			to {
+				transform: translateX(0);
+			}
+		}
+
+		.count-up {
+			animation: countUp 2s ease-out;
+		}
+
+		@keyframes countUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.skill-bar-animate {
+			animation: skillBarFill 1.5s ease-out;
+		}
+
+		@keyframes skillBarFill {
+			from {
+				width: 0;
+			}
+
+			to {
+				width: var(--skill-level);
+			}
+		}
+	</style>
 </head>
 
 <body>
+	<!-- Mobile Sidebar Toggle -->
+	<button class="btn sidebar-toggle d-md-none" id="sidebarToggle">
+		<i class="fas fa-bars"></i>
+	</button>
 
+	<!-- Sidebar -->
+	<nav class="sidebar" id="sidebar">
+		<div class="sidebar-brand">
+			<i class="fas fa-graduation-cap me-2"></i>
+			Come'Koom Academy
+		</div>
 
-	<main>
-		<section class="barre">
-			<div class="name">
-				<h3>Come'Koom Academy</h3>
-			</div>
+		<ul class="nav flex-column sidebar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/user.html">
+					<i class="fas fa-tachometer-alt"></i>
+					<span>Tableau de bord</span>
+				</a>
+			</li>
 
-			<div class="enum">
-				<ul>
-					<li>
-						<a href="/USER/user.html">
-							<i class="fa-solid fa-school"></i>
-							<p>Tableau de bord</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/taches/taches.html">
+					<i class="fas fa-tasks"></i>
+					<span>Tâches à terminer</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/taches/taches.html">
-							<i class="fa-solid fa-file"></i>
-							<p>Taches à terminer</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/favoris/fav.html">
+					<i class="fas fa-bookmark"></i>
+					<span>Mes cours</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/bibliothe/bibliothe.html">
+					<i class="fas fa-book"></i>
+					<span>Bibliothèque</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/favoris/fav.html">
-							<i class="fa-solid fa-bookmark"></i>
-							<p>Cours</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/menthors/menthor.html">
+					<i class="fas fa-users"></i>
+					<span>Mentors</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/abonnement/abonnement.html">
+					<i class="fas fa-crown"></i>
+					<span>Abonnement</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/certificats/certificat.html">
-							<i class="fa-solid fa-certificate"></i>
-							<p>certificats</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/message/message.html">
+					<i class="fas fa-comments"></i>
+					<span>Messages</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/parametres/parametre.html">
+					<i class="fas fa-cog"></i>
+					<span>Paramètres</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
 
-					<li>
-						<a href="/USER/bibliothe/bibliothe.html">
-							<i class="fa-solid fa-book"></i>
-							<p>Bibliotheque</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/menthors/menthor.html">
-							<i class="fa-solid fa-users"></i>
-							<p>Menthors</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/abonnement/abonnement.html">
-							<i class="fa-solid fa-user-plus"></i>
-							<p>Abonnement</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/message/message.html">
-							<i class="fa-regular fa-comments"></i>
-							<p>Messages</p>
-						</a>
-					</li>
-
-					<li>
-						<a href="/USER/analyse/analyse.html" class="active">
-							<i class="fa-solid fa-magnifying-glass-chart"></i>
-							<p>Analyse</p>
-						</a>
-					</li>
-
-					<li>
-						<a href="/USER/parametres/parametre.html">
-							<i class="fa-solid fa-gear"></i>
-							<p>Parametres</p>
-						</a>
-					</li>
-
-
-				</ul>
-
-				<div class="trait"></div>
-
-				<div class="exit">
-					<a href="/LOGIN/connexion.html" class="logout">
-						<i class="fa-solid fa-right-from-bracket"></i>
-						<p>Deconnexion</p>
-					</a>
-				</div>
-			</div>
-		</section>
-
-
-
-
-		<section class="content">
-
-			<!--LA BARRE DE NAVIGATION-->
-			<div class="nav">
-				<div class="rech">
-					<input type="search" placeholder="Search">
-					<i class="fa-solid fa-magnifying-glass"></i>
-
-				</div>
-
-
-				<div class="id">
-					<i class="fa-regular fa-bell" id="bell-icon"></i>
-					<!-- Ajout d'un ID pour la cloche -->
-
-					<i class="fa-solid fa-globe" id="langue-icon"></i>
-					<div class="us"></div>
+	<!-- Main Content -->
+	<main class="main-content">
+		<div class="container-fluid">
+			<!-- Header -->
+			<div class="row mb-4">
+				<div class="col-12">
+					<div class="d-flex justify-content-between align-items-center">
+						<h1 class="h3 mb-0">Analyse de progression</h1>
+						<div class="d-flex align-items-center">
+							<div class="dropdown me-3">
+								<button class="btn btn-outline-primary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-bell"></i>
+									<span class="badge bg-danger ms-1">3</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">Nouveau cours disponible</a></li>
+									<li><a class="dropdown-item" href="#">Message de votre mentor</a></li>
+									<li><a class="dropdown-item" href="#">Tâche à compléter</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<img src="/images/PROFILS/profil1.jpg" alt="Profile" class="rounded-circle"
+										width="32" height="32">
+									<span class="ms-2">Abdallah Diouf</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="/USER/parametres/profil.html">Mon profil</a></li>
+									<li><a class="dropdown-item" href="/USER/parametres/parametre.html">Paramètres</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item" href="/index.html">Déconnexion</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
-			<!--FINNNN BARRE DE NAVIGATION-->
+			<!-- Statistics Cards -->
+			<div class="row g-4 mb-4">
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="stat-card fade-in">
+						<div class="stat-number" id="coursesCompleted">12</div>
+						<div class="stat-label">Cours terminés</div>
+						<div class="progress progress-custom mt-2">
+							<div class="progress-bar" style="width: 75%"></div>
+						</div>
+					</div>
+				</div>
 
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="stat-card fade-in">
+						<div class="stat-number" id="hoursLearned">156</div>
+						<div class="stat-label">Heures d'apprentissage</div>
+						<div class="progress progress-custom mt-2">
+							<div class="progress-bar" style="width: 85%"></div>
+						</div>
+					</div>
+				</div>
 
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="stat-card fade-in">
+						<div class="stat-number" id="certificatesEarned">8</div>
+						<div class="stat-label">Certificats obtenus</div>
+						<div class="progress progress-custom mt-2">
+							<div class="progress-bar" style="width: 60%"></div>
+						</div>
+					</div>
+				</div>
 
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="stat-card fade-in">
+						<div class="stat-number" id="streakDays">23</div>
+						<div class="stat-label">Jours consécutifs</div>
+						<div class="progress progress-custom mt-2">
+							<div class="progress-bar" style="width: 90%"></div>
+						</div>
+					</div>
+				</div>
+			</div>
 
+			<!-- Analytics Content -->
+			<div class="row">
+				<div class="col-lg-8 col-md-12 mb-4">
+					<div class="analytics-card">
+						<h4 class="mb-4"><i class="fas fa-chart-line me-2"></i>Progression des compétences</h4>
 
-		</section>
+						<div class="skill-item">
+							<div class="skill-name">JavaScript</div>
+							<div class="skill-level">
+								<span class="me-2">85%</span>
+								<div class="skill-bars">
+									<div class="skill-bar" style="width: 85%"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="skill-item">
+							<div class="skill-name">React.js</div>
+							<div class="skill-level">
+								<span class="me-2">72%</span>
+								<div class="skill-bars">
+									<div class="skill-bar" style="width: 72%"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="skill-item">
+							<div class="skill-name">Node.js</div>
+							<div class="skill-level">
+								<span class="me-2">68%</span>
+								<div class="skill-bars">
+									<div class="skill-bar" style="width: 68%"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="skill-item">
+							<div class="skill-name">Python</div>
+							<div class="skill-level">
+								<span class="me-2">45%</span>
+								<div class="skill-bars">
+									<div class="skill-bar" style="width: 45%"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="skill-item">
+							<div class="skill-name">SQL</div>
+							<div class="skill-level">
+								<span class="me-2">78%</span>
+								<div class="skill-bars">
+									<div class="skill-bar" style="width: 78%"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="skill-item">
+							<div class="skill-name">UI/UX Design</div>
+							<div class="skill-level">
+								<span class="me-2">52%</span>
+								<div class="skill-bars">
+									<div class="skill-bar" style="width: 52%"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-12 mb-4">
+					<div class="analytics-card">
+						<h4 class="mb-4"><i class="fas fa-history me-2"></i>Activité récente</h4>
+
+						<div class="timeline">
+							<div class="timeline-item">
+								<div class="timeline-date">Aujourd'hui</div>
+								<div class="timeline-title">Cours React terminé</div>
+								<div class="timeline-description">Vous avez terminé le cours "React.js Avancé"</div>
+							</div>
+
+							<div class="timeline-item">
+								<div class="timeline-date">Hier</div>
+								<div class="timeline-title">Projet soumis</div>
+								<div class="timeline-description">Projet "E-commerce" soumis et approuvé</div>
+							</div>
+
+							<div class="timeline-item">
+								<div class="timeline-date">Il y a 3 jours</div>
+								<div class="timeline-title">Certificat obtenu</div>
+								<div class="timeline-description">Certificat JavaScript ES6+ obtenu</div>
+							</div>
+
+							<div class="timeline-item">
+								<div class="timeline-date">Il y a 1 semaine</div>
+								<div class="timeline-title">Nouveau mentor</div>
+								<div class="timeline-description">Sarah Johnson est votre nouveau mentor</div>
+							</div>
+
+							<div class="timeline-item">
+								<div class="timeline-date">Il y a 2 semaines</div>
+								<div class="timeline-title">Abonnement Premium</div>
+								<div class="timeline-description">Passage au plan Premium activé</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Goals and Achievements -->
+			<div class="row">
+				<div class="col-lg-6 col-md-12 mb-4">
+					<div class="analytics-card">
+						<h4 class="mb-4"><i class="fas fa-target me-2"></i>Objectifs</h4>
+
+						<div class="mb-3">
+							<div class="d-flex justify-content-between align-items-center mb-2">
+								<span>Terminer 20 cours</span>
+								<span>12/20</span>
+							</div>
+							<div class="progress">
+								<div class="progress-bar" style="width: 60%"></div>
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<div class="d-flex justify-content-between align-items-center mb-2">
+								<span>Obtenir 10 certificats</span>
+								<span>8/10</span>
+							</div>
+							<div class="progress">
+								<div class="progress-bar" style="width: 80%"></div>
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<div class="d-flex justify-content-between align-items-center mb-2">
+								<span>Atteindre 200h d'apprentissage</span>
+								<span>156/200</span>
+							</div>
+							<div class="progress">
+								<div class="progress-bar" style="width: 78%"></div>
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<div class="d-flex justify-content-between align-items-center mb-2">
+								<span>Maintenir 30 jours consécutifs</span>
+								<span>23/30</span>
+							</div>
+							<div class="progress">
+								<div class="progress-bar" style="width: 77%"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-12 mb-4">
+					<div class="analytics-card">
+						<h4 class="mb-4"><i class="fas fa-trophy me-2"></i>Réalisations</h4>
+
+						<div class="row">
+							<div class="col-6 mb-3">
+								<div class="text-center p-3 bg-light rounded">
+									<i class="fas fa-fire text-danger" style="font-size: 2rem;"></i>
+									<h6 class="mt-2">Streak Master</h6>
+									<small class="text-muted">23 jours consécutifs</small>
+								</div>
+							</div>
+
+							<div class="col-6 mb-3">
+								<div class="text-center p-3 bg-light rounded">
+									<i class="fas fa-graduation-cap text-primary" style="font-size: 2rem;"></i>
+									<h6 class="mt-2">Quick Learner</h6>
+									<small class="text-muted">5 cours en 1 mois</small>
+								</div>
+							</div>
+
+							<div class="col-6 mb-3">
+								<div class="text-center p-3 bg-light rounded">
+									<i class="fas fa-star text-warning" style="font-size: 2rem;"></i>
+									<h6 class="mt-2">Perfect Score</h6>
+									<small class="text-muted">100% sur 3 cours</small>
+								</div>
+							</div>
+
+							<div class="col-6 mb-3">
+								<div class="text-center p-3 bg-light rounded">
+									<i class="fas fa-users text-success" style="font-size: 2rem;"></i>
+									<h6 class="mt-2">Team Player</h6>
+									<small class="text-muted">10 projets collaboratifs</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 
-
-
-
-
-
-
-
-
-
-
-
-	<!--Partie pour la Notification cahée-->
-
-	<div class="notification" id="notification-box">
-		<div class="top">
-			<h2>Notifications</h2>
-			<div class="new">Nouveau</div>
-			<div class="plus">+</div>
-		</div>
-		<div class="mid">
-			<div class="friend">
-				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
-				<h3>Suzane ANTONIO</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-			<div class="traits"></div>
-
-
-			<div class="friend">
-				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
-				<h3>Moussa SENE</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-		</div>
-		<div class="bottom">
-			<h3>Voir Tous</h3>
-		</div>
-	</div>
-
-
-
-
-	<!-- Div de sélection de langue (initialement cachée) -->
-	<div class="langue" id="langue-menu">
-		<p>Choisissez votre langue :</p>
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-	</div>
-
-
-
-
-
-
-
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Pour la gestion des notifications
-			const bellIcon = document.getElementById("bell-icon");
-			const notificationBox = document.getElementById("notification-box");
-
-			bellIcon.addEventListener("click", () => {
-				notificationBox.classList.toggle("show");
-			});
-
-			// Pour la gestion de l'icône de langue
-			const langueIcon = document.getElementById("langue-icon");
-			const langueMenu = document.getElementById("langue-menu");
-
-			langueIcon.addEventListener("click", () => {
-				// Alterne l'affichage du menu des langues
-				langueMenu.classList.toggle("show-langue");
-			});
+		// Mobile sidebar toggle
+		document.getElementById('sidebarToggle').addEventListener('click', function () {
+			document.getElementById('sidebar').classList.toggle('show');
 		});
+
+		// Close sidebar when clicking outside on mobile
+		document.addEventListener('click', function (event) {
+			const sidebar = document.getElementById('sidebar');
+			const sidebarToggle = document.getElementById('sidebarToggle');
+
+			if (window.innerWidth <= 768) {
+				if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+					sidebar.classList.remove('show');
+				}
+			}
+		});
+
+		// Animate statistics on page load
+		function animateStats() {
+			const stats = [
+				{ element: 'coursesCompleted', target: 12 },
+				{ element: 'hoursLearned', target: 156 },
+				{ element: 'certificatesEarned', target: 8 },
+				{ element: 'streakDays', target: 23 }
+			];
+
+			stats.forEach(stat => {
+				const element = document.getElementById(stat.element);
+				let current = 0;
+				const increment = stat.target / 50;
+				const timer = setInterval(() => {
+					current += increment;
+					if (current >= stat.target) {
+						current = stat.target;
+						clearInterval(timer);
+					}
+					element.textContent = Math.floor(current);
+				}, 40);
+			});
+		}
+
+		// Animate skill bars
+		function animateSkillBars() {
+			const skillBars = document.querySelectorAll('.skill-bar');
+			skillBars.forEach(bar => {
+				const width = bar.style.width;
+				bar.style.width = '0%';
+				setTimeout(() => {
+					bar.style.width = width;
+					bar.classList.add('skill-bar-animate');
+				}, 500);
+			});
+		}
+
+		// Add animation classes on page load
+		document.addEventListener('DOMContentLoaded', function () {
+			const cards = document.querySelectorAll('.analytics-card, .stat-card');
+			cards.forEach((card, index) => {
+				setTimeout(() => {
+					card.classList.add('fade-in');
+				}, index * 100);
+			});
+
+			// Start animations after a delay
+			setTimeout(() => {
+				animateStats();
+				animateSkillBars();
+			}, 500);
+		});
+
+		// Simulate real-time updates
+		setInterval(() => {
+			const hoursElement = document.getElementById('hoursLearned');
+			const currentHours = parseInt(hoursElement.textContent);
+			hoursElement.textContent = currentHours + 1;
+		}, 30000); // Update every 30 seconds
 	</script>
-
-
 </body>
 
 </html>

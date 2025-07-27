@@ -1,911 +1,902 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Bibliothèque - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	<link
+		href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 		rel="stylesheet">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<style>
+		/* Mobile-first responsive design */
+		body {
+			font-family: 'Poppins', sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
 
-	<link rel="stylesheet" href="/USER/style/navhaut.css">
-	<link rel="stylesheet" href="/USER/favoris/fav.css">
-	<link rel="stylesheet" href="/USER/bibliothe/bibliotheque.css">
+		.sidebar {
+			background: rgba(255, 255, 255, 0.95);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			min-height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 280px;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.sidebar-brand {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			font-family: 'Artifika', serif;
+			font-size: 1.5rem;
+			font-weight: bold;
+			padding: 1.5rem;
+			text-align: center;
+		}
+
+		.sidebar-nav {
+			padding: 1rem 0;
+		}
+
+		.sidebar-nav .nav-link {
+			color: #333;
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+			transition: all 0.3s ease;
+			border-radius: 0;
+			margin: 0.25rem 1rem;
+			border-radius: 10px;
+		}
+
+		.sidebar-nav .nav-link:hover,
+		.sidebar-nav .nav-link.active {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			transform: translateX(5px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.sidebar-nav .nav-link i {
+			width: 20px;
+			margin-right: 10px;
+			font-size: 1.1rem;
+		}
+
+		.main-content {
+			margin-left: 280px;
+			padding: 2rem;
+			background: #f8f9fa;
+			min-height: 100vh;
+		}
+
+		.book-card {
+			background: white;
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+			height: 100%;
+		}
+
+		.book-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.book-image {
+			width: 100%;
+			height: 250px;
+			object-fit: cover;
+		}
+
+		.book-content {
+			padding: 1.5rem;
+		}
+
+		.book-category {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 0.25rem 0.75rem;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			display: inline-block;
+			margin-bottom: 1rem;
+		}
+
+		.book-author {
+			color: #6c757d;
+			font-size: 0.9rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.book-description {
+			color: #6c757d;
+			font-size: 0.9rem;
+			margin-bottom: 1rem;
+			line-height: 1.5;
+		}
+
+		.book-stats {
+			display: flex;
+			justify-content: space-between;
+			margin: 1rem 0;
+			padding: 1rem 0;
+			border-top: 1px solid #e9ecef;
+		}
+
+		.stat-item {
+			text-align: center;
+		}
+
+		.stat-number {
+			font-size: 1.2rem;
+			font-weight: bold;
+			color: #667eea;
+		}
+
+		.stat-label {
+			font-size: 0.8rem;
+			color: #6c757d;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.btn-outline-primary {
+			border-color: #667eea;
+			color: #667eea;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn-outline-primary:hover {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-color: #667eea;
+			transform: translateY(-2px);
+		}
+
+		.sidebar-toggle {
+			display: none;
+			position: fixed;
+			top: 1rem;
+			left: 1rem;
+			z-index: 1001;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			color: white;
+			padding: 0.75rem;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.rating {
+			color: #ffc107;
+			margin-bottom: 0.5rem;
+		}
+
+		.filter-buttons {
+			margin-bottom: 2rem;
+		}
+
+		.filter-btn {
+			margin: 0.25rem;
+			border-radius: 20px;
+			padding: 0.5rem 1rem;
+			font-size: 0.9rem;
+		}
+
+		.filter-btn.active {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-color: #667eea;
+		}
+
+		.search-box {
+			margin-bottom: 2rem;
+		}
+
+		.search-input {
+			border-radius: 25px;
+			padding: 0.75rem 1.5rem;
+			border: 2px solid #e9ecef;
+			transition: all 0.3s ease;
+		}
+
+		.search-input:focus {
+			border-color: #667eea;
+			box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+		}
+
+		/* Mobile responsive */
+		@media (max-width: 768px) {
+			.sidebar {
+				transform: translateX(-100%);
+				width: 100%;
+			}
+
+			.sidebar.show {
+				transform: translateX(0);
+			}
+
+			.main-content {
+				margin-left: 0;
+				padding: 1rem;
+			}
+
+			.sidebar-toggle {
+				display: block !important;
+			}
+
+			.book-card {
+				margin-bottom: 1rem;
+			}
+
+			.book-stats {
+				flex-direction: column;
+				gap: 1rem;
+			}
+
+			.filter-buttons {
+				text-align: center;
+			}
+		}
+
+		/* Animation effects */
+		.fade-in {
+			animation: fadeIn 0.5s ease-in;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.slide-in {
+			animation: slideIn 0.3s ease-out;
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: translateX(-100%);
+			}
+
+			to {
+				transform: translateX(0);
+			}
+		}
+
+		.pulse {
+			animation: pulse 2s infinite;
+		}
+
+		@keyframes pulse {
+			0% {
+				transform: scale(1);
+			}
+
+			50% {
+				transform: scale(1.05);
+			}
+
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		.book-card.favorite {
+			border: 2px solid #ffc107;
+		}
+
+		.book-card.favorite::after {
+			content: '★';
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			background: #ffc107;
+			color: white;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: bold;
+		}
+	</style>
 </head>
 
 <body>
+	<!-- Mobile Sidebar Toggle -->
+	<button class="btn sidebar-toggle d-md-none" id="sidebarToggle">
+		<i class="fas fa-bars"></i>
+	</button>
 
+	<!-- Sidebar -->
+	<nav class="sidebar" id="sidebar">
+		<div class="sidebar-brand">
+			<i class="fas fa-graduation-cap me-2"></i>
+			Come'Koom Academy
+		</div>
 
-	<main>
-		<section class="barre">
-			<div class="name">
-				<h3>Come'Koom Academy</h3>
-			</div>
+		<ul class="nav flex-column sidebar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/user.html">
+					<i class="fas fa-tachometer-alt"></i>
+					<span>Tableau de bord</span>
+				</a>
+			</li>
 
-			<div class="enum">
-				<ul>
-					<li>
-						<a href="/USER/user.html">
-							<i class="fa-solid fa-school"></i>
-							<p>Tableau de bord</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/taches/taches.html">
+					<i class="fas fa-tasks"></i>
+					<span>Tâches à terminer</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/taches/taches.html">
-							<i class="fa-solid fa-file"></i>
-							<p>Taches à terminer</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/favoris/fav.html">
+					<i class="fas fa-bookmark"></i>
+					<span>Mes cours</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link active" href="/USER/bibliothe/bibliothe.html">
+					<i class="fas fa-book"></i>
+					<span>Bibliothèque</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/favoris/fav.html">
-							<i class="fa-solid fa-bookmark"></i>
-							<p>Cours</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/menthors/menthor.html">
+					<i class="fas fa-users"></i>
+					<span>Mentors</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/abonnement/abonnement.html">
+					<i class="fas fa-crown"></i>
+					<span>Abonnement</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/message/message.html">
+					<i class="fas fa-comments"></i>
+					<span>Messages</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/parametres/parametre.html">
+					<i class="fas fa-cog"></i>
+					<span>Paramètres</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
 
-
-					<li>
-						<a href="/USER/bibliothe/bibliothe.html" class="active">
-							<i class="fa-solid fa-book"></i>
-							<p>Bibliotheque</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/menthors/menthor.html">
-							<i class="fa-solid fa-users"></i>
-							<p>Menthors</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/abonnement/abonnement.html">
-							<i class="fa-solid fa-user-plus"></i>
-							<p>Abonnement</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/message/message.html">
-							<i class="fa-regular fa-comments"></i>
-							<p>Messages</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/parametres/parametre.html">
-							<i class="fa-solid fa-gear"></i>
-							<p>Parametres</p>
-						</a>
-					</li>
-
-
-				</ul>
-
-				<div class="trait"></div>
-
-				<div class="exit">
-					<a href="/LOGIN/connexion.html" class="logout">
-						<i class="fa-solid fa-right-from-bracket"></i>
-						<p>Deconnexion</p>
-					</a>
-				</div>
-			</div>
-		</section>
-
-
-
-
-		<section class="content">
-
-			<!--LA BARRE DE NAVIGATION-->
-			<div class="nav">
-				<div class="rech">
-					<input type="search" placeholder="Search">
-					<i class="fa-solid fa-magnifying-glass"></i>
-
-				</div>
-
-
-				<div class="id">
-					<i class="fa-regular fa-bell" id="bell-icon"></i>
-					<!-- Ajout d'un ID pour la cloche -->
-
-					<i class="fa-solid fa-globe" id="langue-icon"></i>
-					<div class="us"></div>
-				</div>
-			</div>
-
-			<!--FINNNN BARRE DE NAVIGATION-->
-
-
-			<div class="bibli-search">
-				<label for="catégorie-haut"></label>
-				<select id="catégorie-haut" class="select-edit">
-					<option value="" disabled selected>Categories</option>
-					<option value="">Developpement Web</option>
-					<option value="">UI / UX Design</option>
-					<option value="">Developpemetn WordPress</option>
-					<option value="">Web Designer</option>
-
-				</select>
-
-
-
-				<label for="niveau"></label>
-				<select id="niveau" class="select-edit">
-					<option value="" disabled selected>Niveau Design</option>
-					<option value="">Aythentification</option>
-					<option value="">Systeme</option>
-					<option value="">Meta</option>
-
-				</select>
-
-
-				<label for="duration"></label>
-				<select id="duration" class="select-edit">
-					<option value="" disabled selected>Duree</option>
-					<option value="">1 Heure</option>
-					<option value="">2 Heures</option>
-					<option value="">4 Heures</option>
-					<option value="">8 Heures</option>
-					<option value="">10 Heures</option>
-					<option value="">20 Heures</option>
-
-				</select>
-
-
-				<label for="type"></label>
-				<select id="type" class="select-edit">
-					<option value="" disabled selected>Types</option>
-					<option value="">Simples</option>
-					<option value="">Complesxes</option>
-
-				</select>
-
-
-				<div>
-					<input type="range" id="couts" min="0" max="100000" value="50000"><br>
-					<label for="couts" class="couts">0F - 100 000F</label>
-				</div>
-
-				<button>Rechercher</button>
-			</div>
-
-
-
-
-			<div class="cours1">
-				<div class="-title">
-					<div>
-						<h2>Les Plus consultés</h2>
+	<!-- Main Content -->
+	<main class="main-content">
+		<div class="container-fluid">
+			<!-- Header -->
+			<div class="row mb-4">
+				<div class="col-12">
+					<div class="d-flex justify-content-between align-items-center">
+						<h1 class="h3 mb-0">Bibliothèque</h1>
+						<div class="d-flex align-items-center">
+							<div class="dropdown me-3">
+								<button class="btn btn-outline-primary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-bell"></i>
+									<span class="badge bg-danger ms-1">3</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">Nouveau livre disponible</a></li>
+									<li><a class="dropdown-item" href="#">Message de votre mentor</a></li>
+									<li><a class="dropdown-item" href="#">Tâche à compléter</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<img src="/images/PROFILS/profil1.jpg" alt="Profile" class="rounded-circle"
+										width="32" height="32">
+									<span class="ms-2">Abdallah Diouf</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="/USER/parametres/profil.html">Mon profil</a></li>
+									<li><a class="dropdown-item" href="/USER/parametres/parametre.html">Paramètres</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item" href="/index.html">Déconnexion</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
-
-					<div>
-						<label for="catégorie"></label>
-						<select id="catégorie" class="custom-select">
-							<option value="" disabled selected>catégorie</option>
-
-							<optgroup label="Développement Web">
-								<option value="frontend">Front-End Developer
-								</option>
-								<option value="backend">Back-End Developer
-								</option>
-								<option value="fullstack">Full-Stack Developer
-								</option>
-							</optgroup>
-
-							<optgroup label="Data Analyst & Science">
-								<option value="data-analyst">Data Analyst
-								</option>
-								<option value="data-scientist">Data Scientist
-								</option>
-								<option value="machine-learning">Machine
-									Learning
-									Engineer</option>
-							</optgroup>
-
-							<optgroup label="UI/UX Design">
-								<option value="ui-designer">UI Designer</option>
-								<option value="ux-designer">UX Designer</option>
-								<option value="product-designer">Product
-									Designer
-								</option>
-							</optgroup>
-
-							<optgroup label="Cybersécurité">
-								<option value="security-analyst">Analyste en
-									Cybersécurité</option>
-								<option value="ethical-hacker">Hacker Éthique
-								</option>
-								<option value="soc-analyst">Analyste SOC
-								</option>
-							</optgroup>
-
-							<optgroup label="Autres">
-								<option value="devops">DevOps Engineer</option>
-								<option value="cloud">Cloud Architect</option>
-								<option value="blockchain">Blockchain Developer
-								</option>
-							</optgroup>
-						</select>
-
-
-
-						<label for="catégorie1"></label>
-						<select id="catégorie1" class="custom-select">
-							<option value="" disabled selected>Tirer par</option>
-							<option value="">Populariites</option>
-							<option value="">Les mieux notes</option>
-							<option value="">Ajout recent</option>
-							<option value="">Les plus vus</option>
-
-						</select>
-
-
-
-
-
-					</div>
-				</div>
-
-
-
-
-
-
-
-
-
-
-
-				<div class="corps">
-
-
-					<div class="chapitre" id="cp1">
-						<img src="/images/Library/cybersec.jpg" alt="">
-
-
-						<div class="text">
-							<p>Securité</p>
-						</div>
-
-						<div class="domaine">
-							<h2>CyberSecurité</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>8k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>24 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>40 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.9 (12k)</b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre" id="cp2">
-						<img src="/images/Library/metavers.jpg" alt="">
-
-
-						<div class="text" id="sec">
-							<p>Meta</p>
-						</div>
-
-						<div class="domaine">
-							<h2>MetaVerse Methode</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>3.5k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>69 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>110 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>3.4 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="chapitre" id="cp3">
-						<img src="/images/Library/vue js.avif" alt="">
-
-
-						<div class="text" id="prog">
-							<p>frontend</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Vue JS</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>17k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>36 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>60 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.7 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre" id="cp4">
-						<img src="/images/Library/MySQL.png" alt="">
-
-
-						<div class="text" id="prog01">
-							<p>Data Base</p>
-						</div>
-
-						<div class="domaine">
-							<h2>MySQL</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>24k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>85 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>215 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>3.9 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre" id="cp5">
-						<img src="/images/COURS_complet/FLUTTER.webp" alt="">
-
-
-						<div class="text" id="flutter">
-							<p>Dev Mobile</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Flutter (Dart)</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>7k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>20 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>55 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.2 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre" id="cp6">
-						<img src="/images/Library/angular.png" alt="">
-
-
-						<div class="text" id="swift">
-							<p>Front vers Java</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Angular JS</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>11k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>56 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>98 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.2 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="chapitre" id="cp7">
-						<img src="/images/Library/django.webp" alt="">
-
-
-						<div class="text" id="exp">
-							<p>Framework Py</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Django Python</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>7k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>26 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>45 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>3.6 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre" id="cp8">
-						<img src="/images/COURS_complet/SQL.jpg" alt="">
-
-
-						<div class="text" id="sql">
-							<p>base de donnees</p>
-						</div>
-
-						<div class="domaine">
-							<h2>SQL</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>18k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>15 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>36 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.4 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-
-
-				</div>
-
-
-
-
-
-
-
-
-				<div class="foot" id="#foot1">
-
-
-					<div class="left">
-						<p>
-							<< Precedent</p>
-					</div>
-
-					<div class="mid">
-						<p>1</p>
-						<p>2</p>
-						<p>3</p>
-						<p>....</p>
-						<p>36</p>
-					</div>
-
-					<div class="right">
-						<p>Suivant >> </p>
-					</div>
-
 				</div>
 			</div>
 
+			<!-- Search Box -->
+			<div class="search-box">
+				<div class="row">
+					<div class="col-md-8 mx-auto">
+						<div class="input-group">
+							<input type="text" class="form-control search-input"
+								placeholder="Rechercher un livre, auteur ou sujet..." id="searchInput">
+							<button class="btn btn-primary" type="button" id="searchBtn">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 
+			<!-- Filter Buttons -->
+			<div class="filter-buttons">
+				<button class="btn btn-outline-primary filter-btn active" data-filter="all">Tous</button>
+				<button class="btn btn-outline-primary filter-btn" data-filter="programming">Programmation</button>
+				<button class="btn btn-outline-primary filter-btn" data-filter="design">Design</button>
+				<button class="btn btn-outline-primary filter-btn" data-filter="business">Business</button>
+				<button class="btn btn-outline-primary filter-btn" data-filter="science">Science</button>
+			</div>
 
+			<!-- Books Content -->
+			<div class="row" id="booksContainer">
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="programming">
+					<div class="book-card fade-in">
+						<img src="/images/Library/angular.png" alt="Clean Code" class="book-image">
+						<div class="book-content">
+							<span class="book-category">Programmation</span>
+							<h5>Clean Code</h5>
+							<p class="book-author">Par Robert C. Martin</p>
+							<p class="book-description">Un guide pour écrire du code propre, maintenable et lisible.
+								Essentiel pour tout développeur.</p>
 
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<span class="ms-2">4.9</span>
+							</div>
 
-		</section>
+							<div class="book-stats">
+								<div class="stat-item">
+									<div class="stat-number">432</div>
+									<div class="stat-label">Pages</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">4.5h</div>
+									<div class="stat-label">Lecture</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">15</div>
+									<div class="stat-label">Chapitres</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="readBook('Clean Code')">
+									<i class="fas fa-book-open me-2"></i>Lire
+								</button>
+								<button class="btn btn-outline-primary" onclick="toggleFavorite(this)">
+									<i class="fas fa-heart me-2"></i>Favoris
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="programming">
+					<div class="book-card fade-in">
+						<img src="/images/Library/django.webp" alt="Design Patterns" class="book-image">
+						<div class="book-content">
+							<span class="book-category">Programmation</span>
+							<h5>Design Patterns</h5>
+							<p class="book-author">Par Gang of Four</p>
+							<p class="book-description">Les patterns de conception essentiels pour créer des
+								architectures logicielles robustes.</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<span class="ms-2">4.7</span>
+							</div>
+
+							<div class="book-stats">
+								<div class="stat-item">
+									<div class="stat-number">395</div>
+									<div class="stat-label">Pages</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">6h</div>
+									<div class="stat-label">Lecture</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">23</div>
+									<div class="stat-label">Patterns</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="readBook('Design Patterns')">
+									<i class="fas fa-book-open me-2"></i>Lire
+								</button>
+								<button class="btn btn-outline-primary" onclick="toggleFavorite(this)">
+									<i class="fas fa-heart me-2"></i>Favoris
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="design">
+					<div class="book-card fade-in">
+						<img src="/images/Library/vue js.avif" alt="Don't Make Me Think" class="book-image">
+						<div class="book-content">
+							<span class="book-category">Design</span>
+							<h5>Don't Make Me Think</h5>
+							<p class="book-author">Par Steve Krug</p>
+							<p class="book-description">Guide essentiel sur l'utilisabilité web et l'expérience
+								utilisateur.</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<span class="ms-2">4.8</span>
+							</div>
+
+							<div class="book-stats">
+								<div class="stat-item">
+									<div class="stat-number">216</div>
+									<div class="stat-label">Pages</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">3h</div>
+									<div class="stat-label">Lecture</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">12</div>
+									<div class="stat-label">Chapitres</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="readBook('Don\'t Make Me Think')">
+									<i class="fas fa-book-open me-2"></i>Lire
+								</button>
+								<button class="btn btn-outline-primary" onclick="toggleFavorite(this)">
+									<i class="fas fa-heart me-2"></i>Favoris
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="business">
+					<div class="book-card fade-in">
+						<img src="/images/Library/spring.png" alt="The Lean Startup" class="book-image">
+						<div class="book-content">
+							<span class="book-category">Business</span>
+							<h5>The Lean Startup</h5>
+							<p class="book-author">Par Eric Ries</p>
+							<p class="book-description">Méthodologie pour créer et gérer des startups innovantes et
+								durables.</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<span class="ms-2">4.6</span>
+							</div>
+
+							<div class="book-stats">
+								<div class="stat-item">
+									<div class="stat-number">336</div>
+									<div class="stat-label">Pages</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">5h</div>
+									<div class="stat-label">Lecture</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">18</div>
+									<div class="stat-label">Chapitres</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="readBook('The Lean Startup')">
+									<i class="fas fa-book-open me-2"></i>Lire
+								</button>
+								<button class="btn btn-outline-primary" onclick="toggleFavorite(this)">
+									<i class="fas fa-heart me-2"></i>Favoris
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="science">
+					<div class="book-card fade-in">
+						<img src="/images/Library/cybersec.jpg" alt="Artificial Intelligence" class="book-image">
+						<div class="book-content">
+							<span class="book-category">Science</span>
+							<h5>Artificial Intelligence</h5>
+							<p class="book-author">Par Stuart Russell</p>
+							<p class="book-description">Introduction complète à l'intelligence artificielle et au
+								machine learning.</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<span class="ms-2">4.9</span>
+							</div>
+
+							<div class="book-stats">
+								<div class="stat-item">
+									<div class="stat-number">1136</div>
+									<div class="stat-label">Pages</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">12h</div>
+									<div class="stat-label">Lecture</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">27</div>
+									<div class="stat-label">Chapitres</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="readBook('Artificial Intelligence')">
+									<i class="fas fa-book-open me-2"></i>Lire
+								</button>
+								<button class="btn btn-outline-primary" onclick="toggleFavorite(this)">
+									<i class="fas fa-heart me-2"></i>Favoris
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="programming">
+					<div class="book-card fade-in">
+						<img src="/images/Library/MySQL.png" alt="Database Design" class="book-image">
+						<div class="book-content">
+							<span class="book-category">Programmation</span>
+							<h5>Database Design</h5>
+							<p class="book-author">Par C.J. Date</p>
+							<p class="book-description">Principes fondamentaux de la conception de bases de données
+								relationnelles.</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<span class="ms-2">4.5</span>
+							</div>
+
+							<div class="book-stats">
+								<div class="stat-item">
+									<div class="stat-number">544</div>
+									<div class="stat-label">Pages</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">8h</div>
+									<div class="stat-label">Lecture</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">20</div>
+									<div class="stat-label">Chapitres</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="readBook('Database Design')">
+									<i class="fas fa-book-open me-2"></i>Lire
+								</button>
+								<button class="btn btn-outline-primary" onclick="toggleFavorite(this)">
+									<i class="fas fa-heart me-2"></i>Favoris
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 
-
-
-
-
-
-
-
-
-
-
-
-	<!--Partie pour la Notification cahée-->
-
-	<div class="notification" id="notification-box">
-		<div class="top">
-			<h2>Notifications</h2>
-			<div class="new">Nouveau</div>
-			<div class="plus">+</div>
-		</div>
-		<div class="mid">
-			<div class="friend">
-				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
-				<h3>Suzane ANTONIO</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-			<div class="traits"></div>
-
-
-			<div class="friend">
-				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
-				<h3>Moussa SENE</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-		</div>
-		<div class="bottom">
-			<h3>Voir Tous</h3>
-		</div>
-	</div>
-
-
-
-
-	<!-- Div de sélection de langue (initialement cachée) -->
-	<div class="langue" id="langue-menu">
-		<p>Choisissez votre langue :</p>
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-	</div>
-
-
-
-
-
-
-
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Pour la gestion des notifications
-			const bellIcon = document.getElementById("bell-icon");
-			const notificationBox = document.getElementById("notification-box");
+		// Mobile sidebar toggle
+		document.getElementById('sidebarToggle').addEventListener('click', function () {
+			document.getElementById('sidebar').classList.toggle('show');
+		});
 
-			bellIcon.addEventListener("click", () => {
-				notificationBox.classList.toggle("show");
+		// Close sidebar when clicking outside on mobile
+		document.addEventListener('click', function (event) {
+			const sidebar = document.getElementById('sidebar');
+			const sidebarToggle = document.getElementById('sidebarToggle');
+
+			if (window.innerWidth <= 768) {
+				if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+					sidebar.classList.remove('show');
+				}
+			}
+		});
+
+		// Filter functionality
+		document.querySelectorAll('.filter-btn').forEach(btn => {
+			btn.addEventListener('click', function () {
+				// Remove active class from all buttons
+				document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+				// Add active class to clicked button
+				this.classList.add('active');
+
+				const filter = this.dataset.filter;
+				const books = document.querySelectorAll('[data-category]');
+
+				books.forEach(book => {
+					if (filter === 'all' || book.dataset.category === filter) {
+						book.style.display = 'block';
+						book.classList.add('fade-in');
+					} else {
+						book.style.display = 'none';
+					}
+				});
 			});
+		});
 
-			// Pour la gestion de l'icône de langue
-			const langueIcon = document.getElementById("langue-icon");
-			const langueMenu = document.getElementById("langue-menu");
+		// Search functionality
+		document.getElementById('searchBtn').addEventListener('click', function () {
+			performSearch();
+		});
 
-			langueIcon.addEventListener("click", () => {
-				// Alterne l'affichage du menu des langues
-				langueMenu.classList.toggle("show-langue");
+		document.getElementById('searchInput').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				performSearch();
+			}
+		});
+
+		function performSearch() {
+			const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+			const books = document.querySelectorAll('.book-card');
+
+			books.forEach(book => {
+				const title = book.querySelector('h5').textContent.toLowerCase();
+				const author = book.querySelector('.book-author').textContent.toLowerCase();
+				const description = book.querySelector('.book-description').textContent.toLowerCase();
+
+				if (title.includes(searchTerm) || author.includes(searchTerm) || description.includes(searchTerm)) {
+					book.closest('.col-lg-4').style.display = 'block';
+					book.classList.add('fade-in');
+				} else {
+					book.closest('.col-lg-4').style.display = 'none';
+				}
+			});
+		}
+
+		// Read book functionality
+		function readBook(bookName) {
+			// Add pulse animation to button
+			const button = event.target;
+			button.classList.add('pulse');
+
+			setTimeout(() => {
+				button.classList.remove('pulse');
+			}, 2000);
+
+			// Show success message
+			const toast = document.createElement('div');
+			toast.className = 'alert alert-success position-fixed';
+			toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999;';
+			toast.innerHTML = `
+				<i class="fas fa-book-open me-2"></i>
+				Ouverture de "${bookName}"...
+			`;
+			document.body.appendChild(toast);
+
+			setTimeout(() => {
+				toast.remove();
+			}, 3000);
+		}
+
+		// Toggle favorite functionality
+		function toggleFavorite(button) {
+			const bookCard = button.closest('.book-card');
+			const icon = button.querySelector('i');
+
+			if (bookCard.classList.contains('favorite')) {
+				bookCard.classList.remove('favorite');
+				icon.className = 'fas fa-heart me-2';
+				button.classList.remove('btn-danger');
+				button.classList.add('btn-outline-primary');
+			} else {
+				bookCard.classList.add('favorite');
+				icon.className = 'fas fa-heart me-2';
+				button.classList.remove('btn-outline-primary');
+				button.classList.add('btn-danger');
+			}
+
+			// Show feedback
+			const toast = document.createElement('div');
+			toast.className = 'alert alert-info position-fixed';
+			toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999;';
+			toast.innerHTML = `
+				<i class="fas fa-heart me-2"></i>
+				${bookCard.classList.contains('favorite') ? 'Ajouté aux favoris' : 'Retiré des favoris'}
+			`;
+			document.body.appendChild(toast);
+
+			setTimeout(() => {
+				toast.remove();
+			}, 2000);
+		}
+
+		// Add animation classes on page load
+		document.addEventListener('DOMContentLoaded', function () {
+			const cards = document.querySelectorAll('.book-card');
+			cards.forEach((card, index) => {
+				setTimeout(() => {
+					card.classList.add('fade-in');
+				}, index * 100);
 			});
 		});
 	</script>
-
-
 </body>
 
 </html>

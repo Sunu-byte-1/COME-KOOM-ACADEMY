@@ -1,339 +1,843 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Abonnement - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	<link
+		href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 		rel="stylesheet">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<style>
+		/* Mobile-first responsive design */
+		body {
+			font-family: 'Poppins', sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
 
-	<link rel="stylesheet" href="/USER/style/navhaut.css">
-	<link rel="stylesheet" href="abonnement.css">
+		.sidebar {
+			background: rgba(255, 255, 255, 0.95);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			min-height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 280px;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.sidebar-brand {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			font-family: 'Artifika', serif;
+			font-size: 1.5rem;
+			font-weight: bold;
+			padding: 1.5rem;
+			text-align: center;
+		}
+
+		.sidebar-nav {
+			padding: 1rem 0;
+		}
+
+		.sidebar-nav .nav-link {
+			color: #333;
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+			transition: all 0.3s ease;
+			border-radius: 0;
+			margin: 0.25rem 1rem;
+			border-radius: 10px;
+		}
+
+		.sidebar-nav .nav-link:hover,
+		.sidebar-nav .nav-link.active {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			transform: translateX(5px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.sidebar-nav .nav-link i {
+			width: 20px;
+			margin-right: 10px;
+			font-size: 1.1rem;
+		}
+
+		.main-content {
+			margin-left: 280px;
+			padding: 2rem;
+			background: #f8f9fa;
+			min-height: 100vh;
+		}
+
+		.plan-card {
+			background: white;
+			border-radius: 15px;
+			padding: 2rem;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+			height: 100%;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.plan-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.plan-card.featured {
+			border: 3px solid #667eea;
+			transform: scale(1.05);
+		}
+
+		.plan-card.featured::before {
+			content: 'POPULAIRE';
+			position: absolute;
+			top: 20px;
+			right: -30px;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 0.5rem 2rem;
+			font-size: 0.8rem;
+			font-weight: bold;
+			transform: rotate(45deg);
+		}
+
+		.plan-header {
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+
+		.plan-name {
+			font-size: 1.5rem;
+			font-weight: bold;
+			margin-bottom: 0.5rem;
+		}
+
+		.plan-price {
+			font-size: 2.5rem;
+			font-weight: bold;
+			color: #667eea;
+			margin-bottom: 0.5rem;
+		}
+
+		.plan-period {
+			color: #6c757d;
+			font-size: 0.9rem;
+		}
+
+		.plan-features {
+			margin: 2rem 0;
+		}
+
+		.feature-item {
+			display: flex;
+			align-items: center;
+			margin-bottom: 1rem;
+			padding: 0.5rem 0;
+		}
+
+		.feature-item i {
+			color: #28a745;
+			margin-right: 0.75rem;
+			font-size: 1.1rem;
+		}
+
+		.feature-item.disabled {
+			opacity: 0.5;
+		}
+
+		.feature-item.disabled i {
+			color: #6c757d;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+			width: 100%;
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.btn-outline-primary {
+			border-color: #667eea;
+			color: #667eea;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+			width: 100%;
+		}
+
+		.btn-outline-primary:hover {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-color: #667eea;
+			transform: translateY(-2px);
+		}
+
+		.sidebar-toggle {
+			display: none;
+			position: fixed;
+			top: 1rem;
+			left: 1rem;
+			z-index: 1001;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			color: white;
+			padding: 0.75rem;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.current-plan {
+			background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+			color: white;
+			padding: 1rem;
+			border-radius: 10px;
+			margin-bottom: 2rem;
+		}
+
+		.payment-methods {
+			margin-top: 2rem;
+		}
+
+		.payment-method {
+			display: flex;
+			align-items: center;
+			padding: 1rem;
+			border: 2px solid #e9ecef;
+			border-radius: 10px;
+			margin-bottom: 1rem;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.payment-method:hover {
+			border-color: #667eea;
+			background: #f8f9fa;
+		}
+
+		.payment-method.selected {
+			border-color: #667eea;
+			background: rgba(102, 126, 234, 0.1);
+		}
+
+		.payment-method i {
+			font-size: 1.5rem;
+			margin-right: 1rem;
+		}
+
+		/* Mobile responsive */
+		@media (max-width: 768px) {
+			.sidebar {
+				transform: translateX(-100%);
+				width: 100%;
+			}
+
+			.sidebar.show {
+				transform: translateX(0);
+			}
+
+			.main-content {
+				margin-left: 0;
+				padding: 1rem;
+			}
+
+			.sidebar-toggle {
+				display: block !important;
+			}
+
+			.plan-card {
+				padding: 1.5rem;
+				margin-bottom: 1rem;
+			}
+
+			.plan-card.featured {
+				transform: none;
+			}
+		}
+
+		/* Animation effects */
+		.fade-in {
+			animation: fadeIn 0.5s ease-in;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.slide-in {
+			animation: slideIn 0.3s ease-out;
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: translateX(-100%);
+			}
+
+			to {
+				transform: translateX(0);
+			}
+		}
+
+		.pulse {
+			animation: pulse 2s infinite;
+		}
+
+		@keyframes pulse {
+			0% {
+				transform: scale(1);
+			}
+
+			50% {
+				transform: scale(1.05);
+			}
+
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		.bounce {
+			animation: bounce 0.6s ease-in-out;
+		}
+
+		@keyframes bounce {
+
+			0%,
+			20%,
+			50%,
+			80%,
+			100% {
+				transform: translateY(0);
+			}
+
+			40% {
+				transform: translateY(-10px);
+			}
+
+			60% {
+				transform: translateY(-5px);
+			}
+		}
+	</style>
 </head>
 
 <body>
+	<!-- Mobile Sidebar Toggle -->
+	<button class="btn sidebar-toggle d-md-none" id="sidebarToggle">
+		<i class="fas fa-bars"></i>
+	</button>
 
+	<!-- Sidebar -->
+	<nav class="sidebar" id="sidebar">
+		<div class="sidebar-brand">
+			<i class="fas fa-graduation-cap me-2"></i>
+			Come'Koom Academy
+		</div>
 
-	<main>
-		<section class="barre">
-			<div class="name">
-				<h3>Come'Koom Academy</h3>
-			</div>
+		<ul class="nav flex-column sidebar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/user.html">
+					<i class="fas fa-tachometer-alt"></i>
+					<span>Tableau de bord</span>
+				</a>
+			</li>
 
-			<div class="enum">
-				<ul>
-					<li>
-						<a href="/USER/user.html">
-							<i class="fa-solid fa-school"></i>
-							<p>Tableau de bord</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/taches/taches.html">
+					<i class="fas fa-tasks"></i>
+					<span>Tâches à terminer</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/taches/taches.html">
-							<i class="fa-solid fa-file"></i>
-							<p>Taches à terminer</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/favoris/fav.html">
+					<i class="fas fa-bookmark"></i>
+					<span>Mes cours</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/bibliothe/bibliothe.html">
+					<i class="fas fa-book"></i>
+					<span>Bibliothèque</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/favoris/fav.html">
-							<i class="fa-solid fa-bookmark"></i>
-							<p>Cours</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/menthors/menthor.html">
+					<i class="fas fa-users"></i>
+					<span>Mentors</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link active" href="/USER/abonnement/abonnement.html">
+					<i class="fas fa-crown"></i>
+					<span>Abonnement</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/message/message.html">
+					<i class="fas fa-comments"></i>
+					<span>Messages</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/parametres/parametre.html">
+					<i class="fas fa-cog"></i>
+					<span>Paramètres</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
 
-
-					<li>
-						<a href="/USER/bibliothe/bibliothe.html">
-							<i class="fa-solid fa-book"></i>
-							<p>Bibliotheque</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/menthors/menthor.html">
-							<i class="fa-solid fa-users"></i>
-							<p>Menthors</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/abonnement/abonnement.html" class="active">
-							<i class="fa-solid fa-user-plus"></i>
-							<p>Abonnement</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/message/message.html">
-							<i class="fa-regular fa-comments"></i>
-							<p>Messages</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/parametres/parametre.html">
-							<i class="fa-solid fa-gear"></i>
-							<p>Parametres</p>
-						</a>
-					</li>
-
-
-				</ul>
-
-				<div class="trait"></div>
-
-				<div class="exit">
-					<a href="/LOGIN/connexion.html" class="logout">
-						<i class="fa-solid fa-right-from-bracket"></i>
-						<p>Deconnexion</p>
-					</a>
-				</div>
-			</div>
-		</section>
-
-
-
-
-		<section class="content">
-
-			<!--LA BARRE DE NAVIGATION-->
-			<div class="nav">
-				<div class="rech">
-					<input type="search" placeholder="Search">
-					<i class="fa-solid fa-magnifying-glass"></i>
-
-				</div>
-
-
-				<div class="id">
-					<i class="fa-regular fa-bell" id="bell-icon"></i>
-					<!-- Ajout d'un ID pour la cloche -->
-
-					<i class="fa-solid fa-globe" id="langue-icon"></i>
-					<div class="us"></div>
-				</div>
-			</div>
-
-			<!--FINNNN BARRE DE NAVIGATION-->
-
-
-
-			<div class="payements">
-				<h1 class="titre">Plans de Tarification - Come'Koom Academy</h1>
-
-				<div class="container">
-					<div class="plan">
-						<h2>🎓 Basic Plan</h2>
-						<p>Idéal pour les étudiants</p>
-						<p class="price">50000F <span>/an</span></p>
-						<ul class="opportunite">
-							<li><i class="fa-regular fa-circle-check"></i> Vidéo
-								d'introduction</li>
-							<li><i class="fa-regular fa-circle-check"></i> Quiz interactifs
-							</li>
-							<li><i class="fa-regular fa-circle-check"></i> Programme du
-								cours</li>
-							<li><i class="fa-regular fa-circle-check"></i> Support
-								communautaire</li>
-
-							<li><i class="fa-regular fa-circle-check"></i> Accès à la
-								communauté</li>
-						</ul>
-						<a href="validation.html" class="btn" id="btn1">Choisir ce plan</a>
-					</div>
-
-					<div class="plan recommande">
-						<h2>🚀 Standard Plan</h2>
-						<p>Pour aller plus loin</p>
-						<p class="price">85000F <span>/an</span></p>
-						<ul class="opportunite">
-							<li><i class="fa-regular fa-circle-check"></i> Tout dans le
-								Basic Plan</li>
-							<li><i class="fa-regular fa-circle-check"></i> Accès aux
-								supports premium</li>
-
-							<li><i class="fa-regular fa-circle-check"></i> Exercices
-								pratiques</li>
-
-							<li><i class="fa-regular fa-circle-check"></i> Certificat de fin
-								de formation
-							</li>
-
-							<li><i class="fa-regular fa-circle-check"></i> Accès à la
-								communauté du cours
-							</li>
-
-							<li><i class="fa-regular fa-circle-check"></i> Présentation
-								d'une leçon échantillon
-							</li>
-						</ul>
-						<a href="validation.html" class="btn" id="btn2">Choisir ce plan</a>
-					</div>
-
-					<div class="plan">
-						<h2>🏆 Premium Plan</h2>
-						<p>Accès complet à tous les cours</p>
-						<p class="price">175000F <span>/an</span></p>
-						<ul class="opportunite">
-							<li><i class="fa-regular fa-circle-check"></i> Tout dans le
-								Standard Plan</li>
-							<li><i class="fa-regular fa-circle-check"></i> Accès illimité à
-								tous les cours</li>
-							<li><i class="fa-regular fa-circle-check"></i> Séances de
-								mentorat</li>
-							<li><i class="fa-regular fa-circle-check"></i> Projets pratiques
-								en entreprise</li>
-
-							<li><i class="fa-regular fa-circle-check"></i>Quizz interactifs
-							</li>
-
-							<li><i class="fa-regular fa-circle-check"></i> Excecices
-								Partiques (Projets )</li>
-
-							<li><i class="fa-regular fa-circle-check"></i> Acces a la
-								communauté</li>
-
-							<li><i class="fa-regular fa-circle-check"></i> Certification
-								apres formation</li>
-						</ul>
-						<a href="validation.html" class="btn" id="btn3">Choisir ce plan</a>
+	<!-- Main Content -->
+	<main class="main-content">
+		<div class="container-fluid">
+			<!-- Header -->
+			<div class="row mb-4">
+				<div class="col-12">
+					<div class="d-flex justify-content-between align-items-center">
+						<h1 class="h3 mb-0">Abonnement</h1>
+						<div class="d-flex align-items-center">
+							<div class="dropdown me-3">
+								<button class="btn btn-outline-primary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-bell"></i>
+									<span class="badge bg-danger ms-1">3</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">Nouveau cours disponible</a></li>
+									<li><a class="dropdown-item" href="#">Message de votre mentor</a></li>
+									<li><a class="dropdown-item" href="#">Tâche à compléter</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<img src="/images/PROFILS/profil1.jpg" alt="Profile" class="rounded-circle"
+										width="32" height="32">
+									<span class="ms-2"> Abdallah Diouf</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="/USER/parametres/profil.html">Mon profil</a></li>
+									<li><a class="dropdown-item" href="/USER/parametres/parametre.html">Paramètres</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item" href="/index.html">Déconnexion</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
+			<!-- Current Plan -->
+			<div class="current-plan">
+				<div class="row align-items-center">
+					<div class="col-md-8">
+						<h5 class="mb-1">Votre abonnement actuel</h5>
+						<p class="mb-0">Plan Premium - Renouvellement le 15 janvier 2024</p>
+					</div>
+					<div class="col-md-4 text-end">
+						<button class="btn btn-light" onclick="manageSubscription()">
+							<i class="fas fa-cog me-2"></i>Gérer
+						</button>
+					</div>
+				</div>
+			</div>
 
+			<!-- Plans Content -->
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="plan-card fade-in">
+						<div class="plan-header">
+							<h4 class="plan-name">Gratuit</h4>
+							<div class="plan-price">0€</div>
+							<div class="plan-period">pour toujours</div>
+						</div>
 
+						<div class="plan-features">
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>5 cours gratuits</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Accès à la bibliothèque de base</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Support communautaire</span>
+							</div>
+							<div class="feature-item disabled">
+								<i class="fas fa-times"></i>
+								<span>Certificats</span>
+							</div>
+							<div class="feature-item disabled">
+								<i class="fas fa-times"></i>
+								<span>Mentors privés</span>
+							</div>
+							<div class="feature-item disabled">
+								<i class="fas fa-times"></i>
+								<span>Projets avancés</span>
+							</div>
+						</div>
 
+						<button class="btn btn-outline-primary" onclick="selectPlan('Gratuit')">
+							Plan actuel
+						</button>
+					</div>
+				</div>
 
-		</section>
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="plan-card featured fade-in">
+						<div class="plan-header">
+							<h4 class="plan-name">Premium</h4>
+							<div class="plan-price">29€</div>
+							<div class="plan-period">par mois</div>
+						</div>
+
+						<div class="plan-features">
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Cours illimités</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Bibliothèque complète</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Certificats</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Mentors privés</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Projets avancés</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Support prioritaire</span>
+							</div>
+						</div>
+
+						<button class="btn btn-primary" onclick="selectPlan('Premium')">
+							<i class="fas fa-crown me-2"></i>Choisir Premium
+						</button>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="plan-card fade-in">
+						<div class="plan-header">
+							<h4 class="plan-name">Pro</h4>
+							<div class="plan-price">99€</div>
+							<div class="plan-period">par mois</div>
+						</div>
+
+						<div class="plan-features">
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Tout Premium</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Sessions 1-on-1</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Code review personnalisé</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Accès anticipé aux cours</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Support 24/7</span>
+							</div>
+							<div class="feature-item">
+								<i class="fas fa-check"></i>
+								<span>Portfolio personnalisé</span>
+							</div>
+						</div>
+
+						<button class="btn btn-outline-primary" onclick="selectPlan('Pro')">
+							<i class="fas fa-star me-2"></i>Choisir Pro
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Payment Methods -->
+			<div class="payment-methods" id="paymentMethods" style="display: none;">
+				<h4 class="mb-3">Méthode de paiement</h4>
+
+				<div class="payment-method" onclick="selectPayment('card')">
+					<i class="fas fa-credit-card text-primary"></i>
+					<div>
+						<h6 class="mb-1">Carte bancaire</h6>
+						<small class="text-muted">Visa, Mastercard, American Express</small>
+					</div>
+				</div>
+
+				<div class="payment-method" onclick="selectPayment('paypal')">
+					<i class="fab fa-paypal text-primary"></i>
+					<div>
+						<h6 class="mb-1">PayPal</h6>
+						<small class="text-muted">Paiement sécurisé via PayPal</small>
+					</div>
+				</div>
+
+				<div class="payment-method" onclick="selectPayment('crypto')">
+					<i class="fab fa-bitcoin text-warning"></i>
+					<div>
+						<h6 class="mb-1">Cryptomonnaies</h6>
+						<small class="text-muted">Bitcoin, Ethereum, Litecoin</small>
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<button class="btn btn-primary btn-lg" onclick="processPayment()">
+						<i class="fas fa-lock me-2"></i>Payer en toute sécurité
+					</button>
+				</div>
+			</div>
+		</div>
 	</main>
 
-
-
-
-
-
-
-
-
-
-
-
-	<!--Partie pour la Notification cahée-->
-
-	<div class="notification" id="notification-box">
-		<div class="top">
-			<h2>Notifications</h2>
-			<div class="new">Nouveau</div>
-			<div class="plus">+</div>
-		</div>
-		<div class="mid">
-			<div class="friend">
-				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
-				<h3>Suzane ANTONIO</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-			<div class="traits"></div>
-
-
-			<div class="friend">
-				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
-				<h3>Moussa SENE</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-		</div>
-		<div class="bottom">
-			<h3>Voir Tous</h3>
-		</div>
-	</div>
-
-
-
-
-	<!-- Div de sélection de langue (initialement cachée) -->
-	<div class="langue" id="langue-menu">
-		<p>Choisissez votre langue :</p>
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-	</div>
-
-
-
-
-
-
-
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Pour la gestion des notifications
-			const bellIcon = document.getElementById("bell-icon");
-			const notificationBox = document.getElementById("notification-box");
+		// Mobile sidebar toggle
+		document.getElementById('sidebarToggle').addEventListener('click', function () {
+			document.getElementById('sidebar').classList.toggle('show');
+		});
 
-			bellIcon.addEventListener("click", () => {
-				notificationBox.classList.toggle("show");
+		// Close sidebar when clicking outside on mobile
+		document.addEventListener('click', function (event) {
+			const sidebar = document.getElementById('sidebar');
+			const sidebarToggle = document.getElementById('sidebarToggle');
+
+			if (window.innerWidth <= 768) {
+				if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+					sidebar.classList.remove('show');
+				}
+			}
+		});
+
+		// Select plan functionality
+		function selectPlan(planName) {
+			// Add bounce animation to button
+			const button = event.target;
+			button.classList.add('bounce');
+
+			setTimeout(() => {
+				button.classList.remove('bounce');
+			}, 600);
+
+			// Show payment methods
+			document.getElementById('paymentMethods').style.display = 'block';
+
+			// Scroll to payment methods
+			document.getElementById('paymentMethods').scrollIntoView({
+				behavior: 'smooth'
 			});
 
-			// Pour la gestion de l'icône de langue
-			const langueIcon = document.getElementById("langue-icon");
-			const langueMenu = document.getElementById("langue-menu");
+			// Show success message
+			const toast = document.createElement('div');
+			toast.className = 'alert alert-success position-fixed';
+			toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999;';
+			toast.innerHTML = `
+				<i class="fas fa-check-circle me-2"></i>
+				Plan ${planName} sélectionné !
+			`;
+			document.body.appendChild(toast);
 
-			langueIcon.addEventListener("click", () => {
-				// Alterne l'affichage du menu des langues
-				langueMenu.classList.toggle("show-langue");
+			setTimeout(() => {
+				toast.remove();
+			}, 3000);
+		}
+
+		// Select payment method
+		function selectPayment(method) {
+			// Remove selected class from all payment methods
+			document.querySelectorAll('.payment-method').forEach(pm => {
+				pm.classList.remove('selected');
+			});
+
+			// Add selected class to clicked payment method
+			event.currentTarget.classList.add('selected');
+		}
+
+		// Process payment
+		function processPayment() {
+			const selectedPayment = document.querySelector('.payment-method.selected');
+
+			if (!selectedPayment) {
+				alert('Veuillez sélectionner une méthode de paiement');
+				return;
+			}
+
+			// Add pulse animation to button
+			const button = event.target;
+			button.classList.add('pulse');
+
+			// Simulate payment processing
+			button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Traitement...';
+			button.disabled = true;
+
+			setTimeout(() => {
+				button.innerHTML = '<i class="fas fa-check me-2"></i>Paiement réussi !';
+				button.classList.remove('pulse');
+				button.classList.remove('btn-primary');
+				button.classList.add('btn-success');
+
+				// Show success modal
+				const modal = document.createElement('div');
+				modal.className = 'modal fade';
+				modal.innerHTML = `
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Paiement réussi !</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+							</div>
+							<div class="modal-body text-center">
+								<i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+								<h4 class="mt-3">Bienvenue dans votre nouveau plan !</h4>
+								<p>Vous avez maintenant accès à tous les cours et fonctionnalités premium.</p>
+								<div class="alert alert-info">
+									<strong>Prochain paiement :</strong> 15 janvier 2024
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+									Commencer à apprendre
+								</button>
+							</div>
+						</div>
+					</div>
+				`;
+				document.body.appendChild(modal);
+
+				const modalInstance = new bootstrap.Modal(modal);
+				modalInstance.show();
+
+				modal.addEventListener('hidden.bs.modal', function () {
+					modal.remove();
+					// Reset button
+					setTimeout(() => {
+						button.innerHTML = '<i class="fas fa-lock me-2"></i>Payer en toute sécurité';
+						button.classList.remove('btn-success');
+						button.classList.add('btn-primary');
+						button.disabled = false;
+					}, 1000);
+				});
+			}, 2000);
+		}
+
+		// Manage subscription
+		function manageSubscription() {
+			const modal = document.createElement('div');
+			modal.className = 'modal fade';
+			modal.innerHTML = `
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Gérer votre abonnement</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6">
+									<h6>Informations actuelles</h6>
+									<ul class="list-unstyled">
+										<li><strong>Plan :</strong> Premium</li>
+										<li><strong>Prix :</strong> 29€/mois</li>
+										<li><strong>Prochain paiement :</strong> 15 janvier 2024</li>
+										<li><strong>Méthode :</strong> Carte bancaire</li>
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<h6>Actions</h6>
+									<div class="d-grid gap-2">
+										<button class="btn btn-outline-primary">
+											<i class="fas fa-edit me-2"></i>Modifier le plan
+										</button>
+										<button class="btn btn-outline-warning">
+											<i class="fas fa-pause me-2"></i>Pause abonnement
+										</button>
+										<button class="btn btn-outline-danger">
+											<i class="fas fa-times me-2"></i>Annuler abonnement
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`;
+			document.body.appendChild(modal);
+
+			const modalInstance = new bootstrap.Modal(modal);
+			modalInstance.show();
+
+			modal.addEventListener('hidden.bs.modal', function () {
+				modal.remove();
+			});
+		}
+
+		// Add animation classes on page load
+		document.addEventListener('DOMContentLoaded', function () {
+			const cards = document.querySelectorAll('.plan-card');
+			cards.forEach((card, index) => {
+				setTimeout(() => {
+					card.classList.add('fade-in');
+				}, index * 100);
 			});
 		});
 	</script>
-
-
 </body>
 
 </html>

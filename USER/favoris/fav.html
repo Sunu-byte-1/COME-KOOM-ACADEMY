@@ -1,1054 +1,949 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Mes Cours - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	<link
+		href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 		rel="stylesheet">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<style>
+		/* Mobile-first responsive design */
+		body {
+			font-family: 'Poppins', sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
 
-	<link rel="stylesheet" href="/USER/style/navhaut.css">
-	<link rel="stylesheet" href="/USER/favoris/fav.css">
+		.sidebar {
+			background: rgba(255, 255, 255, 0.95);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			min-height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 280px;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.sidebar-brand {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			font-family: 'Artifika', serif;
+			font-size: 1.5rem;
+			font-weight: bold;
+			padding: 1.5rem;
+			text-align: center;
+		}
+
+		.sidebar-nav {
+			padding: 1rem 0;
+		}
+
+		.sidebar-nav .nav-link {
+			color: #333;
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+			transition: all 0.3s ease;
+			border-radius: 0;
+			margin: 0.25rem 1rem;
+			border-radius: 10px;
+		}
+
+		.sidebar-nav .nav-link:hover,
+		.sidebar-nav .nav-link.active {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			transform: translateX(5px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.sidebar-nav .nav-link i {
+			width: 20px;
+			margin-right: 10px;
+			font-size: 1.1rem;
+		}
+
+		.main-content {
+			margin-left: 280px;
+			padding: 2rem;
+			background: #f8f9fa;
+			min-height: 100vh;
+		}
+
+		.course-card {
+			background: white;
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+			height: 100%;
+		}
+
+		.course-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.course-image {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+
+		.course-content {
+			padding: 1.5rem;
+		}
+
+		.course-category {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 0.25rem 0.75rem;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			display: inline-block;
+			margin-bottom: 1rem;
+		}
+
+		.course-progress {
+			margin: 1rem 0;
+		}
+
+		.progress {
+			height: 8px;
+			border-radius: 4px;
+			background: #e9ecef;
+		}
+
+		.progress-bar {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		.course-stats {
+			display: flex;
+			justify-content: space-between;
+			margin: 1rem 0;
+			padding: 1rem 0;
+			border-top: 1px solid #e9ecef;
+		}
+
+		.stat-item {
+			text-align: center;
+		}
+
+		.stat-number {
+			font-size: 1.2rem;
+			font-weight: bold;
+			color: #667eea;
+		}
+
+		.stat-label {
+			font-size: 0.8rem;
+			color: #6c757d;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.btn-outline-primary {
+			border-color: #667eea;
+			color: #667eea;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn-outline-primary:hover {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-color: #667eea;
+			transform: translateY(-2px);
+		}
+
+		.sidebar-toggle {
+			display: none;
+			position: fixed;
+			top: 1rem;
+			left: 1rem;
+			z-index: 1001;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			color: white;
+			padding: 0.75rem;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.rating {
+			color: #ffc107;
+			margin-bottom: 0.5rem;
+		}
+
+		.filter-buttons {
+			margin-bottom: 2rem;
+		}
+
+		.filter-btn {
+			margin: 0.25rem;
+			border-radius: 20px;
+			padding: 0.5rem 1rem;
+			font-size: 0.9rem;
+		}
+
+		.filter-btn.active {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-color: #667eea;
+		}
+
+		/* Mobile responsive */
+		@media (max-width: 768px) {
+			.sidebar {
+				transform: translateX(-100%);
+				width: 100%;
+			}
+
+			.sidebar.show {
+				transform: translateX(0);
+			}
+
+			.main-content {
+				margin-left: 0;
+				padding: 1rem;
+			}
+
+			.sidebar-toggle {
+				display: block !important;
+			}
+
+			.course-card {
+				margin-bottom: 1rem;
+			}
+
+			.course-stats {
+				flex-direction: column;
+				gap: 1rem;
+			}
+
+			.filter-buttons {
+				text-align: center;
+			}
+		}
+
+		/* Animation effects */
+		.fade-in {
+			animation: fadeIn 0.5s ease-in;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.slide-in {
+			animation: slideIn 0.3s ease-out;
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: translateX(-100%);
+			}
+
+			to {
+				transform: translateX(0);
+			}
+		}
+
+		.pulse {
+			animation: pulse 2s infinite;
+		}
+
+		@keyframes pulse {
+			0% {
+				transform: scale(1);
+			}
+
+			50% {
+				transform: scale(1.05);
+			}
+
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		.course-card.completed {
+			border: 2px solid #28a745;
+		}
+
+		.course-card.completed::after {
+			content: '✓';
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			background: #28a745;
+			color: white;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: bold;
+		}
+	</style>
 </head>
 
 <body>
+	<!-- Mobile Sidebar Toggle -->
+	<button class="btn sidebar-toggle d-md-none" id="sidebarToggle">
+		<i class="fas fa-bars"></i>
+	</button>
 
+	<!-- Sidebar -->
+	<nav class="sidebar" id="sidebar">
+		<div class="sidebar-brand">
+			<i class="fas fa-graduation-cap me-2"></i>
+			Come'Koom Academy
+		</div>
 
-	<main>
-		<section class="barre">
-			<div class="name">
-				<h3>Come'Koom Academy</h3>
-			</div>
+		<ul class="nav flex-column sidebar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/user.html">
+					<i class="fas fa-tachometer-alt"></i>
+					<span>Tableau de bord</span>
+				</a>
+			</li>
 
-			<div class="enum">
-				<ul>
-					<li>
-						<a href="/USER/user.html">
-							<i class="fa-solid fa-school"></i>
-							<p>Tableau de bord</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/taches/taches.html">
+					<i class="fas fa-tasks"></i>
+					<span>Tâches à terminer</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/taches/taches.html">
-							<i class="fa-solid fa-file"></i>
-							<p>Taches à terminer</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link active" href="/USER/favoris/fav.html">
+					<i class="fas fa-bookmark"></i>
+					<span>Mes cours</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/bibliothe/bibliothe.html">
+					<i class="fas fa-book"></i>
+					<span>Bibliothèque</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/favoris/fav.html" class="active">
-							<i class="fa-solid fa-bookmark"></i>
-							<p>Cours</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/menthors/menthor.html">
+					<i class="fas fa-users"></i>
+					<span>Mentors</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/abonnement/abonnement.html">
+					<i class="fas fa-crown"></i>
+					<span>Abonnement</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/message/message.html">
+					<i class="fas fa-comments"></i>
+					<span>Messages</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/parametres/parametre.html">
+					<i class="fas fa-cog"></i>
+					<span>Paramètres</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
 
-
-					<li>
-						<a href="/USER/bibliothe/bibliothe.html">
-							<i class="fa-solid fa-book"></i>
-							<p>Bibliotheque</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/menthors/menthor.html">
-							<i class="fa-solid fa-users"></i>
-							<p>Menthors</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/abonnement/abonnement.html">
-							<i class="fa-solid fa-user-plus"></i>
-							<p>Abonnement</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/message/message.html">
-							<i class="fa-regular fa-comments"></i>
-							<p>Messages</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/parametres/parametre.html">
-							<i class="fa-solid fa-gear"></i>
-							<p>Parametres</p>
-						</a>
-					</li>
-
-
-				</ul>
-
-				<div class="trait"></div>
-
-				<div class="exit">
-					<a href="/LOGIN/connexion.html" class="logout">
-						<i class="fa-solid fa-right-from-bracket"></i>
-						<p>Deconnexion</p>
-					</a>
-				</div>
-			</div>
-		</section>
-
-
-
-
-		<section class="content">
-
-			<!--LA BARRE DE NAVIGATION-->
-			<div class="nav">
-				<div class="rech">
-					<input type="search" placeholder="Search">
-					<i class="fa-solid fa-magnifying-glass"></i>
-
-				</div>
-
-
-				<div class="id">
-					<i class="fa-regular fa-bell" id="bell-icon"></i>
-					<!-- Ajout d'un ID pour la cloche -->
-
-					<i class="fa-solid fa-globe" id="langue-icon"></i>
-					<div class="us"></div>
-				</div>
-			</div>
-
-			<!--FINNNN BARRE DE NAVIGATION-->
-
-			<div class="cours">
-
-				<h2 class="titre11">Recement vus</h2>
-
-				<div class="--avancement">
-
-					<div class="gauche">
-						<p class="accent">En cours</p>
-						<p class="compl">Completés (07)</p>
-						<p class="save">Sauvegardés (13)</p>
-						<p class="fav">Favoris (24)</p>
+	<!-- Main Content -->
+	<main class="main-content">
+		<div class="container-fluid">
+			<!-- Header -->
+			<div class="row mb-4">
+				<div class="col-12">
+					<div class="d-flex justify-content-between align-items-center">
+						<h1 class="h3 mb-0">Mes Cours</h1>
+						<div class="d-flex align-items-center">
+							<div class="dropdown me-3">
+								<button class="btn btn-outline-primary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-bell"></i>
+									<span class="badge bg-danger ms-1">3</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">Nouveau cours disponible</a></li>
+									<li><a class="dropdown-item" href="#">Message de votre mentor</a></li>
+									<li><a class="dropdown-item" href="#">Tâche à compléter</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<img src="/images/PROFILS/profil1.jpg" alt="Profile" class="rounded-circle"
+										width="32" height="32">
+									<span class="ms-2">Abdallah Diouf</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="/USER/parametres/profil.html">Mon profil</a></li>
+									<li><a class="dropdown-item" href="/USER/parametres/parametre.html">Paramètres</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item" href="/index.html">Déconnexion</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
-
-
-
-					<div class="droite">
-						<p>+ créer nouveau cours</p>
-					</div>
-
-
-
-				</div>
-
-				<div class="recents">
-
-
-					<!--Cours recentss-->
-
-					<div class="chapitre">
-						<img src="/images/PARTIE COURS USER/Py.png" alt="">
-
-
-						<div class="text" id="text1">
-							<p>Analyse data</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Bases PYTHON</h2>
-						</div>
-
-						<div class="prof">
-							<img src="/images/PROFS/prof00.webp" alt="">
-							<div class="createur">
-								<p>Crée par <b>Marc DUBOIS</b></p>
-								<div class="rate0">
-									<i class="fa-solid fa-star"></i>
-									<p><b>4.6 (83k)</b></p>
-								</div>
-							</div>
-						</div>
-
-						<div class="pourcent">
-							<div class="--p">
-								<p>57%</p>
-								<div class="first">
-									<div class="prog" id="prog1">
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="details">
-							<div class="de">
-								<a href="/VIDEO/video.html">Continuer cours</a>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="chapitre">
-						<img src="/images/PARTIE COURS USER/wordpress.jpeg" alt="">
-
-
-						<div class="text">
-							<p>No code web</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Word Press dev </h2>
-						</div>
-
-						<div class="prof">
-							<img src="/images/PROFS/prof01.jpg" alt="">
-							<div class="createur">
-								<p>Crée par <b>Maurice FAYE</b></p>
-								<div class="rate0">
-									<i class="fa-solid fa-star"></i>
-									<p><b>4.9 (12k)</b></p>
-								</div>
-							</div>
-						</div>
-
-						<div class="pourcent">
-							<div class="--p">
-								<p>78%</p>
-								<div class="first">
-									<div class="prog">
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="details">
-							<div class="de">
-								<a href="/VIDEO/video.html">Continuer cours</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre">
-						<img src="/images/PARTIE COURS USER/web.webp" alt="">
-
-
-						<div class="text" id="text2">
-							<p>Frontend Web</p>
-						</div>
-
-						<div class="domaine">
-							<h2>ReactJs + Tailwind </h2>
-						</div>
-
-						<div class="prof">
-							<img src="/images/PERSONNES/concentré.jpg" alt="">
-							<div class="createur">
-								<p>Crée par <b>Steph LONGATE</b></p>
-								<div class="rate0">
-									<i class="fa-solid fa-star"></i>
-									<p><b>3.9 (256k)</b></p>
-								</div>
-							</div>
-						</div>
-
-						<div class="pourcent">
-							<div class="--p">
-								<p>94%</p>
-								<div class="first">
-									<div class="prog" id="prog2">
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="details">
-							<div class="de">
-								<a href="/VIDEO/video.html">Continuer cours</a>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="chapitre">
-						<img src="/images/PARTIE COURS USER/data.jpg" alt="">
-
-
-						<div class="text" id="text3">
-							<p>Statistiques</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Data Analyst </h2>
-						</div>
-
-						<div class="prof">
-							<img src="/images/PROFS/prof2.jpg" alt="">
-							<div class="createur">
-								<p>Crée par <b>Ndiaga FALL</b></p>
-								<div class="rate0">
-									<i class="fa-solid fa-star"></i>
-									<p><b>3.7 (739k)</b></p>
-								</div>
-							</div>
-						</div>
-
-						<div class="pourcent">
-							<div class="--p">
-								<p>12%</p>
-								<div class="first">
-									<div class="prog" id="prog3">
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="details">
-							<div class="de">
-								<a href="/VIDEO/video.html">Continuer cours</a>
-							</div>
-						</div>
-
-					</div>
-
-					<!--Fin cours recents-->
-
-				</div>
-
-			</div>
-
-
-
-
-
-
-
-			<div class="cours1">
-				<div class="-title">
-					<div>
-						<h2>Recommandé Pour vous</h2>
-					</div>
-
-					<div>
-						<label for="catégorie"></label>
-						<select id="catégorie" class="custom-select">
-							<option value="" disabled selected>catégorie</option>
-
-							<optgroup label="Développement Web">
-								<option value="frontend">Front-End Developer</option>
-								<option value="backend">Back-End Developer</option>
-								<option value="fullstack">Full-Stack Developer</option>
-							</optgroup>
-
-							<optgroup label="Data Analyst & Science">
-								<option value="data-analyst">Data Analyst</option>
-								<option value="data-scientist">Data Scientist</option>
-								<option value="machine-learning">Machine Learning
-									Engineer</option>
-							</optgroup>
-
-							<optgroup label="UI/UX Design">
-								<option value="ui-designer">UI Designer</option>
-								<option value="ux-designer">UX Designer</option>
-								<option value="product-designer">Product Designer
-								</option>
-							</optgroup>
-
-							<optgroup label="Cybersécurité">
-								<option value="security-analyst">Analyste en
-									Cybersécurité</option>
-								<option value="ethical-hacker">Hacker Éthique</option>
-								<option value="soc-analyst">Analyste SOC</option>
-							</optgroup>
-
-							<optgroup label="Autres">
-								<option value="devops">DevOps Engineer</option>
-								<option value="cloud">Cloud Architect</option>
-								<option value="blockchain">Blockchain Developer</option>
-							</optgroup>
-						</select>
-
-
-
-						<label for="catégorie1"></label>
-						<select id="catégorie1" class="custom-select">
-							<option value="" disabled selected>Tirer par</option>
-							<option value="">Populariites</option>
-							<option value="">Les mieux notes</option>
-							<option value="">Ajout recent</option>
-							<option value="">Les plus vus</option>
-
-						</select>
-
-
-
-
-
-					</div>
-				</div>
-
-
-
-
-
-
-
-
-
-
-
-				<div class="corps">
-
-
-					<div class="chapitre">
-						<img src="/images/ICONE COURS USER/react nativve.jpg" alt="">
-
-
-						<div class="text">
-							<p>Frontend</p>
-						</div>
-
-						<div class="domaine">
-							<h2>React Native</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>8k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>24 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>40 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.9 (12k)</b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre">
-						<img src="/images/COURS_complet/RUST.jpeg" alt="">
-
-
-						<div class="text" id="sec">
-							<p>Securité</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Rust</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>3.5k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>69 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>110 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>3.4 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="chapitre">
-						<img src="/images/COURS_complet/c.jpg" alt="">
-
-
-						<div class="text" id="prog">
-							<p>Programmation</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Langage C</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>17k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>36 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>60 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.7 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre">
-						<img src="/images/COURS_complet/c++.jpg" alt="">
-
-
-						<div class="text" id="prog01">
-							<p>Programmation objet</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Langage C++</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>24k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>85 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>215 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>3.9 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre">
-						<img src="/images/COURS_complet/FLUTTER.webp" alt="">
-
-
-						<div class="text" id="flutter">
-							<p>Dev Mobile</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Flutter (Dart)</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>7k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>20 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>55 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.2 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre">
-						<img src="/images/COURS_complet/SWIFT.jpg" alt="">
-
-
-						<div class="text" id="swift">
-							<p>Dev Mobile IOS</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Swift</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>11k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>56 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>98 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.2 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="chapitre">
-						<img src="/images/COURS_complet/express.jpg" alt="">
-
-
-						<div class="text" id="exp">
-							<p>Framework Js</p>
-						</div>
-
-						<div class="domaine">
-							<h2>Express JS</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>7k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>26 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>45 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>3.6 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-					<div class="chapitre">
-						<img src="/images/COURS_complet/SQL.jpg" alt="">
-
-
-						<div class="text" id="sql">
-							<p>base de donnees</p>
-						</div>
-
-						<div class="domaine">
-							<h2>SQL</h2>
-						</div>
-
-						<div class="follows">
-							<div class="images">
-								<img src="/images/FOLLOWERS/1.jpg" alt="">
-								<img src="/images/FOLLOWERS/concentré.jpg" alt=""
-									class="float">
-								<img src="/images/FOLLOWERS/content-creator-analyzing-keyboard.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/happy-surprised-young-african-american-woman-holding-laptop-blue-background.jpg"
-									alt="" class="float">
-								<img src="/images/FOLLOWERS/1.jpg" alt="" class="float">
-
-								<h5>18k+</h5>
-
-								<i class="fa-solid fa-heart"></i>
-
-							</div>
-						</div>
-
-						<div class="LINE">
-
-						</div>
-
-						<div class="duree">
-							<div class="lesson">
-								<i class="fa-solid fa-video"></i>
-								<p>15 Leçons</p>
-							</div>
-
-							<div class="lesson">
-								<i class="fa-regular fa-clock"></i>
-								<p>36 heures</p>
-							</div>
-						</div>
-
-						<div class="rate">
-							<div class="rate0">
-								<i class="fa-solid fa-star"></i>
-								<p><b>4.4 </b></p>
-							</div>
-
-							<div class="de" id="details">
-								<a href="">Voir Details</a>
-							</div>
-						</div>
-
-					</div>
-
-
-
-
-				</div>
-
-
-
-
-
-
-
-
-				<div class="foot" id="#foot1">
-
-
-					<div class="left">
-						<p>
-							<< Precedent</p>
-					</div>
-
-					<div class="mid">
-						<p>1</p>
-						<p>2</p>
-						<p>3</p>
-						<p>....</p>
-						<p>36</p>
-					</div>
-
-					<div class="right">
-						<p>Suivant >> </p>
-					</div>
-
 				</div>
 			</div>
 
-
-			<div class="cours2">
-
+			<!-- Filter Buttons -->
+			<div class="filter-buttons">
+				<button class="btn btn-outline-primary filter-btn active" data-filter="all">Tous</button>
+				<button class="btn btn-outline-primary filter-btn" data-filter="web">Développement Web</button>
+				<button class="btn btn-outline-primary filter-btn" data-filter="mobile">Développement Mobile</button>
+				<button class="btn btn-outline-primary filter-btn" data-filter="data">Data Science</button>
+				<button class="btn btn-outline-primary filter-btn" data-filter="design">Design</button>
 			</div>
 
+			<!-- Courses Content -->
+			<div class="row" id="coursesContainer">
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="web">
+					<div class="course-card fade-in">
+						<img src="/images/ICONES COURS/html.webp" alt="HTML/CSS" class="course-image">
+						<div class="course-content">
+							<span class="course-category">Développement Web</span>
+							<h5>HTML & CSS Avancé</h5>
+							<p class="text-muted">Maîtrisez les fondamentaux du développement web moderne</p>
 
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<span class="ms-2">4.5</span>
+							</div>
 
-		</section>
+							<div class="course-progress">
+								<div class="d-flex justify-content-between mb-2">
+									<small>Progression</small>
+									<small>75%</small>
+								</div>
+								<div class="progress">
+									<div class="progress-bar" style="width: 75%"></div>
+								</div>
+							</div>
+
+							<div class="course-stats">
+								<div class="stat-item">
+									<div class="stat-number">12</div>
+									<div class="stat-label">Leçons</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">8h</div>
+									<div class="stat-label">Durée</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">3</div>
+									<div class="stat-label">Projets</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="continueCourse('HTML & CSS Avancé')">
+									<i class="fas fa-play me-2"></i>Continuer
+								</button>
+								<button class="btn btn-outline-primary"
+									onclick="viewCourseDetails('HTML & CSS Avancé')">
+									<i class="fas fa-info-circle me-2"></i>Détails
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="web">
+					<div class="course-card fade-in">
+						<img src="/images/ICONES COURS/javascript.webp" alt="JavaScript" class="course-image">
+						<div class="course-content">
+							<span class="course-category">Développement Web</span>
+							<h5>JavaScript ES6+</h5>
+							<p class="text-muted">Apprenez JavaScript moderne avec les dernières fonctionnalités</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<span class="ms-2">4.8</span>
+							</div>
+
+							<div class="course-progress">
+								<div class="d-flex justify-content-between mb-2">
+									<small>Progression</small>
+									<small>45%</small>
+								</div>
+								<div class="progress">
+									<div class="progress-bar" style="width: 45%"></div>
+								</div>
+							</div>
+
+							<div class="course-stats">
+								<div class="stat-item">
+									<div class="stat-number">18</div>
+									<div class="stat-label">Leçons</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">12h</div>
+									<div class="stat-label">Durée</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">5</div>
+									<div class="stat-label">Projets</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="continueCourse('JavaScript ES6+')">
+									<i class="fas fa-play me-2"></i>Continuer
+								</button>
+								<button class="btn btn-outline-primary" onclick="viewCourseDetails('JavaScript ES6+')">
+									<i class="fas fa-info-circle me-2"></i>Détails
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="web">
+					<div class="course-card fade-in completed">
+						<img src="/images/ICONES COURS/React.png" alt="React" class="course-image">
+						<div class="course-content">
+							<span class="course-category">Développement Web</span>
+							<h5>React.js Fondamentaux</h5>
+							<p class="text-muted">Créez des applications web modernes avec React</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<span class="ms-2">4.9</span>
+							</div>
+
+							<div class="course-progress">
+								<div class="d-flex justify-content-between mb-2">
+									<small>Progression</small>
+									<small>100%</small>
+								</div>
+								<div class="progress">
+									<div class="progress-bar" style="width: 100%"></div>
+								</div>
+							</div>
+
+							<div class="course-stats">
+								<div class="stat-item">
+									<div class="stat-number">24</div>
+									<div class="stat-label">Leçons</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">15h</div>
+									<div class="stat-label">Durée</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">8</div>
+									<div class="stat-label">Projets</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-success" onclick="viewCertificate('React.js Fondamentaux')">
+									<i class="fas fa-certificate me-2"></i>Certificat
+								</button>
+								<button class="btn btn-outline-primary"
+									onclick="viewCourseDetails('React.js Fondamentaux')">
+									<i class="fas fa-info-circle me-2"></i>Détails
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="mobile">
+					<div class="course-card fade-in">
+						<img src="/images/ICONES COURS/react nativve.jpg" alt="React Native" class="course-image">
+						<div class="course-content">
+							<span class="course-category">Développement Mobile</span>
+							<h5>React Native</h5>
+							<p class="text-muted">Développez des applications mobiles cross-platform</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<span class="ms-2">4.6</span>
+							</div>
+
+							<div class="course-progress">
+								<div class="d-flex justify-content-between mb-2">
+									<small>Progression</small>
+									<small>30%</small>
+								</div>
+								<div class="progress">
+									<div class="progress-bar" style="width: 30%"></div>
+								</div>
+							</div>
+
+							<div class="course-stats">
+								<div class="stat-item">
+									<div class="stat-number">20</div>
+									<div class="stat-label">Leçons</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">18h</div>
+									<div class="stat-label">Durée</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">6</div>
+									<div class="stat-label">Projets</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="continueCourse('React Native')">
+									<i class="fas fa-play me-2"></i>Continuer
+								</button>
+								<button class="btn btn-outline-primary" onclick="viewCourseDetails('React Native')">
+									<i class="fas fa-info-circle me-2"></i>Détails
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="data">
+					<div class="course-card fade-in">
+						<img src="/images/ICONES COURS/machine.jpg" alt="Machine Learning" class="course-image">
+						<div class="course-content">
+							<span class="course-category">Data Science</span>
+							<h5>Machine Learning</h5>
+							<p class="text-muted">Introduction aux algorithmes de machine learning</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<span class="ms-2">4.7</span>
+							</div>
+
+							<div class="course-progress">
+								<div class="d-flex justify-content-between mb-2">
+									<small>Progression</small>
+									<small>60%</small>
+								</div>
+								<div class="progress">
+									<div class="progress-bar" style="width: 60%"></div>
+								</div>
+							</div>
+
+							<div class="course-stats">
+								<div class="stat-item">
+									<div class="stat-number">16</div>
+									<div class="stat-label">Leçons</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">20h</div>
+									<div class="stat-label">Durée</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">4</div>
+									<div class="stat-label">Projets</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="continueCourse('Machine Learning')">
+									<i class="fas fa-play me-2"></i>Continuer
+								</button>
+								<button class="btn btn-outline-primary" onclick="viewCourseDetails('Machine Learning')">
+									<i class="fas fa-info-circle me-2"></i>Détails
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 col-12 mb-4" data-category="design">
+					<div class="course-card fade-in">
+						<img src="/images/ICONES COURS/images.png" alt="UI/UX Design" class="course-image">
+						<div class="course-content">
+							<span class="course-category">Design</span>
+							<h5>UI/UX Design</h5>
+							<p class="text-muted">Créez des interfaces utilisateur modernes et intuitives</p>
+
+							<div class="rating">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+								<span class="ms-2">4.4</span>
+							</div>
+
+							<div class="course-progress">
+								<div class="d-flex justify-content-between mb-2">
+									<small>Progression</small>
+									<small>25%</small>
+								</div>
+								<div class="progress">
+									<div class="progress-bar" style="width: 25%"></div>
+								</div>
+							</div>
+
+							<div class="course-stats">
+								<div class="stat-item">
+									<div class="stat-number">14</div>
+									<div class="stat-label">Leçons</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">10h</div>
+									<div class="stat-label">Durée</div>
+								</div>
+								<div class="stat-item">
+									<div class="stat-number">3</div>
+									<div class="stat-label">Projets</div>
+								</div>
+							</div>
+
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" onclick="continueCourse('UI/UX Design')">
+									<i class="fas fa-play me-2"></i>Continuer
+								</button>
+								<button class="btn btn-outline-primary" onclick="viewCourseDetails('UI/UX Design')">
+									<i class="fas fa-info-circle me-2"></i>Détails
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 
-
-
-
-
-
-
-
-
-
-
-
-	<!--Partie pour la Notification cahée-->
-
-	<div class="notification" id="notification-box">
-		<div class="top">
-			<h2>Notifications</h2>
-			<div class="new">Nouveau</div>
-			<div class="plus">+</div>
-		</div>
-		<div class="mid">
-			<div class="friend">
-				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
-				<h3>Suzane ANTONIO</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-			<div class="traits"></div>
-
-
-			<div class="friend">
-				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
-				<h3>Moussa SENE</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-		</div>
-		<div class="bottom">
-			<h3>Voir Tous</h3>
-		</div>
-	</div>
-
-	<!-- Div de sélection de langue (initialement cachée) -->
-	<div class="langue" id="langue-menu">
-		<p>Choisissez votre langue :</p>
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-	</div>
-
-
-
-
-
-
-
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Pour la gestion des notifications
-			const bellIcon = document.getElementById("bell-icon");
-			const notificationBox = document.getElementById("notification-box");
+		// Mobile sidebar toggle
+		document.getElementById('sidebarToggle').addEventListener('click', function () {
+			document.getElementById('sidebar').classList.toggle('show');
+		});
 
-			bellIcon.addEventListener("click", () => {
-				notificationBox.classList.toggle("show");
+		// Close sidebar when clicking outside on mobile
+		document.addEventListener('click', function (event) {
+			const sidebar = document.getElementById('sidebar');
+			const sidebarToggle = document.getElementById('sidebarToggle');
+
+			if (window.innerWidth <= 768) {
+				if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+					sidebar.classList.remove('show');
+				}
+			}
+		});
+
+		// Filter functionality
+		document.querySelectorAll('.filter-btn').forEach(btn => {
+			btn.addEventListener('click', function () {
+				// Remove active class from all buttons
+				document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+				// Add active class to clicked button
+				this.classList.add('active');
+
+				const filter = this.dataset.filter;
+				const courses = document.querySelectorAll('[data-category]');
+
+				courses.forEach(course => {
+					if (filter === 'all' || course.dataset.category === filter) {
+						course.style.display = 'block';
+						course.classList.add('fade-in');
+					} else {
+						course.style.display = 'none';
+					}
+				});
 			});
+		});
 
-			// Pour la gestion de l'icône de langue
-			const langueIcon = document.getElementById("langue-icon");
-			const langueMenu = document.getElementById("langue-menu");
+		// Continue course functionality
+		function continueCourse(courseName) {
+			// Add pulse animation to button
+			const button = event.target;
+			button.classList.add('pulse');
 
-			langueIcon.addEventListener("click", () => {
-				// Alterne l'affichage du menu des langues
-				langueMenu.classList.toggle("show-langue");
+			setTimeout(() => {
+				button.classList.remove('pulse');
+			}, 2000);
+
+			// Show success message
+			const toast = document.createElement('div');
+			toast.className = 'alert alert-success position-fixed';
+			toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999;';
+			toast.innerHTML = `
+				<i class="fas fa-play-circle me-2"></i>
+				Reprise du cours : ${courseName}
+			`;
+			document.body.appendChild(toast);
+
+			setTimeout(() => {
+				toast.remove();
+			}, 3000);
+		}
+
+		// View course details functionality
+		function viewCourseDetails(courseName) {
+			// Simulate course details modal
+			const modal = document.createElement('div');
+			modal.className = 'modal fade';
+			modal.innerHTML = `
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">${courseName}</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6">
+									<img src="/images/ICONES COURS/html.webp" alt="${courseName}" class="img-fluid rounded">
+								</div>
+								<div class="col-md-6">
+									<h6>Description</h6>
+									<p>Ce cours vous permettra de maîtriser les concepts fondamentaux et avancés de ${courseName}.</p>
+									
+									<h6>Contenu du cours</h6>
+									<ul>
+										<li>Introduction aux concepts</li>
+										<li>Exercices pratiques</li>
+										<li>Projets réels</li>
+										<li>Évaluation finale</li>
+									</ul>
+									
+									<h6>Prérequis</h6>
+									<p>Aucun prérequis nécessaire pour ce cours.</p>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+							<button type="button" class="btn btn-primary" onclick="continueCourse('${courseName}')">
+								<i class="fas fa-play me-2"></i>Continuer le cours
+							</button>
+						</div>
+					</div>
+				</div>
+			`;
+			document.body.appendChild(modal);
+
+			const modalInstance = new bootstrap.Modal(modal);
+			modalInstance.show();
+
+			modal.addEventListener('hidden.bs.modal', function () {
+				modal.remove();
+			});
+		}
+
+		// View certificate functionality
+		function viewCertificate(courseName) {
+			const modal = document.createElement('div');
+			modal.className = 'modal fade';
+			modal.innerHTML = `
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Certificat - ${courseName}</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+						<div class="modal-body text-center">
+							<i class="fas fa-certificate text-success" style="font-size: 4rem;"></i>
+							<h4 class="mt-3">Félicitations !</h4>
+							<p>Vous avez terminé avec succès le cours "${courseName}"</p>
+							<div class="alert alert-success">
+								<strong>Note finale :</strong> 95/100
+							</div>
+							<button class="btn btn-primary">
+								<i class="fas fa-download me-2"></i>Télécharger le certificat
+							</button>
+						</div>
+					</div>
+				</div>
+			`;
+			document.body.appendChild(modal);
+
+			const modalInstance = new bootstrap.Modal(modal);
+			modalInstance.show();
+
+			modal.addEventListener('hidden.bs.modal', function () {
+				modal.remove();
+			});
+		}
+
+		// Add animation classes on page load
+		document.addEventListener('DOMContentLoaded', function () {
+			const cards = document.querySelectorAll('.course-card');
+			cards.forEach((card, index) => {
+				setTimeout(() => {
+					card.classList.add('fade-in');
+				}, index * 100);
 			});
 		});
 	</script>
-	<script src="/USER/script.js"></script>
-
-
 </body>
 
 </html>

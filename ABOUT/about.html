@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>À Propos - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,223 +24,387 @@
 		href="https://fonts.googleapis.com/css2?family=Artifika&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sacramento&display=swap"
 		rel="stylesheet">
 
+	<!-- Global CSS -->
+	<link rel="stylesheet" href="/styles.css">
+	<link rel="stylesheet" href="/theme.css">
 
-	<link rel="stylesheet" href="/STYLE ACCUEIL  & NAV BAR/navbar.css">
-	<link rel="stylesheet" href="about.css">
-	<link rel="stylesheet" href="/STYLE ACCUEIL  & NAV BAR/footer.css">
-	<link rel="stylesheet" href="/responsivite/responsiviteabout.css">
+	<style>
+		/* Mobile-first custom styles */
+		.navbar-brand {
+			font-family: 'Artifika', serif;
+			font-weight: bold;
+			font-size: 1.5rem;
+		}
+
+		.hero-section {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 6rem 0 4rem 0;
+			min-height: 60vh;
+			display: flex;
+			align-items: center;
+		}
+
+		.hero-title {
+			font-size: 3rem;
+			font-weight: bold;
+			margin-bottom: 1rem;
+		}
+
+		.hero-subtitle {
+			font-size: 1.5rem;
+			margin-bottom: 2rem;
+			opacity: 0.9;
+		}
+
+		.section-title {
+			font-size: 2.5rem;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 3rem;
+			color: #333;
+		}
+
+		.feature-card {
+			background: white;
+			border-radius: 15px;
+			padding: 2rem;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+			height: 100%;
+		}
+
+		.feature-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.feature-icon {
+			font-size: 3rem;
+			color: #667eea;
+			margin-bottom: 1rem;
+		}
+
+		.team-card {
+			background: white;
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+		}
+
+		.team-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.team-card img {
+			width: 100%;
+			height: 250px;
+			object-fit: cover;
+		}
+
+		.social-links a {
+			color: #667eea;
+			margin: 0 0.5rem;
+			font-size: 1.2rem;
+			transition: color 0.3s ease;
+		}
+
+		.social-links a:hover {
+			color: #764ba2;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.hero-title {
+				font-size: 2.5rem;
+			}
+
+			.hero-subtitle {
+				font-size: 1.2rem;
+			}
+
+			.section-title {
+				font-size: 2rem;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.hero-title {
+				font-size: 2rem;
+			}
+
+			.section-title {
+				font-size: 1.8rem;
+			}
+		}
+	</style>
 </head>
 
 <body>
-	<div class="header-">
-		<div class="titre">
-			Bienvenue sur Come'Koom Academy
-		</div>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/index.html">
+				<i class="fas fa-graduation-cap me-2"></i>
+				Come'Koom Academy
+			</a>
 
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-
-		<nav class="navbar">
-			<nav class="navbar">
-				<ul class="liens">
-					<li><a href="/index.html">accueil</a></li>
-					<li><a href="/ABOUT/about.html">A propos</a></li>
-					<li><a href="/CONTACT/contacts.html">Contacts</a></li>
-					<li class="login"><a href="/LOGIN/connexion.html"><img src="/images/user.png" alt="" width="35"></a>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/index.html">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="/ABOUT/about.html">À propos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/CONTACT/contacts.html">Contact</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/LOGIN/connexion.html" title="Connexion">
+							<i class="fas fa-user"></i>
+						</a>
 					</li>
 				</ul>
-			</nav>
-		</nav>
-	</div>
-
-
-
-	<div class="accueil">
-		<div class="gauche">
-			<div class="text">
-				<h1>Come'Koom</h1>
-				<h2>Academy</h2>
-				<p>Savoir, c'est pouvoir. Apprends sans limites !</p>
 			</div>
 		</div>
-	</div>
+	</nav>
 
+	<!-- Hero Section -->
+	<section class="hero-section">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-md-8 mx-auto text-center">
+					<h1 class="hero-title">Come'Koom Academy</h1>
+					<h2 class="hero-subtitle">Savoir, c'est pouvoir. Apprends sans limites !</h2>
+				</div>
+			</div>
+		</div>
+	</section>
 
+	<!-- Welcome Section -->
+	<section class="py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<div class="text-center mb-5">
+						<h2 class="section-title">Bienvenue sur Come'Koom Academy</h2>
+						<h3 class="text-muted">Votre porte vers la connaissance !</h3>
+					</div>
 
+					<div class="card border-0 shadow-lg">
+						<div class="card-body p-5">
+							<p class="lead">
+								<span class="fw-bold text-primary">Come'Koom Academy</span> est une plateforme
+								d'apprentissage en ligne
+								qui met l'éducation à la portée de tous. Notre objectif est de fournir des cours de
+								qualité
+								accessibles à toute personne désireuse d'acquérir de nouvelles compétences.
+							</p>
+							<p>
+								Aujourd'hui, grâce à Internet, le savoir est à portée de main. Mais face à la multitude
+								de
+								ressources en ligne, il est parfois difficile de trouver un espace structuré, intuitif
+								et
+								accessible. Come'Koom Academy répond à ce besoin en offrant une expérience
+								d'apprentissage
+								fluide, organisée et efficace, adaptée à tous les niveaux.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
+	<!-- Values Section -->
+	<section class="py-5 bg-light">
+		<div class="container">
+			<h2 class="section-title">Nos Valeurs</h2>
+			<div class="row g-4">
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="feature-card text-center">
+						<div class="feature-icon">
+							<i class="fas fa-lightbulb"></i>
+						</div>
+						<h4>Innovation</h4>
+						<p>Nous utilisons les technologies les plus récentes pour offrir une expérience d'apprentissage
+							moderne et efficace.</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="feature-card text-center">
+						<div class="feature-icon">
+							<i class="fas fa-users"></i>
+						</div>
+						<h4>Communauté</h4>
+						<p>Nous croyons en la puissance de l'apprentissage collaboratif et de l'entraide entre
+							apprenants.</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="feature-card text-center">
+						<div class="feature-icon">
+							<i class="fas fa-star"></i>
+						</div>
+						<h4>Excellence</h4>
+						<p>Nous nous engageons à fournir un contenu de qualité et un accompagnement personnalisé.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
+	<!-- Team Section -->
+	<section class="py-5">
+		<div class="container">
+			<h2 class="section-title">Notre Équipe d'Experts</h2>
+			<div class="row g-4">
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="team-card">
+						<img src="/images/PERSONNES/createur contenu.jpg" alt="Djimba NIANE">
+						<div class="card-body text-center">
+							<h5 class="card-title">Djimba NIANE</h5>
+							<p class="card-text text-muted">Ingénieur Systèmes Embarqués</p>
+							<div class="social-links">
+								<a href="#"><i class="fab fa-linkedin"></i></a>
+								<a href="#"><i class="fab fa-github"></i></a>
+								<a href="#"><i class="fab fa-twitter"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="team-card">
+						<img src="/images/PROFILS/profil1.jpg" alt="Masseka LONGATE">
+						<div class="card-body text-center">
+							<h5 class="card-title">Masseka LONGATE</h5>
+							<p class="card-text text-muted">Développeur Fullstack</p>
+							<div class="social-links">
+								<a href="#"><i class="fab fa-linkedin"></i></a>
+								<a href="#"><i class="fab fa-github"></i></a>
+								<a href="#"><i class="fab fa-twitter"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="team-card">
+						<img src="/images/PROFILS/profil4.jpg" alt="Lamine NDIAYE">
+						<div class="card-body text-center">
+							<h5 class="card-title">Lamine NDIAYE</h5>
+							<p class="card-text text-muted">Ingénieur Logiciels</p>
+							<div class="social-links">
+								<a href="#"><i class="fab fa-linkedin"></i></a>
+								<a href="#"><i class="fab fa-github"></i></a>
+								<a href="#"><i class="fab fa-twitter"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="team-card">
+						<img src="/images/PROFS/prof01.jpg" alt="Moustapha DIALLO">
+						<div class="card-body text-center">
+							<h5 class="card-title">Moustapha DIALLO</h5>
+							<p class="card-text text-muted">Expert Intelligence Artificielle</p>
+							<div class="social-links">
+								<a href="#"><i class="fab fa-linkedin"></i></a>
+								<a href="#"><i class="fab fa-github"></i></a>
+								<a href="#"><i class="fab fa-twitter"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-	<div class="haut">
-		<div class="part11">
-			<div class="intro">
-
-				<div class="welcome">
-					<h1>- Bienvenue sur Come'Koom Academy –
-						<br> Votre porte vers la connaissance !
-					</h1>
-					<p>
-						<span>Come'Koom Academy</span> est une plateforme d'apprentissage en
-						ligne
-						qui met
-						l'éducation à la portée
-						de tous. Notre objectif est de fournir des cours de qualité
-						accessibles
-						à toute
-						personne désireuse d'acquérir de nouvelles compétences.
-						Aujourd’hui,
-						grâce à
-						Internet, le savoir est à portée de main. Mais face à la
-						multitude de
-						ressources
-						en ligne, il est parfois difficile de trouver un espace
-						structuré,
-						intuitif et
-						accessible. Come'Koom Academy répond à ce besoin en offrant une
-						expérience
-						d’apprentissage fluide, organisée et efficace, adaptée à tous
-						les
-						niveaux."
+	<!-- Mission Section -->
+	<section class="py-5 bg-light">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<h2 class="section-title text-start">Notre Mission</h2>
+					<p class="lead">
+						Rendre l'éducation technologique accessible à tous, partout dans le monde.
 					</p>
+					<p>
+						Nous croyons que l'éducation est un droit fondamental et que la technologie peut être un
+						puissant
+						levier pour l'égalité des chances. Notre mission est de démocratiser l'accès aux compétences
+						technologiques en proposant des formations de qualité, adaptées aux besoins du marché du
+						travail.
+					</p>
+					<div class="row mt-4">
+						<div class="col-6">
+							<div class="text-center">
+								<h3 class="text-primary">1000+</h3>
+								<p>Étudiants formés</p>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="text-center">
+								<h3 class="text-primary">50+</h3>
+								<p>Cours disponibles</p>
+							</div>
+						</div>
+					</div>
 				</div>
-				<br>
-
-				<div class="valeurs">
-					<h1>Nos valeurs et notre mission</h1>
-					<p>Nous nous engageons à vous offrir bien plus qu’un simple catalogue de cours.
-						Come'Koom Academy repose sur
-						trois
-						piliers fondamentaux : <br> <br>
-
-						📚 Accessibilité – Apprendre ne doit pas être compliqué ni coûteux. Nous
-						proposons des ressources éducatives
-						gratuites ou abordables. <br> <br>
-
-						🎯 Simplicité – Notre plateforme est conçue pour être intuitive,
-						ergonomique et facile à utiliser, même pour
-						ceux qui ne sont pas à l’aise avec la technologie. <br> <br>
-
-						🚀 Efficacité – Nous structurons nos cours de manière claire et
-						progressive pour vous aider à apprendre plus
-						vite et mieux. <br> <br>
-
-						🌍 Ouverture et diversité – Nous encourageons le partage des
-						connaissances entre les cultures et les
-						disciplines, en intégrant des contenus variés adaptés aux besoins de
-						chacun.</p>
+				<div class="col-lg-6">
+					<img src="/images/code.jpg" alt="Coding" class="img-fluid rounded shadow-lg">
 				</div>
-
-			</div>
-
-			<div class="aside1">
-				<h1>Pourquoi avons-nous créé Come'Koom Academy ?</h1>
-				<p>Nous avons remarqué que de nombreuses plateformes existantes sont soit trop
-					complexes, soit
-					trop coûteuses. De plus, elles ne prennent pas toujours en compte les besoins
-					des
-					apprenants débutants ou ceux qui souhaitent apprendre à leur rythme, sans
-					pression. <br> <br>
-
-					C’est pourquoi nous avons lancé Come'Koom Academy : <br>
-					✅ Offrir un espace où chacun peut apprendre facilement. <br>
-					✅ Rendre l’apprentissage accessible à tous, quel que soit le niveau. <br>
-					✅ Créer une communauté d’entraide et de partage du savoir. <br>
-
-					Nous croyons que la connaissance est une richesse qui se partage, et nous
-					voulons
-					permettre à chacun d'acquérir de nouvelles compétences pour évoluer
-					personnellement et
-					professionnellement.</p>
-				<br><br>
 			</div>
 		</div>
+	</section>
 
-		<div class="part22">
-			<h1>Parce qu’apprendre, c’est se donner les moyens de transformer le monde qui nous entoure.
-			</h1>
+	<!-- Footer -->
+	<footer class="bg-dark text-white py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+					<h5>Come'Koom Academy</h5>
+					<p>Votre plateforme d'apprentissage en ligne pour maîtriser les technologies du futur.</p>
+					<div class="d-flex gap-3">
+						<a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+						<a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+						<a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+						<a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+					<h5>Liens Utiles</h5>
+					<ul class="list-unstyled">
+						<li><a href="/index.html" class="text-white-50 text-decoration-none">Accueil</a></li>
+						<li><a href="/ABOUT/about.html" class="text-white-50 text-decoration-none">À Propos</a></li>
+						<li><a href="/CONTACT/contacts.html" class="text-white-50 text-decoration-none">Contact</a></li>
+						<li><a href="/BLOG/blog.html" class="text-white-50 text-decoration-none">Blog</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+					<h5>Contact</h5>
+					<p><i class="fas fa-envelope me-2"></i> contact@comekoom-academy.com</p>
+					<p><i class="fas fa-phone me-2"></i> +33 1 23 45 67 89</p>
+					<p><i class="fas fa-map-marker-alt me-2"></i> Paris, France</p>
+				</div>
+			</div>
+			<hr class="my-4">
+			<div class="text-center">
+				<p>&copy; 2024 Come'Koom Academy. Tous droits réservés.</p>
+			</div>
 		</div>
-
-
-	</div>
-
-
-
-	<footer>
-		<section class="section1">
-			<div class="part1">
-				<h2 class="h2">🏫 A propos</h2>
-				<p>Qui sommes nous ?</p>
-				<p>Notre Mission</p>
-				<p>Blog</p>
-			</div>
-
-
-			<div class="part2">
-				<h2 class="h2">📚 Liens Utiles</h2>
-				<a href="/index.html">Accueil</a>
-				<a href="/COURS/cours.html">Cours</a>
-				<a href="/ABOUT/about.html">A Propos</a>
-				<a href="/CONTACT/contacts.html">Contacts</a>
-			</div>
-
-
-			<div class="part3">
-				<h2 class="h2">📞 Contacts</h2>
-
-				<p>✉️ contact@come-koom.com</p>
-
-				<p>📞 33 955 13 39<br>
-					<span class="span">77 777 71 66</span> <br>
-					<span class="span">76 322 66 22</span>
-				</p>
-
-				<p>📍 Adresse : Dakar, Sénégal</p>
-
-				<p>🌍 Langue : [ Français | English ]
-				</p>
-			</div>
-
-
-			<div class="part4">
-				<h2 class="h2">🔗 Suivez-nous</h2>
-
-				<div class="rs">
-					<a href=""><img src="/images/ICONES FOOTER/facebook.png" alt="" width="70">
-						<p>Facebook</p>
-					</a>
-				</div>
-
-
-
-				<div class="rs">
-					<a href="">
-						<img src="/images/ICONES FOOTER/git.png" alt="" width="70" class="i">
-						<p>GitHub</p>
-					</a>
-				</div>
-
-
-
-				<div class="rs">
-					<a href="">
-						<img src="/images/ICONES FOOTER/snap.png" alt="" width="70">
-						<p>SnapChat</p>
-					</a>
-				</div>
-
-
-
-				<div class="rs">
-					<a href="">
-						<img src="/images/ICONES FOOTER/insta.png" alt="" width="70">
-						<p>Instagram</p>
-					</a>
-				</div>
-
-			</div>
-		</section>
-
 	</footer>
 
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+	<!-- Custom JS -->
+	<script src="/script.js"></script>
+	<script src="/theme-switcher.js"></script>
 </body>
 
 </html>

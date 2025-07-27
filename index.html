@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Accueil - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
@@ -15,558 +22,348 @@
 		href="https://fonts.googleapis.com/css2?family=Artifika&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sacramento&display=swap"
 		rel="stylesheet">
 
+	<!-- Global CSS -->
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="theme.css">
 
-	<link rel="stylesheet" href="STYLE ACCUEIL  & NAV BAR/navbar.css">
-	<link rel="stylesheet" href="/STYLE ACCUEIL  & NAV BAR/accueil.css">
-	<link rel="stylesheet" href="STYLE ACCUEIL  & NAV BAR/footer.css">
-	<link rel="stylesheet" href="accueil.css">
-	<link rel="stylesheet" href="/responsivite/responsiviteaccueil.css">
+	<style>
+		/* Mobile-first custom styles */
+		.navbar-brand {
+			font-family: 'Artifika', serif;
+			font-weight: bold;
+			font-size: 1.5rem;
+		}
 
+		.hero-section {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 4rem 0;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+		}
+
+		.hero-title {
+			font-size: 2.5rem;
+			font-weight: bold;
+			margin-bottom: 1.5rem;
+		}
+
+		.hero-subtitle {
+			font-size: 1.2rem;
+			margin-bottom: 2rem;
+			opacity: 0.9;
+		}
+
+		.course-card {
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			border: none;
+			border-radius: 15px;
+			overflow: hidden;
+		}
+
+		.course-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+		}
+
+		.course-card img {
+			height: 200px;
+			object-fit: cover;
+		}
+
+		.btn-custom {
+			border-radius: 25px;
+			padding: 0.75rem 2rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.btn-primary-custom {
+			background: linear-gradient(45deg, #667eea, #764ba2);
+			border: none;
+			color: white;
+		}
+
+		.btn-secondary-custom {
+			background: transparent;
+			border: 2px solid #667eea;
+			color: #667eea;
+		}
+
+		.section-title {
+			font-size: 2.5rem;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 3rem;
+			color: #333;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.hero-title {
+				font-size: 2rem;
+			}
+
+			.hero-subtitle {
+				font-size: 1rem;
+			}
+
+			.section-title {
+				font-size: 2rem;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.hero-title {
+				font-size: 1.8rem;
+			}
+
+			.section-title {
+				font-size: 1.8rem;
+			}
+		}
+	</style>
 </head>
 
 <body>
-	<div class="header-">
-		<div class="titre">
-			Bienvenue sur Come'Koom Academy
-		</div>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/index.html">
+				<i class="fas fa-graduation-cap me-2"></i>
+				Come'Koom Academy
+			</a>
 
-		<nav class="navbar">
-			<ul class="liens">
-				<li><a href="/index.html">accueil</a></li>
-				<li><a href="/ABOUT/about.html">A propos</a></li>
-				<li><a href="/CONTACT/contacts.html">Contacts</a></li>
-				<li class="login"><a href="/LOGIN/connexion.html"><img src="images/user.png" alt="" width="35"></a></li>
-			</ul>
-		</nav>
-	</div>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-	<section class="premiere">
-		<div class="texte1">
-			<h1>Construit ton avenir avec <span>Come'Koom Academy</span></h1>
-		</div>
-
-		<div class="texte2">
-			<p>Come'Koom Academy est votre plateforme d'apprentissage en ligne dédiée à la maîtrise du
-				développement web, de l'intelligence artificielle et bien plus encore. Que vous soyez
-				débutant ou expert, nos cours interactifs, nos formateurs expérimentés et notre
-				communauté engagée vous accompagnent dans votre progression.
-			</p>
-		</div>
-
-		<div class="btn">
-			<button class="btn1">Voir plus</button>
-			<button class="btn2">Visiter les cours</button>
-		</div>
-	</section>
-
-	<!--Deuxime partie-->
-
-	<section class="deuxieme">
-		<div class="title">
-			<h1>Decouvrez Nos cours populaires </h1>
-
-			<h2>Fullstack web & mobile</h2>
-		</div>
-
-		<div class="modeles">
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/html.webp" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>HTML 5 & CSS 3 </h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/javascript.webp" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>JavaScript ES6-ES11</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/php.png" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>PHP</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/SQL.png" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>SQL</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/React.png" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>React.Js ou Vue.Js</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/nodejs.png" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>Node.Js </h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/Laravel.jpg" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>Laravel</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/django_vs_flask-1.jpeg" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>Django ou Flask</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-
-		</div>
-
-	</section>
-
-
-	<section class="troisieme">
-		<div class="title" id="title">
-			<h2>Intellgences Artificielles</h2>
-		</div>
-
-
-		<div class="modeles">
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/maths.jpg" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>Mathematiques appliqués</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/pytorch.jpg" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>PyTorch (Python)</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/machine.jpg" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>Machine Learning</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
-			</div>
-
-
-			<div class="mod1">
-				<div class="img">
-					<img src="/images/ICONES COURS/big.avif" alt="">
-				</div>
-
-				<div class="lang">
-					<h3>Big Data</h3>
-				</div>
-				<div class="legend">
-					Python est un la Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Distinctio dolores saepe, veniam recusandae laboriosam velit
-				</div>
-				<button>Voir plus</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item">
+						<a class="nav-link active" href="/index.html">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/ABOUT/about.html">À propos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/CONTACT/contacts.html">Contact</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/LOGIN/connexion.html" title="Connexion">
+							<i class="fas fa-user"></i>
+						</a>
+					</li>
+				</ul>
 			</div>
 		</div>
-	</section>
-	<section class="quatrieme">
-		<div><a href="/COURS/cours.html">Decouvrez plus de cours</a></div>
-	</section>
+	</nav>
 
-
-	<section class="cinquieme">
-		<div class="bleu">
-			<div id="gauche">
-				<div class="promo">
-					<p>Recevez plus de 100 cours en ligne gartuitement</p>
-					<h2>Inscrivez vous pour en recevoir</h2>
-				</div>
-
-				<div class="duree">
-					<div class="temps">
-						<p>18 <br> Jours</p>
-					</div>
-					<div class="temps">
-						<p>23 <br> Heures</p>
-					</div>
-					<div class="temps">
-						<p>45 <br> minutes</p>
-					</div>
-					<div class="temps">
-						<p>28 <br> Secondes</p>
+	<!-- Hero Section -->
+	<section class="hero-section">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-md-8 mx-auto text-center">
+					<h1 class="hero-title">
+						Construit ton avenir avec <span class="text-warning">Come'Koom Academy</span>
+					</h1>
+					<p class="hero-subtitle">
+						Come'Koom Academy est votre plateforme d'apprentissage en ligne dédiée à la maîtrise du
+						développement web, de l'intelligence artificielle et bien plus encore. Que vous soyez
+						débutant ou expert, nos cours interactifs, nos formateurs expérimentés et notre
+						communauté engagée vous accompagnent dans votre progression.
+					</p>
+					<div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+						<button class="btn btn-primary-custom btn-custom">Voir plus</button>
+						<button class="btn btn-secondary-custom btn-custom">Visiter les cours</button>
 					</div>
 				</div>
 			</div>
+		</div>
+	</section>
 
+	<!-- Courses Section -->
+	<section class="py-5">
+		<div class="container">
+			<h2 class="section-title">Découvrez Nos cours populaires</h2>
+			<h3 class="text-center mb-5 text-muted">Fullstack web & mobile</h3>
 
-			<div id="droite">
-				<div class="register">
-					<input type="text" placeholder="Nom" id="insc"><br>
-					<input type="email" placeholder="E mail"> <br>
-					<input type="password" placeholder="mot de passe">
-					<button>Inscription</button>
+			<div class="row g-4">
+				<!-- HTML & CSS Course -->
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="card course-card h-100">
+						<img src="/images/ICONES COURS/html.webp" class="card-img-top" alt="HTML & CSS">
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title">HTML 5 & CSS 3</h5>
+							<p class="card-text flex-grow-1">
+								Apprenez les fondamentaux du développement web avec HTML5 et CSS3.
+								Créez des sites web modernes et responsives.
+							</p>
+							<button class="btn btn-primary-custom btn-custom mt-auto">Voir plus</button>
+						</div>
+					</div>
+				</div>
 
+				<!-- JavaScript Course -->
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="card course-card h-100">
+						<img src="/images/ICONES COURS/javascript.webp" class="card-img-top" alt="JavaScript">
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title">JavaScript ES6-ES11</h5>
+							<p class="card-text flex-grow-1">
+								Maîtrisez JavaScript moderne avec les dernières fonctionnalités ES6-ES11.
+								Développez des applications web dynamiques.
+							</p>
+							<button class="btn btn-primary-custom btn-custom mt-auto">Voir plus</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- React Course -->
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="card course-card h-100">
+						<img src="/images/ICONES COURS/React.png" class="card-img-top" alt="React">
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title">React.js</h5>
+							<p class="card-text flex-grow-1">
+								Développez des interfaces utilisateur modernes avec React.js.
+								Créez des applications web performantes et réactives.
+							</p>
+							<button class="btn btn-primary-custom btn-custom mt-auto">Voir plus</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Node.js Course -->
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="card course-card h-100">
+						<img src="/images/ICONES COURS/nodejs.png" class="card-img-top" alt="Node.js">
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title">Node.js</h5>
+							<p class="card-text flex-grow-1">
+								Construisez des applications backend robustes avec Node.js.
+								Développez des APIs et serveurs performants.
+							</p>
+							<button class="btn btn-primary-custom btn-custom mt-auto">Voir plus</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Python Course -->
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="card course-card h-100">
+						<img src="/images/ICONES COURS/maths.jpg" class="card-img-top" alt="Python">
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title">Python</h5>
+							<p class="card-text flex-grow-1">
+								Apprenez Python pour l'analyse de données, l'IA et le développement web.
+								Un langage polyvalent et puissant.
+							</p>
+							<button class="btn btn-primary-custom btn-custom mt-auto">Voir plus</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Machine Learning Course -->
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="card course-card h-100">
+						<img src="/images/ICONES COURS/machine.jpg" class="card-img-top" alt="Machine Learning">
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title">Machine Learning</h5>
+							<p class="card-text flex-grow-1">
+								Plongez dans l'intelligence artificielle et le machine learning.
+								Créez des modèles prédictifs avancés.
+							</p>
+							<button class="btn btn-primary-custom btn-custom mt-auto">Voir plus</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="sixieme">
-		<h1>Communauté des experts</h1>
-
-		<div class="experts">
-			<div class="prof">
-				<img src="/images/PERSONNES/createur contenu.jpg" alt="">
-				<h3>Djimba NIANE</h3>
-				<p>Ingnieur Systemes Emabarques</p>
-				<div class="reseaux">
-					<a href="">
-						<div class="rsx" id="rs1">
-
-						</div>
-					</a>
-
-
-					<a href="">
-						<div class="rsx" id="rs2">
-
-						</div>
-					</a>
-
-					<a href="">
-						<div class="rsx" id="rs3">
-
-						</div>
-					</a>
+	<!-- Features Section -->
+	<section class="py-5 bg-light">
+		<div class="container">
+			<h2 class="section-title">Pourquoi choisir Come'Koom Academy ?</h2>
+			<div class="row g-4">
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="text-center">
+						<i class="fas fa-users fa-3x text-primary mb-3"></i>
+						<h5>Communauté Active</h5>
+						<p>Rejoignez une communauté de développeurs passionnés</p>
+					</div>
 				</div>
-			</div>
-
-
-
-			<div class="prof">
-				<img src="/images/PROFILS/profil1.jpg" alt="">
-				<h3>Masseka LONGATE</h3>
-				<p>Developpeur Fullstack</p>
-				<div class="reseaux">
-					<a href="">
-						<div class="rsx" id="rs1">
-
-						</div>
-					</a>
-
-
-					<a href="">
-						<div class="rsx" id="rs2">
-
-						</div>
-					</a>
-
-					<a href="">
-						<div class="rsx" id="rs3">
-
-						</div>
-					</a>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="text-center">
+						<i class="fas fa-certificate fa-3x text-primary mb-3"></i>
+						<h5>Certifications</h5>
+						<p>Obtenez des certificats reconnus dans l'industrie</p>
+					</div>
 				</div>
-			</div>
-
-
-
-
-
-			<div class="prof">
-				<img src="/images/PROFILS/profil4.jpg" alt="">
-				<h3>Lamine NDIAYE</h3>
-				<p>Ingenieur Logiciels</p>
-				<div class="reseaux">
-					<a href="">
-						<div class="rsx" id="rs1">
-
-						</div>
-					</a>
-
-
-					<a href="">
-						<div class="rsx" id="rs2">
-
-						</div>
-					</a>
-
-					<a href="">
-						<div class="rsx" id="rs3">
-
-						</div>
-					</a>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="text-center">
+						<i class="fas fa-clock fa-3x text-primary mb-3"></i>
+						<h5>Apprentissage Flexible</h5>
+						<p>Étudiez à votre rythme, 24h/24 et 7j/7</p>
+					</div>
 				</div>
-			</div>
-
-
-
-
-			<div class="prof">
-				<img src="/images/PROFS/prof01.jpg" alt="">
-				<h3>Moustapha DIALLO</h3>
-				<p>Expert Intelligence Artificielle</p>
-				<div class="reseaux">
-					<a href="">
-						<div class="rsx" id="rs1">
-
-						</div>
-					</a>
-
-
-					<a href="">
-						<div class="rsx" id="rs2">
-
-						</div>
-					</a>
-
-					<a href="">
-						<div class="rsx" id="rs3">
-
-						</div>
-					</a>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="text-center">
+						<i class="fas fa-headset fa-3x text-primary mb-3"></i>
+						<h5>Support 24/7</h5>
+						<p>Notre équipe est là pour vous accompagner</p>
+					</div>
 				</div>
-			</div>
-
-
-		</div>
-	</section>
-
-
-	<section class="septieme">
-
-		<h1>Apprecitions de quelques apprenants</h1>
-
-
-		<div class="septieme1">
-			<div class="mots">
-				<h2>Ibrahma KONATE</h2>
-				<p>Grace a la formation de Come'Koom academy, mon insertion professionnelle a été la
-					chose la
-					plus facile de ma vie</p>
-			</div>
-			<div class="mots">
-				<h2>Astou DIONE</h2>
-				<p>Aujourd'hui je travaille à la SONATEL en tant que developpeur mobile et tout ça grace
-					à
-					l'immense Come'Koom academy</p>
-			</div>
-			<div class="mots">
-				<h2>Ismaila SAMB</h2>
-				<p>En dehors de le puissante certification, la qualité d'apprentissage chez Come'Koom
-					academy
-					est juste phenomenale</p>
 			</div>
 		</div>
 	</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<footer>
-		<section class="section1">
-			<div class="part1">
-				<h2>🏫 A propos</h2>
-				<p>Qui sommes nous ?</p>
-				<p>Notre Mission</p>
-				<p>Blog</p>
-			</div>
-
-
-			<div class="part2">
-				<h2>📚 Liens Utiles</h2>
-				<a href="/index.html">Accueil</a>
-				<a href="/COURS/cours.html">Cours</a>
-				<a href="/ABOUT/about.html">A Propos</a>
-				<a href="/CONTACT/contacts.html">Contacts</a>
-			</div>
-
-
-			<div class="part3">
-				<h2>📞 Contacts</h2>
-
-				<p>✉️ contact@come-koom.com</p>
-
-				<p>📞 33 955 13 39<br>
-					<span class="span">77 777 71 66</span> <br>
-					<span class="span">76 322 66 22</span>
-				</p>
-
-				<p>📍 Adresse : Dakar, Sénégal</p>
-
-				<p>🌍 Langue : [ Français | English ]
-				</p>
-			</div>
-
-
-			<div class="part4">
-				<h2>🔗 Suivez-nous</h2>
-
-				<div class="rs">
-					<a href=""><img src="/images/ICONES FOOTER/facebook.png" alt="" width="70">
-						<p>Facebook</p>
-					</a>
+	<!-- Footer -->
+	<footer class="bg-dark text-white py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+					<h5>Come'Koom Academy</h5>
+					<p>Votre plateforme d'apprentissage en ligne pour maîtriser les technologies du futur.</p>
+					<div class="d-flex gap-3">
+						<a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+						<a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+						<a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+						<a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+					</div>
 				</div>
-
-
-
-				<div class="rs">
-					<a href="">
-						<img src="/images/ICONES FOOTER/git.png" alt="" width="70" class="i">
-						<p>GitHub</p>
-					</a>
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+					<h5>Liens Utiles</h5>
+					<ul class="list-unstyled">
+						<li><a href="/index.html" class="text-white-50 text-decoration-none">Accueil</a></li>
+						<li><a href="/ABOUT/about.html" class="text-white-50 text-decoration-none">À Propos</a></li>
+						<li><a href="/CONTACT/contacts.html" class="text-white-50 text-decoration-none">Contact</a></li>
+						<li><a href="/BLOG/blog.html" class="text-white-50 text-decoration-none">Blog</a></li>
+					</ul>
 				</div>
-
-
-
-				<div class="rs">
-					<a href="">
-						<img src="/images/ICONES FOOTER/snap.png" alt="" width="70">
-						<p>SnapChat</p>
-					</a>
+				<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+					<h5>Contact</h5>
+					<p><i class="fas fa-envelope me-2"></i> contact@comekoom-academy.com</p>
+					<p><i class="fas fa-phone me-2"></i> +33 1 23 45 67 89</p>
+					<p><i class="fas fa-map-marker-alt me-2"></i> Paris, France</p>
 				</div>
-
-
-
-				<div class="rs">
-					<a href="">
-						<img src="/images/ICONES FOOTER/insta.png" alt="" width="70">
-						<p>Instagram</p>
-					</a>
-				</div>
-
 			</div>
-		</section>
-
+			<hr class="my-4">
+			<div class="text-center">
+				<p>&copy; 2024 Come'Koom Academy. Tous droits réservés.</p>
+			</div>
+		</div>
 	</footer>
 
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Custom JS -->
+	<script src="script.js"></script>
+	<script src="theme-switcher.js"></script>
 </body>
 
 </html>

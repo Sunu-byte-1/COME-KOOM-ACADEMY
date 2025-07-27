@@ -1,434 +1,678 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Tâches à terminer - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	<link
+		href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 		rel="stylesheet">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<!-- Global CSS -->
+	<link rel="stylesheet" href="/styles.css">
 
-	<link rel="stylesheet" href="/USER/style/navhaut.css">
-	<link rel="stylesheet" href="/USER/taches/taches.css">
+	<style>
+		/* Tasks specific styles */
+		.sidebar {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 280px;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+		}
+
+		.sidebar-brand {
+			color: white;
+			font-family: 'Artifika', serif;
+			font-size: 1.5rem;
+			font-weight: bold;
+			padding: 1.5rem;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.sidebar-nav {
+			padding: 1rem 0;
+		}
+
+		.sidebar-nav .nav-link {
+			color: rgba(255, 255, 255, 0.8);
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+			transition: all 0.3s ease;
+			border-radius: 0;
+		}
+
+		.sidebar-nav .nav-link:hover,
+		.sidebar-nav .nav-link.active {
+			color: white;
+			background: rgba(255, 255, 255, 0.1);
+			transform: translateX(5px);
+		}
+
+		.sidebar-nav .nav-link i {
+			width: 20px;
+			margin-right: 10px;
+			font-size: 1.1rem;
+		}
+
+		.main-content {
+			margin-left: 280px;
+			padding: 2rem;
+			background: #f8f9fa;
+			min-height: 100vh;
+		}
+
+		.task-card {
+			background: white;
+			border-radius: 15px;
+			padding: 1.5rem;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease;
+			height: 100%;
+			border-left: 4px solid #667eea;
+		}
+
+		.task-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.task-card.urgent {
+			border-left-color: #dc3545;
+		}
+
+		.task-card.medium {
+			border-left-color: #ffc107;
+		}
+
+		.task-card.low {
+			border-left-color: #28a745;
+		}
+
+		.task-header {
+			display: flex;
+			justify-content: between;
+			align-items: flex-start;
+			margin-bottom: 1rem;
+		}
+
+		.task-title {
+			font-weight: bold;
+			margin-bottom: 0.5rem;
+		}
+
+		.task-description {
+			color: #6c757d;
+			margin-bottom: 1rem;
+		}
+
+		.task-meta {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 0.9rem;
+			color: #6c757d;
+		}
+
+		.task-progress {
+			width: 100%;
+			height: 8px;
+			background: #e9ecef;
+			border-radius: 4px;
+			overflow: hidden;
+			margin: 1rem 0;
+		}
+
+		.task-progress-bar {
+			height: 100%;
+			background: linear-gradient(45deg, #667eea, #764ba2);
+			transition: width 0.3s ease;
+		}
+
+		.priority-badge {
+			padding: 0.25rem 0.75rem;
+			border-radius: 15px;
+			font-size: 0.8rem;
+			font-weight: 600;
+		}
+
+		.priority-urgent {
+			background: #dc3545;
+			color: white;
+		}
+
+		.priority-medium {
+			background: #ffc107;
+			color: #212529;
+		}
+
+		.priority-low {
+			background: #28a745;
+			color: white;
+		}
+
+		/* Mobile responsive */
+		@media (max-width: 768px) {
+			.sidebar {
+				transform: translateX(-100%);
+				width: 100%;
+			}
+
+			.sidebar.show {
+				transform: translateX(0);
+			}
+
+			.main-content {
+				margin-left: 0;
+				padding: 1rem;
+			}
+
+			.sidebar-toggle {
+				display: block !important;
+			}
+		}
+
+		.sidebar-toggle {
+			display: none;
+			position: fixed;
+			top: 1rem;
+			left: 1rem;
+			z-index: 1001;
+			background: #667eea;
+			border: none;
+			color: white;
+			padding: 0.5rem;
+			border-radius: 5px;
+		}
+	</style>
 </head>
 
 <body>
+	<!-- Mobile Sidebar Toggle -->
+	<button class="btn sidebar-toggle d-md-none" id="sidebarToggle">
+		<i class="fas fa-bars"></i>
+	</button>
 
+	<!-- Sidebar -->
+	<nav class="sidebar" id="sidebar">
+		<div class="sidebar-brand">
+			<i class="fas fa-graduation-cap me-2"></i>
+			Come'Koom Academy
+		</div>
 
-	<main>
-		<section class="barre">
-			<div class="name">
-				<h3>Come'Koom Academy</h3>
-			</div>
+		<ul class="nav flex-column sidebar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/user.html">
+					<i class="fas fa-tachometer-alt"></i>
+					<span>Tableau de bord</span>
+				</a>
+			</li>
 
-			<div class="enum">
-				<ul>
-					<li>
-						<a href="/USER/user.html">
-							<i class="fa-solid fa-school"></i>
-							<p>Tableau de bord</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link active" href="/USER/taches/taches.html">
+					<i class="fas fa-tasks"></i>
+					<span>Tâches à terminer</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/taches/taches.html" class="active">
-							<i class="fa-solid fa-file"></i>
-							<p>Taches à terminer</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/favoris/fav.html">
+					<i class="fas fa-bookmark"></i>
+					<span>Mes cours</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/bibliothe/bibliothe.html">
+					<i class="fas fa-book"></i>
+					<span>Bibliothèque</span>
+				</a>
+			</li>
 
-					<li>
-						<a href="/USER/favoris/fav.html">
-							<i class="fa-solid fa-bookmark"></i>
-							<p>Cours</p>
-						</a>
-					</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/menthors/menthor.html">
+					<i class="fas fa-users"></i>
+					<span>Mentors</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/abonnement/abonnement.html">
+					<i class="fas fa-crown"></i>
+					<span>Abonnement</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/message/message.html">
+					<i class="fas fa-comments"></i>
+					<span>Messages</span>
+				</a>
+			</li>
 
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/parametres/parametre.html">
+					<i class="fas fa-cog"></i>
+					<span>Paramètres</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
 
-					<li>
-						<a href="/USER/bibliothe/bibliothe.html">
-							<i class="fa-solid fa-book"></i>
-							<p>Bibliotheque</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/menthors/menthor.html">
-							<i class="fa-solid fa-users"></i>
-							<p>Menthors</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/abonnement/abonnement.html">
-							<i class="fa-solid fa-user-plus"></i>
-							<p>Abonnement</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/message/message.html">
-							<i class="fa-regular fa-comments"></i>
-							<p>Messages</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/parametres/parametre.html">
-							<i class="fa-solid fa-gear"></i>
-							<p>Parametres</p>
-						</a>
-					</li>
-
-
-				</ul>
-
-				<div class="trait"></div>
-
-				<div class="exit">
-					<a href="/LOGIN/connexion.html" class="logout">
-						<i class="fa-solid fa-right-from-bracket"></i>
-						<p>Deconnexion</p>
-					</a>
-				</div>
-			</div>
-		</section>
-
-
-
-
-		<section class="content">
-
-			<!--LA BARRE DE NAVIGATION-->
-			<div class="nav">
-				<div class="rech">
-					<input type="search" placeholder="Search">
-					<i class="fa-solid fa-magnifying-glass"></i>
-
-				</div>
-
-
-				<div class="id">
-					<i class="fa-regular fa-bell" id="bell-icon"></i>
-					<!-- Ajout d'un ID pour la cloche -->
-
-					<i class="fa-solid fa-globe" id="langue-icon"></i>
-					<div class="us"></div>
-				</div>
-			</div>
-
-			<!--FINNNN BARRE DE NAVIGATION-->
-
-
-			<div class="main">
-				<main>
-					<div class="container">
-						<!-- Section des Tâches à accomplir -->
-						<section class="taches">
-							<h1>Tâches à Terminer</h1>
-							<div class="task-list">
-								<!-- Tâche 1 -->
-								<div class="task-card fadeInUp">
-									<h2>Cours JavaScript : Variables et Types</h2>
-									<div class="task-details">
-										<div class="task-progress">
-											<span>Progression</span>
-											<div class="progress-bar"
-												style="width: 65%">
-											</div>
-										</div>
-										<p><strong>Date limite :</strong> 10
-											mars 2025</p>
-										<p><strong>Statut :</strong> En cours
-										</p>
-										<p><strong>Description :</strong> Ce
-											cours couvre les bases de
-											JavaScript, y compris les
-											variables, les types de données,
-											et les opérateurs.</p>
-									</div>
-								</div>
-
-								<!-- Tâche 2 -->
-								<div class="task-card fadeInUp">
-									<h2>Cours PHP : Introduction aux Bases de
-										Données</h2>
-									<div class="task-details">
-										<div class="task-progress">
-											<span>Progression</span>
-											<div class="progress-bar"
-												style="width: 20%">
-											</div>
-										</div>
-										<p><strong>Date limite :</strong> 15
-											mars 2025</p>
-										<p><strong>Statut :</strong> Non
-											commencé</p>
-										<p><strong>Description :</strong> Ce
-											cours introduit les concepts
-											fondamentaux des bases de
-											données relationnelles avec PHP.
-										</p>
-									</div>
-								</div>
-
-								<!-- Tâche 3 -->
-								<div class="task-card fadeInUp">
-									<h2>Cours Vue.js : Gestion d'État avec Vuex</h2>
-									<div class="task-details">
-										<div class="task-progress">
-											<span>Progression</span>
-											<div class="progress-bar"
-												style="width: 40%">
-											</div>
-										</div>
-										<p><strong>Date limite :</strong> 25
-											mars 2025</p>
-										<p><strong>Statut :</strong> En cours
-										</p>
-										<p><strong>Description :</strong> Ce
-											cours explore la gestion d'état
-											dans Vue.js en utilisant Vuex
-											pour le partage des données
-											entre composants.</p>
-									</div>
-								</div>
-
-								<!-- Tâche 4 -->
-								<div class="task-card fadeInUp">
-									<h2>Cours AI : Introduction à l'Intelligence
-										Artificielle</h2>
-									<div class="task-details">
-										<div class="task-progress">
-											<span>Progression</span>
-											<div class="progress-bar"
-												style="width: 80%">
-											</div>
-										</div>
-										<p><strong>Date limite :</strong> 30
-											mars 2025</p>
-										<p><strong>Statut :</strong> En cours
-										</p>
-										<p><strong>Description :</strong> Un
-											cours complet sur les bases de
-											l'intelligence artificielle, des
-											réseaux neuronaux à
-											l'apprentissage supervisé.</p>
-									</div>
-								</div>
-							</div>
-						</section>
-
-						<!-- Section des Graphiques -->
-						<aside class="sidebar">
-							<h2>Graphiques de Progression</h2>
-							<div class="graphs">
-								<!-- Graphique 1 -->
-								<div class="graph-container">
-									<h3>Progression des Cours JavaScript</h3>
-									<div class="graph progress-60">
-										<div class="circle"></div>
-										<span class="percentage">60%</span>
-									</div>
-								</div>
-
-								<!-- Graphique 2 -->
-								<div class="graph-container">
-									<h3>Progression des Cours PHP</h3>
-									<div class="graph progress-30">
-										<div class="circle"></div>
-										<span class="percentage">30%</span>
-									</div>
-								</div>
-
-								<!-- Graphique 3 -->
-								<div class="graph-container">
-									<h3>Progression des Cours Vue.js</h3>
-									<div class="graph progress-80">
-										<div class="circle"></div>
-										<span class="percentage">80%</span>
-									</div>
-								</div>
-							</div>
-						</aside>
-
-					</div>
-
-					<aside class="progression">
-						<h2>Progression Globale</h2>
-						<div class="progression-container">
-							<!-- Tâches -->
-							<div class="task-progress">
-								<h3>Tâches à accomplir</h3>
-								<div class="progress-bar-container">
-									<div class="progress-bar task-80"></div>
-									<span class="progress-text">80% des tâches
-										complètes</span>
-								</div>
-							</div>
-
-							<!-- Cours -->
-							<div class="course-progress">
-								<h3>Progression des Cours</h3>
-								<div class="progress-bar-container">
-									<div class="progress-bar course-60"></div>
-									<span class="progress-text">60% des cours
-										terminés</span>
-								</div>
-							</div>
-
-							<!-- Certification -->
-							<div class="certification-progress">
-								<h3>Progression des Certifications</h3>
-								<div class="progress-bar-container">
-									<div class="progress-bar cert-50"></div>
-									<span class="progress-text">50% des
-										certifications obtenues</span>
-								</div>
-							</div>
-
-							<!-- Graphique Circular -->
-							<div class="graph-container">
-								<h3>Vue d'ensemble de la progression</h3>
-								<div class="graph">
-									<div class="circle"></div>
-									<span class="percentage">75%</span>
-								</div>
+	<!-- Main Content -->
+	<main class="main-content">
+		<div class="container-fluid">
+			<!-- Header -->
+			<div class="row mb-4">
+				<div class="col-12">
+					<div class="d-flex justify-content-between align-items-center">
+						<h1 class="h3 mb-0">Tâches à terminer</h1>
+						<div class="d-flex gap-2">
+							<button class="btn btn-outline-primary" data-bs-toggle="modal"
+								data-bs-target="#addTaskModal">
+								<i class="fas fa-plus me-2"></i>Nouvelle tâche
+							</button>
+							<div class="dropdown">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-filter me-2"></i>Filtrer
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#" data-filter="all">Toutes</a></li>
+									<li><a class="dropdown-item" href="#" data-filter="urgent">Urgentes</a></li>
+									<li><a class="dropdown-item" href="#" data-filter="medium">Moyennes</a></li>
+									<li><a class="dropdown-item" href="#" data-filter="low">Faibles</a></li>
+								</ul>
 							</div>
 						</div>
-					</aside>
-
-				</main>
+					</div>
+				</div>
 			</div>
 
+			<!-- Task Statistics -->
+			<div class="row g-4 mb-4">
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="card border-0 shadow-sm">
+						<div class="card-body text-center">
+							<div class="text-primary mb-2">
+								<i class="fas fa-tasks fa-2x"></i>
+							</div>
+							<h4 class="card-title">12</h4>
+							<p class="card-text text-muted">Total des tâches</p>
+						</div>
+					</div>
+				</div>
 
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="card border-0 shadow-sm">
+						<div class="card-body text-center">
+							<div class="text-danger mb-2">
+								<i class="fas fa-exclamation-triangle fa-2x"></i>
+							</div>
+							<h4 class="card-title">3</h4>
+							<p class="card-text text-muted">Urgentes</p>
+						</div>
+					</div>
+				</div>
 
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="card border-0 shadow-sm">
+						<div class="card-body text-center">
+							<div class="text-warning mb-2">
+								<i class="fas fa-clock fa-2x"></i>
+							</div>
+							<h4 class="card-title">5</h4>
+							<p class="card-text text-muted">En cours</p>
+						</div>
+					</div>
+				</div>
 
-		</section>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="card border-0 shadow-sm">
+						<div class="card-body text-center">
+							<div class="text-success mb-2">
+								<i class="fas fa-check-circle fa-2x"></i>
+							</div>
+							<h4 class="card-title">4</h4>
+							<p class="card-text text-muted">Terminées</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tasks Grid -->
+			<div class="row g-4">
+				<!-- Task 1 -->
+				<div class="col-lg-4 col-md-6 col-sm-12" data-priority="urgent">
+					<div class="task-card urgent">
+						<div class="task-header">
+							<div class="flex-grow-1">
+								<h5 class="task-title">Langage PHP</h5>
+								<span class="priority-badge priority-urgent">Urgent</span>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-sm btn-outline-secondary" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-ellipsis-v"></i>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Modifier</a>
+									</li>
+									<li><a class="dropdown-item" href="#"><i class="fas fa-check me-2"></i>Marquer comme
+											terminée</a></li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item text-danger" href="#"><i
+												class="fas fa-trash me-2"></i>Supprimer</a></li>
+								</ul>
+							</div>
+						</div>
+						<p class="task-description">
+							Apprendre les fondamentaux du langage PHP et créer une application web simple.
+						</p>
+						<div class="task-progress">
+							<div class="task-progress-bar" style="width: 60%"></div>
+						</div>
+						<div class="task-meta">
+							<span><i class="fas fa-calendar me-1"></i>À rendre dans 21 jours</span>
+							<span>60%</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Task 2 -->
+				<div class="col-lg-4 col-md-6 col-sm-12" data-priority="medium">
+					<div class="task-card medium">
+						<div class="task-header">
+							<div class="flex-grow-1">
+								<h5 class="task-title">React Native</h5>
+								<span class="priority-badge priority-medium">Moyenne</span>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-sm btn-outline-secondary" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-ellipsis-v"></i>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Modifier</a>
+									</li>
+									<li><a class="dropdown-item" href="#"><i class="fas fa-check me-2"></i>Marquer comme
+											terminée</a></li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item text-danger" href="#"><i
+												class="fas fa-trash me-2"></i>Supprimer</a></li>
+								</ul>
+							</div>
+						</div>
+						<p class="task-description">
+							Développer une application mobile avec React Native pour le projet final.
+						</p>
+						<div class="task-progress">
+							<div class="task-progress-bar" style="width: 30%"></div>
+						</div>
+						<div class="task-meta">
+							<span><i class="fas fa-calendar me-1"></i>À rendre dans 7 jours</span>
+							<span>30%</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Task 3 -->
+				<div class="col-lg-4 col-md-6 col-sm-12" data-priority="low">
+					<div class="task-card low">
+						<div class="task-header">
+							<div class="flex-grow-1">
+								<h5 class="task-title">Flutter</h5>
+								<span class="priority-badge priority-low">Faible</span>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-sm btn-outline-secondary" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-ellipsis-v"></i>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Modifier</a>
+									</li>
+									<li><a class="dropdown-item" href="#"><i class="fas fa-check me-2"></i>Marquer comme
+											terminée</a></li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item text-danger" href="#"><i
+												class="fas fa-trash me-2"></i>Supprimer</a></li>
+								</ul>
+							</div>
+						</div>
+						<p class="task-description">
+							Introduction au développement mobile avec Flutter et Dart.
+						</p>
+						<div class="task-progress">
+							<div class="task-progress-bar" style="width: 15%"></div>
+						</div>
+						<div class="task-meta">
+							<span><i class="fas fa-calendar me-1"></i>À rendre dans 1 mois</span>
+							<span>15%</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Task 4 -->
+				<div class="col-lg-4 col-md-6 col-sm-12" data-priority="urgent">
+					<div class="task-card urgent">
+						<div class="task-header">
+							<div class="flex-grow-1">
+								<h5 class="task-title">JavaScript Avancé</h5>
+								<span class="priority-badge priority-urgent">Urgent</span>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-sm btn-outline-secondary" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-ellipsis-v"></i>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Modifier</a>
+									</li>
+									<li><a class="dropdown-item" href="#"><i class="fas fa-check me-2"></i>Marquer comme
+											terminée</a></li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item text-danger" href="#"><i
+												class="fas fa-trash me-2"></i>Supprimer</a></li>
+								</ul>
+							</div>
+						</div>
+						<p class="task-description">
+							Maîtriser les concepts avancés de JavaScript : ES6+, async/await, modules.
+						</p>
+						<div class="task-progress">
+							<div class="task-progress-bar" style="width: 80%"></div>
+						</div>
+						<div class="task-meta">
+							<span><i class="fas fa-calendar me-1"></i>À rendre dans 5 jours</span>
+							<span>80%</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Task 5 -->
+				<div class="col-lg-4 col-md-6 col-sm-12" data-priority="medium">
+					<div class="task-card medium">
+						<div class="task-header">
+							<div class="flex-grow-1">
+								<h5 class="task-title">Node.js Backend</h5>
+								<span class="priority-badge priority-medium">Moyenne</span>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-sm btn-outline-secondary" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-ellipsis-v"></i>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Modifier</a>
+									</li>
+									<li><a class="dropdown-item" href="#"><i class="fas fa-check me-2"></i>Marquer comme
+											terminée</a></li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item text-danger" href="#"><i
+												class="fas fa-trash me-2"></i>Supprimer</a></li>
+								</ul>
+							</div>
+						</div>
+						<p class="task-description">
+							Créer une API REST avec Node.js, Express et MongoDB.
+						</p>
+						<div class="task-progress">
+							<div class="task-progress-bar" style="width: 45%"></div>
+						</div>
+						<div class="task-meta">
+							<span><i class="fas fa-calendar me-1"></i>À rendre dans 14 jours</span>
+							<span>45%</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Task 6 -->
+				<div class="col-lg-4 col-md-6 col-sm-12" data-priority="low">
+					<div class="task-card low">
+						<div class="task-header">
+							<div class="flex-grow-1">
+								<h5 class="task-title">Machine Learning</h5>
+								<span class="priority-badge priority-low">Faible</span>
+							</div>
+							<div class="dropdown">
+								<button class="btn btn-sm btn-outline-secondary" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-ellipsis-v"></i>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Modifier</a>
+									</li>
+									<li><a class="dropdown-item" href="#"><i class="fas fa-check me-2"></i>Marquer comme
+											terminée</a></li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item text-danger" href="#"><i
+												class="fas fa-trash me-2"></i>Supprimer</a></li>
+								</ul>
+							</div>
+						</div>
+						<p class="task-description">
+							Introduction aux algorithmes de machine learning avec Python.
+						</p>
+						<div class="task-progress">
+							<div class="task-progress-bar" style="width: 10%"></div>
+						</div>
+						<div class="task-meta">
+							<span><i class="fas fa-calendar me-1"></i>À rendre dans 2 mois</span>
+							<span>10%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 
-
-
-
-
-
-
-
-
-
-
-
-	<!--Partie pour la Notification cahée-->
-
-	<div class="notification" id="notification-box">
-		<div class="top">
-			<h2>Notifications</h2>
-			<div class="new">Nouveau</div>
-			<div class="plus">+</div>
-		</div>
-		<div class="mid">
-			<div class="friend">
-				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
-				<h3>Suzane ANTONIO</h3>
+	<!-- Add Task Modal -->
+	<div class="modal fade" id="addTaskModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Nouvelle tâche</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="mb-3">
+							<label for="taskTitle" class="form-label">Titre de la tâche</label>
+							<input type="text" class="form-control" id="taskTitle" required>
+						</div>
+						<div class="mb-3">
+							<label for="taskDescription" class="form-label">Description</label>
+							<textarea class="form-control" id="taskDescription" rows="3"></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="taskPriority" class="form-label">Priorité</label>
+							<select class="form-select" id="taskPriority">
+								<option value="low">Faible</option>
+								<option value="medium">Moyenne</option>
+								<option value="urgent">Urgente</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label for="taskDeadline" class="form-label">Date limite</label>
+							<input type="date" class="form-control" id="taskDeadline">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+					<button type="button" class="btn btn-primary">Créer la tâche</button>
+				</div>
 			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-			<div class="traits"></div>
-
-
-			<div class="friend">
-				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
-				<h3>Moussa SENE</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-		</div>
-		<div class="bottom">
-			<h3>Voir Tous</h3>
 		</div>
 	</div>
 
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
-
-	<!-- Div de sélection de langue (initialement cachée) -->
-	<div class="langue" id="langue-menu">
-		<p>Choisissez votre langue :</p>
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-	</div>
-
-
-
-
-
-
-
+	<!-- Custom JS -->
+	<script src="/script.js"></script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Pour la gestion des notifications
-			const bellIcon = document.getElementById("bell-icon");
-			const notificationBox = document.getElementById("notification-box");
+		// Mobile sidebar toggle
+		document.getElementById('sidebarToggle').addEventListener('click', function () {
+			document.getElementById('sidebar').classList.toggle('show');
+		});
 
-			bellIcon.addEventListener("click", () => {
-				notificationBox.classList.toggle("show");
-			});
+		// Close sidebar when clicking outside on mobile
+		document.addEventListener('click', function (e) {
+			const sidebar = document.getElementById('sidebar');
+			const sidebarToggle = document.getElementById('sidebarToggle');
 
-			// Pour la gestion de l'icône de langue
-			const langueIcon = document.getElementById("langue-icon");
-			const langueMenu = document.getElementById("langue-menu");
+			if (window.innerWidth <= 768) {
+				if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+					sidebar.classList.remove('show');
+				}
+			}
+		});
 
-			langueIcon.addEventListener("click", () => {
-				// Alterne l'affichage du menu des langues
-				langueMenu.classList.toggle("show-langue");
+		// Task filtering
+		document.querySelectorAll('[data-filter]').forEach(filter => {
+			filter.addEventListener('click', function (e) {
+				e.preventDefault();
+				const filterValue = this.getAttribute('data-filter');
+				const tasks = document.querySelectorAll('[data-priority]');
+
+				tasks.forEach(task => {
+					if (filterValue === 'all' || task.getAttribute('data-priority') === filterValue) {
+						task.style.display = 'block';
+					} else {
+						task.style.display = 'none';
+					}
+				});
 			});
 		});
 	</script>
-	<script src="/USER/script.js"></script>
-
 </body>
 
 </html>

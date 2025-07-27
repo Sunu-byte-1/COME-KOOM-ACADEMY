@@ -1,574 +1,714 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Messages - Come Koom Academy</title>
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	<link
+		href="https://fonts.googleapis.com/css2?family=Artifika&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 		rel="stylesheet">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<style>
+		/* Mobile-first responsive design */
+		body {
+			font-family: 'Poppins', sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
 
-	<link rel="stylesheet" href="/USER/style/navhaut.css">
-	<link rel="stylesheet" href="/USER/message/message.css">
+		.sidebar {
+			background: rgba(255, 255, 255, 0.95);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			min-height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 280px;
+			z-index: 1000;
+			transition: transform 0.3s ease;
+			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.sidebar-brand {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			font-family: 'Artifika', serif;
+			font-size: 1.5rem;
+			font-weight: bold;
+			padding: 1.5rem;
+			text-align: center;
+		}
+
+		.sidebar-nav {
+			padding: 1rem 0;
+		}
+
+		.sidebar-nav .nav-link {
+			color: #333;
+			padding: 1rem 1.5rem;
+			display: flex;
+			align-items: center;
+			transition: all 0.3s ease;
+			border-radius: 0;
+			margin: 0.25rem 1rem;
+			border-radius: 10px;
+		}
+
+		.sidebar-nav .nav-link:hover,
+		.sidebar-nav .nav-link.active {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			transform: translateX(5px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.sidebar-nav .nav-link i {
+			width: 20px;
+			margin-right: 10px;
+			font-size: 1.1rem;
+		}
+
+		.main-content {
+			margin-left: 280px;
+			padding: 2rem;
+			background: #f8f9fa;
+			min-height: 100vh;
+		}
+
+		.messages-container {
+			background: white;
+			border-radius: 15px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+		}
+
+		.messages-header {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 1.5rem;
+		}
+
+		.messages-list {
+			max-height: 600px;
+			overflow-y: auto;
+		}
+
+		.message-item {
+			padding: 1rem 1.5rem;
+			border-bottom: 1px solid #e9ecef;
+			transition: all 0.3s ease;
+			cursor: pointer;
+		}
+
+		.message-item:hover {
+			background-color: #f8f9fa;
+			transform: translateX(5px);
+		}
+
+		.message-item.unread {
+			background-color: #e3f2fd;
+			border-left: 4px solid #667eea;
+		}
+
+		.message-avatar {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		.message-content {
+			flex: 1;
+		}
+
+		.message-time {
+			font-size: 0.875rem;
+			color: #6c757d;
+		}
+
+		.message-preview {
+			color: #6c757d;
+			font-size: 0.9rem;
+			margin-top: 0.25rem;
+		}
+
+		.chat-container {
+			background: white;
+			border-radius: 15px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			display: none;
+		}
+
+		.chat-header {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 1rem 1.5rem;
+			border-radius: 15px 15px 0 0;
+		}
+
+		.chat-messages {
+			height: 400px;
+			overflow-y: auto;
+			padding: 1rem;
+		}
+
+		.message-bubble {
+			margin-bottom: 1rem;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.message-bubble.sent {
+			align-items: flex-end;
+		}
+
+		.message-bubble.received {
+			align-items: flex-start;
+		}
+
+		.message-text {
+			max-width: 70%;
+			padding: 0.75rem 1rem;
+			border-radius: 15px;
+			margin-bottom: 0.25rem;
+		}
+
+		.message-bubble.sent .message-text {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+		}
+
+		.message-bubble.received .message-text {
+			background: #e9ecef;
+			color: #333;
+		}
+
+		.message-input {
+			border: none;
+			border-top: 1px solid #e9ecef;
+			padding: 1rem;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			border-radius: 10px;
+			padding: 0.75rem 2rem;
+			transition: all 0.3s ease;
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.sidebar-toggle {
+			display: none;
+			position: fixed;
+			top: 1rem;
+			left: 1rem;
+			z-index: 1001;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			color: white;
+			padding: 0.75rem;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		/* Mobile responsive */
+		@media (max-width: 768px) {
+			.sidebar {
+				transform: translateX(-100%);
+				width: 100%;
+			}
+
+			.sidebar.show {
+				transform: translateX(0);
+			}
+
+			.main-content {
+				margin-left: 0;
+				padding: 1rem;
+			}
+
+			.sidebar-toggle {
+				display: block !important;
+			}
+
+			.messages-container {
+				margin-bottom: 1rem;
+			}
+
+			.chat-container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1002;
+				border-radius: 0;
+			}
+
+			.chat-header {
+				border-radius: 0;
+			}
+		}
+
+		/* Animation effects */
+		.fade-in {
+			animation: fadeIn 0.5s ease-in;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.slide-in {
+			animation: slideIn 0.3s ease-out;
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: translateX(-100%);
+			}
+
+			to {
+				transform: translateX(0);
+			}
+		}
+
+		.message-typing {
+			animation: typing 1s infinite;
+		}
+
+		@keyframes typing {
+
+			0%,
+			100% {
+				opacity: 0.3;
+			}
+
+			50% {
+				opacity: 1;
+			}
+		}
+	</style>
 </head>
 
 <body>
-
-
-	<main>
-		<section class="barre">
-			<div class="name">
-				<h3>Come'Koom Academy</h3>
-			</div>
-
-			<div class="enum">
-				<ul>
-					<li>
-						<a href="/USER/user.html">
-							<i class="fa-solid fa-school"></i>
-							<p>Tableau de bord</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/taches/taches.html">
-							<i class="fa-solid fa-file"></i>
-							<p>Taches à terminer</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/favoris/fav.html">
-							<i class="fa-solid fa-bookmark"></i>
-							<p>Cours</p>
-						</a>
-					</li>
-
-
-
-
-
-					<li>
-						<a href="/USER/bibliothe/bibliothe.html">
-							<i class="fa-solid fa-book"></i>
-							<p>Bibliotheque</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/menthors/menthor.html">
-							<i class="fa-solid fa-users"></i>
-							<p>Menthors</p>
-						</a>
-					</li>
-
-
-
-					<li>
-						<a href="/USER/abonnement/abonnement.html">
-							<i class="fa-solid fa-user-plus"></i>
-							<p>Abonnement</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/message/message.html" class="active">
-							<i class="fa-regular fa-comments"></i>
-							<p>Messages</p>
-						</a>
-					</li>
-
-
-					<li>
-						<a href="/USER/parametres/parametre.html">
-							<i class="fa-solid fa-gear"></i>
-							<p>Parametres</p>
-						</a>
-					</li>
-
-
-				</ul>
-
-				<div class="trait"></div>
-
-				<div class="exit">
-					<a href="/LOGIN/connexion.html" class="logout">
-						<i class="fa-solid fa-right-from-bracket"></i>
-						<p>Deconnexion</p>
-					</a>
-				</div>
-			</div>
-		</section>
-
-
-
-
-		<section class="content">
-
-			<!--LA BARRE DE NAVIGATION-->
-			<div class="nav">
-				<div class="rech">
-					<input type="search" placeholder="Search">
-					<i class="fa-solid fa-magnifying-glass"></i>
-
-				</div>
-
-
-				<div class="id">
-					<i class="fa-regular fa-bell" id="bell-icon"></i>
-					<!-- Ajout d'un ID pour la cloche -->
-
-					<i class="fa-solid fa-globe" id="langue-icon"></i>
-					<div class="us"></div>
-				</div>
-			</div>
-
-			<!--FINNNN BARRE DE NAVIGATION-->
-
-
-			<!--DEBUT CONTENU MESS-->
-
-			<div class="chat">
-				<div class="list">
-					<div class="titre">
-						<h2>Discussions</h2>
-						<input type="search" placeholder="rechercher ici">
-					</div>
-
-					<div class="personne" id="Mouhammed">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">GL Muhamed TINE</p>
-							<p class="message">Hello Man Comment tu vas, quoi de neuf...</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name"> GL Ndiouga NIANG</p>
-							<p class="message">Fils nkm legui nk tay cours amena wla</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">GL Haby SOW</p>
-							<p class="message" id="moi">Vous: salut boy, comment va</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">GL Moussa THIAM</p>
-							<p class="message">T'as fini le cours sur le react native
-								c'est...</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">GL Jues</p>
-							<p class="message">Abdallah Nkm by fo reir</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">Bynoe GITTENS</p>
-							<p class="message">Mon frere comment tu vas mais je te vois plus
-								là, que ce passe t-il ??</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">Tariq LAMPTEY</p>
-							<p class="message">Yoo what's going</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">GL Adama SARR</p>
-							<p class="message">Frerot j'ai recement vu que t es plus chaud
-								pour les cours</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">GL Rassoul DIOUF</p>
-							<p class="message">Hello Man Comment tu vas, quoi de neuf...</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">GL Camara LAYE</p>
-							<p class="message">Robotique, comment tu vas, nka doors yiii</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">Isaac NEWTON</p>
-							<p class="message">Salut frere j ai des choses à te dire par
-								rappot aux cours</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">Amadou SECK</p>
-							<p class="message">Hello Man Comment tu vas, quoi de neuf...</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">Ndeye Sokhna</p>
-							<p class="message">Salut. Avez vous vu le dernier cours en IA
-								posté</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">Ahmad FALL</p>
-							<p class="message">Hello frere comment tu vas, et les etudes</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-
-					<div class="personne">
-						<div class="image">
-							<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-							<div class="circle"></div>
-						</div>
-						<div class="name-mess">
-							<p class="name">Mouhammed TINE</p>
-							<p class="message">Hello Man Comment tu vas, quoi de neuf...</p>
-						</div>
-						<div>
-							<h1>...</h1>
-						</div>
-					</div>
-
-				</div>
-
-
-
-
-
-
-
-				<div class="mess">
-
-					<div class="entete">
-						<div class="personne">
-							<div class="image">
-								<img src="/images/PERSONNES/homme etudie.jpg" alt="">
-								<div class="circle"></div>
+	<!-- Mobile Sidebar Toggle -->
+	<button class="btn sidebar-toggle d-md-none" id="sidebarToggle">
+		<i class="fas fa-bars"></i>
+	</button>
+
+	<!-- Sidebar -->
+	<nav class="sidebar" id="sidebar">
+		<div class="sidebar-brand">
+			<i class="fas fa-graduation-cap me-2"></i>
+			Come'Koom Academy
+		</div>
+
+		<ul class="nav flex-column sidebar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/user.html">
+					<i class="fas fa-tachometer-alt"></i>
+					<span>Tableau de bord</span>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/taches/taches.html">
+					<i class="fas fa-tasks"></i>
+					<span>Tâches à terminer</span>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/favoris/fav.html">
+					<i class="fas fa-bookmark"></i>
+					<span>Mes cours</span>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/bibliothe/bibliothe.html">
+					<i class="fas fa-book"></i>
+					<span>Bibliothèque</span>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/menthors/menthor.html">
+					<i class="fas fa-users"></i>
+					<span>Mentors</span>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/abonnement/abonnement.html">
+					<i class="fas fa-crown"></i>
+					<span>Abonnement</span>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link active" href="/USER/message/message.html">
+					<i class="fas fa-comments"></i>
+					<span>Messages</span>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="/USER/parametres/parametre.html">
+					<i class="fas fa-cog"></i>
+					<span>Paramètres</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Main Content -->
+	<main class="main-content">
+		<div class="container-fluid">
+			<!-- Header -->
+			<div class="row mb-4">
+				<div class="col-12">
+					<div class="d-flex justify-content-between align-items-center">
+						<h1 class="h3 mb-0">Messages</h1>
+						<div class="d-flex align-items-center">
+							<div class="dropdown me-3">
+								<button class="btn btn-outline-primary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<i class="fas fa-bell"></i>
+									<span class="badge bg-danger ms-1">3</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">Nouveau cours disponible</a></li>
+									<li><a class="dropdown-item" href="#">Message de votre mentor</a></li>
+									<li><a class="dropdown-item" href="#">Tâche à compléter</a></li>
+								</ul>
 							</div>
-							<div class="name-mess">
-								<p class="name">GL Muhamed TINE</p>
-								<p class="message">En ligne</p>
+							<div class="dropdown">
+								<button class="btn btn-outline-secondary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown">
+									<img src="/images/PROFILS/profil1.jpg" alt="Profile" class="rounded-circle"
+										width="32" height="32">
+									<span class="ms-2">Abdallah Diouf</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="/USER/parametres/profil.html">Mon profil</a></li>
+									<li><a class="dropdown-item" href="/USER/parametres/parametre.html">Paramètres</a>
+									</li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item" href="/index.html">Déconnexion</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Messages Content -->
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="messages-container fade-in">
+						<div class="messages-header">
+							<h5 class="mb-0"><i class="fas fa-envelope me-2"></i>Conversations</h5>
+						</div>
+						<div class="messages-list">
+							<div class="message-item unread" data-contact="sarah">
+								<div class="d-flex align-items-center">
+									<img src="/images/PROFILS/profil2.jpg" alt="Sarah" class="message-avatar me-3">
+									<div class="message-content">
+										<div class="d-flex justify-content-between align-items-start">
+											<h6 class="mb-1">Sarah Johnson</h6>
+											<small class="message-time">Il y a 5 min</small>
+										</div>
+										<p class="message-preview mb-0">Salut ! Comment va ton projet React ?</p>
+									</div>
+								</div>
 							</div>
 
-						</div>
+							<div class="message-item" data-contact="mike">
+								<div class="d-flex align-items-center">
+									<img src="/images/PROFILS/profil3.jpg" alt="Mike" class="message-avatar me-3">
+									<div class="message-content">
+										<div class="d-flex justify-content-between align-items-start">
+											<h6 class="mb-1">Mike Chen</h6>
+											<small class="message-time">Il y a 1h</small>
+										</div>
+										<p class="message-preview mb-0">Merci pour ton aide sur le cours JavaScript !
+										</p>
+									</div>
+								</div>
+							</div>
 
-						<div class="icones">
-							<i class="fa-solid fa-phone"></i>
-							<i class="fa-solid fa-video"></i>
-							<i class="fa-solid fa-ellipsis-vertical" id="i"></i>
+							<div class="message-item unread" data-contact="emma">
+								<div class="d-flex align-items-center">
+									<img src="/images/PROFILS/profil4.jpg" alt="Emma" class="message-avatar me-3">
+									<div class="message-content">
+										<div class="d-flex justify-content-between align-items-start">
+											<h6 class="mb-1">Emma Wilson</h6>
+											<small class="message-time">Il y a 2h</small>
+										</div>
+										<p class="message-preview mb-0">As-tu terminé l'exercice sur Bootstrap ?</p>
+									</div>
+								</div>
+							</div>
 
+							<div class="message-item" data-contact="david">
+								<div class="d-flex align-items-center">
+									<img src="/images/PROFILS/profil5.jpg" alt="David" class="message-avatar me-3">
+									<div class="message-content">
+										<div class="d-flex justify-content-between align-items-start">
+											<h6 class="mb-1">David Brown</h6>
+											<small class="message-time">Hier</small>
+										</div>
+										<p class="message-preview mb-0">Excellent travail sur le projet final !</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="message-item" data-contact="lisa">
+								<div class="d-flex align-items-center">
+									<img src="/images/PROFILS/profil6.jpg" alt="Lisa" class="message-avatar me-3">
+									<div class="message-content">
+										<div class="d-flex justify-content-between align-items-start">
+											<h6 class="mb-1">Lisa Garcia</h6>
+											<small class="message-time">Il y a 2 jours</small>
+										</div>
+										<p class="message-preview mb-0">Peux-tu m'aider avec Node.js ?</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+				</div>
 
-					<div class="mess1">
-						<p class="p1">Hello Abdallah</p>
-						<p class="p2">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-							Possimus a
-							labore pariatur quisquam quia, voluptatem placeat asperiores
-							incidunt et ipsum rerum totam suscipit corporis corrupti
-							distinctio at omnis iste vel!</p>
-						<div class="image-text">
-							<img src="/images/PERSONNES/concentré.jpg" alt="">
-							<div></div>
+				<div class="col-lg-8 col-md-6 col-12">
+					<div class="chat-container" id="chatContainer">
+						<div class="chat-header">
+							<div class="d-flex align-items-center">
+								<button class="btn btn-link text-white p-0 me-3 d-md-none" id="backToMessages">
+									<i class="fas fa-arrow-left"></i>
+								</button>
+								<img src="/images/PROFILS/profil2.jpg" alt="Contact" class="message-avatar me-3"
+									id="chatAvatar">
+								<div>
+									<h6 class="mb-0" id="chatName">Sarah Johnson</h6>
+									<small class="text-white-50">En ligne</small>
+								</div>
+							</div>
 						</div>
-					</div>
-
-					<div class="mess2">
-						<p class="p1">Oui Salut Mouhammed</p>
-						<p class="p2">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-							Possimus a
-							labor</p>
-						<div class="image-text">
-							<img src="/images/PERSONNES/concentré.jpg" alt="">
-							<div></div>
+						<div class="chat-messages" id="chatMessages">
+							<!-- Messages will be loaded here -->
 						</div>
-					</div>
-
-					<div class="mess1">
-						<p class="p2" id="mess3">Lorem ipsum dolor sit, amet consectetur
-							adipisicing elit.
-							Possimus a
-							labore pariatur quisquam quia, voluptatem pl</p>
-						<p class="p2">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-							Consequuntur quasi, saepe obcaecati pariatur reprehenderit
-							consequatur delectus qui ipsum voluptatum odio aperiam, ipsa
-							atque quod doloremque nam a soluta libero aliquid po</p>
-						<div class="image-text">
-							<img src="/images/PERSONNES/concentré.jpg" alt="">
-							<div></div>
+						<div class="message-input">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Tapez votre message..."
+									id="messageInput">
+								<button class="btn btn-primary" type="button" id="sendMessage">
+									<i class="fas fa-paper-plane"></i>
+								</button>
+							</div>
 						</div>
-					</div>
-
-					<div class="send">
-						<i class="fa-solid fa-link" id="add"> </i>
-						<input type="text" placeholder="ecrire votre message...">
-						<i class="fa-solid fa-microphone" id="voice"></i>
-						<button>Envoyer <i class="fa-solid fa-paper-plane"></i></button>
 					</div>
 				</div>
 			</div>
-
-
-		</section>
-
-
-
-
+		</div>
 	</main>
 
-
-
-
-
-
-
-
-
-
-
-
-	<!--Partie pour la Notification cahée-->
-
-	<div class="notification" id="notification-box">
-		<div class="top">
-			<h2>Notifications</h2>
-			<div class="new">Nouveau</div>
-			<div class="plus">+</div>
-		</div>
-		<div class="mid">
-			<div class="friend">
-				<img src="/images/PERSONNES/FEMME ORDI.png" alt="" width="50" height="50">
-				<h3>Suzane ANTONIO</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-			<div class="traits"></div>
-
-
-			<div class="friend">
-				<img src="/images/PERSONNES/homme ordi.png" alt="" width="50" height="50">
-				<h3>Moussa SENE</h3>
-			</div>
-			<div class="friend1">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-					ducimus?
-				</p>
-			</div>
-			<button class="bt">Accepter</button>
-		</div>
-		<div class="bottom">
-			<h3>Voir Tous</h3>
-		</div>
-	</div>
-
-
-
-
-	<!-- Div de sélection de langue (initialement cachée) -->
-	<div class="langue" id="langue-menu">
-		<p>Choisissez votre langue :</p>
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/France.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/uk.png" alt=""
-				width=70" height="40">
-			Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/spain.webp" alt=""
-				width=70" height="40"> Français
-		</label><br />
-
-
-		<label>
-			<input type="radio" name="language" value="fr" /> <img src="/images/FLAG/germany.png" alt=""
-				width=70" height="40"> Français
-		</label><br />
-	</div>
-
-
-
-
-
-
-
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Pour la gestion des notifications
-			const bellIcon = document.getElementById("bell-icon");
-			const notificationBox = document.getElementById("notification-box");
+		// Mobile sidebar toggle
+		document.getElementById('sidebarToggle').addEventListener('click', function () {
+			document.getElementById('sidebar').classList.toggle('show');
+		});
 
-			bellIcon.addEventListener("click", () => {
-				notificationBox.classList.toggle("show");
+		// Close sidebar when clicking outside on mobile
+		document.addEventListener('click', function (event) {
+			const sidebar = document.getElementById('sidebar');
+			const sidebarToggle = document.getElementById('sidebarToggle');
+
+			if (window.innerWidth <= 768) {
+				if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+					sidebar.classList.remove('show');
+				}
+			}
+		});
+
+		// Message data
+		const messages = {
+			sarah: [
+				{ type: 'received', text: 'Salut ! Comment va ton projet React ?', time: '14:30' },
+				{ type: 'sent', text: 'Salut Sarah ! Ça va bien, j\'ai presque terminé. Et toi ?', time: '14:32' },
+				{ type: 'received', text: 'Super ! Moi aussi je progresse bien. Tu peux m\'aider avec les hooks ?', time: '14:35' }
+			],
+			mike: [
+				{ type: 'received', text: 'Merci pour ton aide sur le cours JavaScript !', time: '13:15' },
+				{ type: 'sent', text: 'De rien Mike ! Content d\'avoir pu t\'aider.', time: '13:20' }
+			],
+			emma: [
+				{ type: 'received', text: 'As-tu terminé l\'exercice sur Bootstrap ?', time: '12:45' },
+				{ type: 'sent', text: 'Oui, je l\'ai fini hier soir. C\'était intéressant !', time: '12:50' }
+			],
+			david: [
+				{ type: 'received', text: 'Excellent travail sur le projet final !', time: 'Hier' },
+				{ type: 'sent', text: 'Merci David ! J\'ai beaucoup appris.', time: 'Hier' }
+			],
+			lisa: [
+				{ type: 'received', text: 'Peux-tu m\'aider avec Node.js ?', time: 'Il y a 2 jours' },
+				{ type: 'sent', text: 'Bien sûr Lisa ! Dis-moi ce qui te pose problème.', time: 'Il y a 2 jours' }
+			]
+		};
+
+		// Load chat messages
+		function loadChat(contact) {
+			const chatContainer = document.getElementById('chatContainer');
+			const chatMessages = document.getElementById('chatMessages');
+			const chatName = document.getElementById('chatName');
+			const chatAvatar = document.getElementById('chatAvatar');
+
+			// Update chat header
+			const contactNames = {
+				sarah: 'Sarah Johnson',
+				mike: 'Mike Chen',
+				emma: 'Emma Wilson',
+				david: 'David Brown',
+				lisa: 'Lisa Garcia'
+			};
+
+			const contactAvatars = {
+				sarah: '/images/PROFILS/profil2.jpg',
+				mike: '/images/PROFILS/profil3.jpg',
+				emma: '/images/PROFILS/profil4.jpg',
+				david: '/images/PROFILS/profil5.jpg',
+				lisa: '/images/PROFILS/profil6.jpg'
+			};
+
+			chatName.textContent = contactNames[contact];
+			chatAvatar.src = contactAvatars[contact];
+
+			// Clear and load messages
+			chatMessages.innerHTML = '';
+			messages[contact].forEach(message => {
+				const messageDiv = document.createElement('div');
+				messageDiv.className = `message-bubble ${message.type}`;
+				messageDiv.innerHTML = `
+					<div class="message-text">
+						${message.text}
+					</div>
+					<small class="text-muted">${message.time}</small>
+				`;
+				chatMessages.appendChild(messageDiv);
 			});
 
-			// Pour la gestion de l'icône de langue
-			const langueIcon = document.getElementById("langue-icon");
-			const langueMenu = document.getElementById("langue-menu");
+			// Show chat on mobile
+			if (window.innerWidth <= 768) {
+				chatContainer.style.display = 'block';
+			}
 
-			langueIcon.addEventListener("click", () => {
-				// Alterne l'affichage du menu des langues
-				langueMenu.classList.toggle("show-langue");
+			// Scroll to bottom
+			chatMessages.scrollTop = chatMessages.scrollHeight;
+		}
+
+		// Message item click handlers
+		document.querySelectorAll('.message-item').forEach(item => {
+			item.addEventListener('click', function () {
+				const contact = this.dataset.contact;
+				loadChat(contact);
+
+				// Remove unread class
+				this.classList.remove('unread');
+			});
+		});
+
+		// Back to messages on mobile
+		document.getElementById('backToMessages').addEventListener('click', function () {
+			document.getElementById('chatContainer').style.display = 'none';
+		});
+
+		// Send message functionality
+		document.getElementById('sendMessage').addEventListener('click', function () {
+			const input = document.getElementById('messageInput');
+			const message = input.value.trim();
+
+			if (message) {
+				const chatMessages = document.getElementById('chatMessages');
+				const messageDiv = document.createElement('div');
+				messageDiv.className = 'message-bubble sent';
+				messageDiv.innerHTML = `
+					<div class="message-text">
+						${message}
+					</div>
+					<small class="text-muted">Maintenant</small>
+				`;
+				chatMessages.appendChild(messageDiv);
+
+				input.value = '';
+				chatMessages.scrollTop = chatMessages.scrollHeight;
+
+				// Simulate typing indicator
+				setTimeout(() => {
+					const typingDiv = document.createElement('div');
+					typingDiv.className = 'message-bubble received';
+					typingDiv.innerHTML = `
+						<div class="message-text message-typing">
+							<i class="fas fa-ellipsis-h"></i>
+						</div>
+					`;
+					chatMessages.appendChild(typingDiv);
+					chatMessages.scrollTop = chatMessages.scrollHeight;
+
+					// Remove typing indicator after 2 seconds
+					setTimeout(() => {
+						typingDiv.remove();
+					}, 2000);
+				}, 1000);
+			}
+		});
+
+		// Enter key to send message
+		document.getElementById('messageInput').addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				document.getElementById('sendMessage').click();
+			}
+		});
+
+		// Add animation classes on page load
+		document.addEventListener('DOMContentLoaded', function () {
+			const containers = document.querySelectorAll('.messages-container, .chat-container');
+			containers.forEach((container, index) => {
+				setTimeout(() => {
+					container.classList.add('fade-in');
+				}, index * 100);
 			});
 		});
 	</script>
-
-
 </body>
 
 </html>
